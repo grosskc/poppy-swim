@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poppy Swim — iOS widget</title>
+<meta name="description" content="Add Poppy’s current meet, event-heat-lane, best, and goal times to an iPhone or iPad Home Screen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="faces.css">
+<style>
+:root {
+  --ink:#0C1B2E; --ink-soft:#24364A; --paper:#E8EEF2; --card:#FFFFFF; --line:#D7E0E7;
+  --muted:#5A6B7C; --quiet:#7A8A99; --text:#152032; --aqua:#0C7C7C; --aqua-deep:#0A5E5E;
+  --sans:Manrope,"Segoe UI",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(16,42,67,.05),0 6px 18px rgba(16,42,67,.05);
+  --radius:14px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { background:var(--paper); color:var(--text); font-family:var(--sans); min-height:100%; }
+a { color:var(--aqua-deep); }
+a:hover { color:var(--ink); }
+.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:#F4F7FA; padding:20px 24px 18px; }
+.hero-inner { max-width:760px; margin:0 auto; }
+.hero .eyebrow { font-size:11px; font-weight:700; letter-spacing:.08em; color:#5EC8C8; text-transform:uppercase; }
+.hero h1 { font-weight:800; font-size:22px; letter-spacing:-.02em; margin-top:4px; }
+.hero p { margin-top:6px; color:#C5D2DE; font-size:14px; font-weight:500; line-height:1.45; }
+.wrap { max-width:760px; margin:0 auto; padding:24px 24px 56px; }
+ol.steps { list-style:none; display:flex; flex-direction:column; gap:16px; }
+.step {
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:16px 18px 16px 16px; display:flex; gap:14px;
+}
+.num {
+  flex:0 0 28px; height:28px; border-radius:50%; background:#0C1B2E; color:#F4F7FA;
+  display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; margin-top:1px;
+}
+.step h2 { font-size:16px; font-weight:800; letter-spacing:-.02em; }
+.step p, .step li { font-size:14.5px; line-height:1.5; color:var(--ink-soft); font-weight:500; margin-top:6px; }
+.step ul { margin:8px 0 0 18px; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  background:var(--aqua); color:#fff; font-weight:750; font-size:15px;
+  border-radius:999px; padding:11px 18px; text-decoration:none; margin-top:10px;
+  border:0;
+}
+.btn:hover { background:var(--aqua-deep); color:#fff; }
+.btn.secondary { background:transparent; color:var(--aqua-deep); border:1.5px solid #B7D4D4; padding:9px 16px; }
+.btn.secondary:hover { background:#E7F3F3; color:var(--ink); }
+.note { font-size:13px; color:var(--muted); font-weight:500; margin-top:8px; line-height:1.45; }
+h3 { font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--aqua-deep); margin:28px 0 12px; }
+.previews {
+  display:flex; flex-wrap:wrap; gap:18px 22px; align-items:flex-end;
+  background:linear-gradient(180deg,#DCE3EA 0%,#E8EEF2 100%);
+  border:1px solid var(--line); border-radius:18px; padding:22px 18px 24px;
+}
+.preview-block { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.preview-block figcaption { font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.04em; }
+.lock-stage {
+  background: #1a2230 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='10' cy='10' r='1' fill='%23ffffff22'/%3E%3C/svg%3E");
+  border-radius:16px; padding:16px; display:flex; flex-direction:column; gap:14px; min-width:min(100%, 200px);
+}
+.lock-date { color:#fff; font-weight:600; font-size:12px; opacity:.85; }
+.alt { margin-top:10px; }
+details { margin-top:18px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px; }
+details summary { cursor:pointer; font-weight:750; color:var(--ink); font-size:14.5px; }
+details .body { margin-top:8px; font-size:14px; line-height:1.5; color:var(--ink-soft); font-weight:500; }
+pre {
+  margin-top:10px; background:#0C1B2E; color:#E8EEF2; border-radius:10px;
+  padding:12px; overflow:auto; font-size:11px; line-height:1.45;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.footer { margin-top:28px; font-size:13px; color:var(--muted); font-weight:500; line-height:1.5; }
+.footer a { font-weight:700; }
+@media (max-width: 520px) {
+  .hero, .wrap { padding-left:16px; padding-right:16px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Poppy Swim</div>
+    <h1>Add the meet widget to an iPhone</h1>
+    <p>This shows her current meet — event, heat, and lane, plus her best and goal times. It updates from the same family dashboard, and you do not need an App Store listing or a developer account.</p>
+  </div>
+</header>
+<main class="wrap">
+  <ol class="steps">
+    <li class="step">
+      <div class="num">1</div>
+      <div>
+        <h2>Install Scriptable</h2>
+        <p>Scriptable is a free app that can show a small widget on the Home Screen. Install it from the App Store on each iPhone or iPad that should have the widget.</p>
+        <a class="btn" href="https://apps.apple.com/app/scriptable/id1405459188">Get Scriptable on the App Store</a>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num">2</div>
+      <div>
+        <h2>Add the Poppy Swim script</h2>
+        <p>On the same device, tap the button below. Scriptable will open with a short installer. Tap <strong>Add</strong> (or Done), then tap the play button once. That saves a script named Poppy Swim.</p>
+        <a class="btn" href="scriptable:///add?scriptName=Install%20Poppy%20Swim&script=//%20Install%20or%20update%20the%20Poppy%20Swim%20widget%20script%2C%20then%20add%20a%20Scriptable%0A//%20widget%20on%20your%20Home%20Screen%20and%20select%20%22Poppy%20Swim%22.%0Aconst%20NAME%20%3D%20%22Poppy%20Swim%22%0Aconst%20SRC%20%3D%20%22https%3A//grosskc.github.io/poppy-swim/widget/PoppySwim.js%22%0Aconst%20fm%20%3D%20FileManager.iCloud%28%29%0Aconst%20path%20%3D%20fm.joinPath%28fm.documentsDirectory%28%29%2C%20NAME%20%2B%20%22.js%22%29%0Aconst%20req%20%3D%20new%20Request%28SRC%29%0Areq.timeoutInterval%20%3D%2020%0Aconst%20code%20%3D%20await%20req.loadString%28%29%0Aif%20%28%21code%20%7C%7C%20code.indexOf%28%22poppy-swim/widget.json%22%29%20%3D%3D%3D%20-1%29%20%7B%0A%20%20const%20err%20%3D%20new%20Alert%28%29%0A%20%20err.title%20%3D%20%22Couldn%27t%20install%20Poppy%20Swim%22%0A%20%20err.message%20%3D%20%22Check%20your%20internet%20connection%20and%20try%20again.%22%0A%20%20err.addAction%28%22OK%22%29%0A%20%20await%20err.presentAlert%28%29%0A%20%20Script.complete%28%29%0A%7D%20else%20%7B%0A%20%20fm.writeString%28path%2C%20code%29%0A%20%20const%20ok%20%3D%20new%20Alert%28%29%0A%20%20ok.title%20%3D%20%22Poppy%20Swim%20is%20ready%22%0A%20%20ok.message%20%3D%20%22On%20your%20Home%20Screen%2C%20long-press%20an%20empty%20area%2C%20tap%20%2B%2C%20choose%20Scriptable%2C%20pick%20a%20size%2C%20then%20tap%20the%20widget%20and%20select%20the%20Poppy%20Swim%20script.%22%0A%20%20ok.addAction%28%22OK%22%29%0A%20%20await%20ok.presentAlert%28%29%0A%20%20Script.complete%28%29%0A%7D%0A">Add Poppy Swim to Scriptable</a>
+        <p class="note">If you already have it, you can tap this again and run it to get the latest script. You must open this page on the iPhone itself, not by sending the link to a computer.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num">3</div>
+      <div>
+        <h2>Put it on the Home Screen</h2>
+        <ul>
+          <li>Long-press an empty area of the Home Screen until the apps jiggle.</li>
+          <li>Tap the <strong>+</strong> button in the corner.</li>
+          <li>Search for <strong>Scriptable</strong> and choose a size: small, medium, or large.</li>
+          <li>Tap <strong>Add Widget</strong>, then tap the new widget and choose the <strong>Poppy Swim</strong> script.</li>
+          <li>Tap the background when you are done.</li>
+        </ul>
+        <p class="note">Tapping the widget opens the family dashboard. The medium size is a good starting point — it lists the day’s events.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num">4</div>
+      <div>
+        <h2>Optional: add it to the Lock Screen</h2>
+        <ul>
+          <li>Long-press the Lock Screen and tap <strong>Customize</strong>, then <strong>Lock Screen</strong>.</li>
+          <li>Tap a widget area, choose <strong>Scriptable</strong>, and select <strong>Poppy Swim</strong>.</li>
+        </ul>
+        <p class="note">The rectangular Lock Screen size works best. A one-line version is also available.</p>
+      </div>
+    </li>
+  </ol>
+
+  <h3>What it looks like</h3>
+  <div class="previews" id="previews">
+    <figure class="preview-block"><div id="face-small"></div><figcaption>Small</figcaption></figure>
+    <figure class="preview-block"><div id="face-medium"></div><figcaption>Medium · today’s events</figcaption></figure>
+    <figure class="preview-block" style="flex-basis:100%"><div id="face-large"></div><figcaption>Large · full meet</figcaption></figure>
+    <figure class="preview-block">
+      <div class="lock-stage">
+        <div class="lock-date">Lock Screen</div>
+        <div id="face-lock"></div>
+        <div id="face-inline"></div>
+      </div>
+      <figcaption>Lock Screen</figcaption>
+    </figure>
+  </div>
+  <p class="note" id="preview-caption">These previews use the current meet from the dashboard. The widget on a phone may take a little while to refresh after a change.</p>
+
+  <details>
+    <summary>If the button in step 2 does not open Scriptable</summary>
+    <div class="body">
+      <p>You can add the script by hand. In Scriptable, tap <strong>+</strong> to start a new script, delete any sample text, and paste the contents of the widget script. Name it <strong>Poppy Swim</strong> and tap Done. Then go back to step 3.</p>
+      <p class="alt"><a class="btn secondary" href="PoppySwim.js">Open the widget script</a>
+      <a class="btn secondary" href="PoppySwim.scriptable">Download a Scriptable file</a></p>
+    </div>
+  </details>
+
+  <p class="footer">The widget reads <a href="../widget.json">the current meet file</a> on this site. It does not submit meet entries. For the full schedule and notecards, use <a href="../#meets">Poppy’s dashboard</a>.</p>
+</main>
+<script src="faces.js"></script>
+<script>
+(async function(){
+  const now = new Date();
+  let data = null;
+  try {
+    const res = await fetch("../widget.json", { cache: "no-cache" });
+    if (res.ok) data = await res.json();
+  } catch (e) {}
+  if (!data) {
+    document.getElementById("preview-caption").textContent = "Previews will appear here once this page is opened from the family website.";
+    return;
+  }
+  PoppySwimFaces.renderFace(document.getElementById("face-small"), data, "small", now, "light");
+  PoppySwimFaces.renderFace(document.getElementById("face-medium"), data, "medium", now, "light");
+  PoppySwimFaces.renderFace(document.getElementById("face-large"), data, "large", now, "light");
+  PoppySwimFaces.renderFace(document.getElementById("face-lock"), data, "lock-rect", now, "light");
+  PoppySwimFaces.renderFace(document.getElementById("face-inline"), data, "lock-inline", now, "light");
+})();
+</script>
+</body>
+</html>

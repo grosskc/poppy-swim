@@ -38,3 +38,9 @@ Local additions stay on that phone or computer. They do not automatically appear
 The family site is published at [https://grosskc.github.io/poppy-swim/](https://grosskc.github.io/poppy-swim/). The Meets view is also at [https://grosskc.github.io/poppy-swim/#meets](https://grosskc.github.io/poppy-swim/#meets). Opening the file directly (`file://`) works on many computers, but it is awkward on iPhone and local storage can be unreliable that way. The hosted HTTPS link is better for phones.
 
 Her times are already on public meet results and MySwimApp. Still, prefer sharing the link with family rather than posting it widely.
+
+## iOS widget
+
+A Scriptable widget shows the current meet’s event, heat, and lane, plus Poppy’s best and goal times. It reads the same snapshot as this site (`widget.json` on GitHub Pages), so every family phone stays current after a refresh.
+
+On an iPhone, open [the install page](https://grosskc.github.io/poppy-swim/widget/) and follow the three short steps. Scriptable is free; there is no App Store listing to publish. The widget never submits meet entries.

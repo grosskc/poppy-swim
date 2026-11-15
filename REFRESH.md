@@ -6,7 +6,7 @@ A **separate meets-watch routine** (not this times refresh) updates the `meets` 
 
 ## Data file
 
-Source of truth: `data.json` (schema `version: 1`). After editing it, regenerate or patch `index.html` so `const DATA = …` matches `data.json` exactly. Then apply the same official times, history, provisional times, honors, meta, and meet list to the Grok Page data blocks.
+Source of truth: `data.json` (schema `version: 1`). After editing it, regenerate or patch `index.html` so `const DATA = …` matches `data.json` exactly, then run `python3 scripts/build_widget.py` so `widget.json` matches too. Do not hand-edit `widget.json`. Then apply the same official times, history, provisional times, honors, meta, and meet list to the Grok Page data blocks.
 
 - `seasonTargets` holds the championship date chips used on the Times view (`littleElves`, `midStates`, `ohioJcs`, `zones`). Do not replace this object with the meet list.
 - `meets` is an array of meet cards for the Meets view. See “Maintaining the meets array” below.
@@ -65,7 +65,7 @@ Do not invent times, ranks, meets, venues, warm-up or start times, fees, or spli
 
 7. **Publish**  
    Write `data.json`, update the `DATA` object in `index.html`, and edit the live Grok Page in place (do not create a new Page). The Page still has no file picker; family use is the HTML app.  
-   Kevin has approved publishing to GitHub Pages at https://grosskc.github.io/poppy-swim/ (`grosskc/poppy-swim`, branch `main`). After updating `data.json` and `index.html`, commit and push so Pages rebuilds. Confirm the live site shows the change.
+   Kevin has approved publishing to GitHub Pages at https://grosskc.github.io/poppy-swim/ (`grosskc/poppy-swim`, branch `main`). After updating `data.json` and `index.html`, run `python3 scripts/build_widget.py` and include the new `widget.json` in the same commit so family iOS widgets stay in sync. Commit and push so Pages rebuilds. Confirm the live site shows the change. The widget feed is https://grosskc.github.io/poppy-swim/widget.json; the install page is https://grosskc.github.io/poppy-swim/widget/.
 
 ## Derived display rules (do not store separately)
 
@@ -181,7 +181,26 @@ The meets-watch routine should look for a posted heat sheet **1–3 days before 
 - Typical link labels: Meet announcement / Meet info, Psych sheet, Timeline, Warm-ups, Heat sheet, Results, Entries report, Captyn meet page. Omit a link when the document is not posted yet (for example Mason results).
 - Fill venue, times, fees, and host from a public announcement, warm-up, or timeline PDF when those fields are actually stated. If the announcement says TBA and a later warm-up or timeline PDF posts real times, update the session. Do not invent a street address, start time, or fee.
 
-After editing `meets`, set `meta.meetsAsOf` / `meta.meetsAsOfLabel` (America/New_York), keep `const DATA` in `index.html` in sync, update the Grok Page meet list the same way, commit, and push.
+After editing `meets`, set `meta.meetsAsOf` / `meta.meetsAsOfLabel` (America/New_York), keep `const DATA` in `index.html` in sync, run `python3 scripts/build_widget.py`, update the Grok Page meet list the same way, then commit and push (include `widget.json`).
+
+
+## iOS widget
+
+Family Home Screen and Lock Screen widgets are built with Scriptable (a free iOS app). They read `widget.json`, which is generated from `data.json` by `scripts/build_widget.py`.
+
+Meet selection (America/New_York “today”):
+
+1. A meet in progress (`startDate` ≤ today ≤ `endDate`), preferring one that already has `entries`.
+2. Otherwise the nearest future meet that has `entries`.
+3. Otherwise the next upcoming meet (eligible meets first), shown with its entry deadline.
+
+Goals use the same rule as the notecard: the next USA Swimming 10&U cut above her best from *before* the meet starts. Relays have no goal. Unknown heats and lanes are `TBA`.
+
+The Scriptable script is `widget/PoppySwim.js`. The family install page is `widget/index.html`. After changing the script, people who used the installer can open that page and run the installer again.
+
+`widget.refreshAfterDate` asks iOS to refresh about every 30 minutes. iOS decides the real schedule and may wait longer, especially overnight or in Low Power Mode. The script caches the last good `widget.json` so the widget still works offline.
+
+Optional check after editing the script: `node scripts/check_widget.js`.
 
 ## Known gaps to watch
 

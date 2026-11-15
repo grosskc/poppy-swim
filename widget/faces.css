@@ -1,0 +1,227 @@
+/* Shared faces for the install page and preview PNGs. Sizes are in iOS points. */
+.w {
+  --ink: #0C1B2E;
+  --ink-soft: #24364A;
+  --muted: #5A6B7C;
+  --teal: #0A5E5E;
+  --accent: #0C7C7C;
+  --gold: #8A6D3B;
+  --line: #D7E0E7;
+  --bg: #F4F7FA;
+  --paper: #FFFFFF;
+  box-sizing: border-box;
+  font-family: "Geist", "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.w *, .w *::before, .w *::after { box-sizing: border-box; }
+.w.dark {
+  --ink: #F4F7FA;
+  --ink-soft: #C5D2DE;
+  --muted: #8A9AAB;
+  --teal: #5EC8C8;
+  --accent: #5EC8C8;
+  --gold: #E0C37A;
+  --line: #1C2E44;
+  --bg: #0C1B2E;
+  --paper: #102A43;
+}
+.w.hs {
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(16, 42, 67, 0.18);
+}
+.w.hs::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 22px 22px 0 0;
+}
+.w.small { width: 158px; height: 158px; padding: 12px 14px 12px; }
+.w.medium { width: 338px; height: 158px; padding: 7px 14px 7px; }
+.w.large { width: 338px; height: 354px; padding: 11px 16px 10px; }
+.w.lock-rect {
+  width: 160px; height: 72px; padding: 6px 8px;
+  border-radius: 16px;
+  background: rgba(20, 24, 30, 0.42);
+  color: #fff;
+  --ink: #fff;
+  --ink-soft: #fff;
+  --muted: rgba(255,255,255,.78);
+  --teal: #fff;
+  --accent: #fff;
+  --gold: #fff;
+  --line: rgba(255,255,255,.25);
+  --bg: rgba(20, 24, 30, 0.42);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+.w.lock-rect.dark {
+  background: rgba(8, 12, 18, 0.55);
+  --bg: rgba(8, 12, 18, 0.55);
+}
+.w.lock-inline {
+  width: 338px; height: 22px; padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.w.lock-inline.dark, .w.lock-inline.light { color: #fff; --ink: #fff; }
+
+.kicker {
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  line-height: 1.2;
+  text-transform: none;
+}
+.ttl {
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.muted {
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ehl {
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.stroke {
+  font-weight: 750;
+  color: var(--teal);
+  letter-spacing: 0.02em;
+}
+.evname {
+  font-weight: 600;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.times {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-weight: 650;
+}
+.times .best, .times .goal { color: var(--ink); }
+.times .arrow { color: var(--gold); font-weight: 500; }
+.times .cut {
+  color: var(--teal);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 0.92em;
+}
+.times .empty { color: var(--muted); font-weight: 500; }
+
+/* Small */
+.w.small .ttl { font-size: 13px; margin-top: 1px; }
+.w.small .ehl { font-size: 22px; margin-top: 10px; line-height: 1; }
+.w.small .stroke { font-size: 12px; margin-top: 2px; }
+.w.small .evname { font-size: 13px; font-weight: 750; color: var(--ink); margin-top: 10px; }
+.w.small .times { margin-top: 5px; font-size: 12px; }
+.w.small .when { margin-top: 3px; font-size: 11px; }
+
+/* Medium / large shared row */
+.whead { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.whead .left { min-width: 0; }
+.whead .right { font-size: 10px; font-weight: 500; color: var(--muted); text-align: right; max-width: 55%; }
+.session-line { margin-top: 3px; font-size: 9px; }
+.rows { margin-top: 7px; display: flex; flex-direction: column; gap: 6px; }
+.row {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr) 36px;
+  grid-template-areas:
+    "ehl name start"
+    "stroke times start";
+  column-gap: 8px;
+  row-gap: 0;
+  align-items: baseline;
+  line-height: 1.15;
+}
+.row .ehl { grid-area: ehl; font-size: 12px; font-weight: 650; line-height: 1.15; }
+.row .stroke { grid-area: stroke; font-size: 10px; line-height: 1.15; }
+.row .evname { grid-area: name; font-size: 12px; font-weight: 650; color: var(--ink); line-height: 1.15; }
+.row .times { grid-area: times; justify-content: flex-start; font-size: 11px; gap: 4px; line-height: 1.15; }
+.row .when { grid-area: start; font-size: 11px; color: var(--muted); text-align: right; font-weight: 500; font-variant-numeric: tabular-nums; align-self: center; }
+
+.w.medium .ttl { font-size: 14px; }
+.w.medium .kicker { font-size: 9px; }
+.w.medium .session-line { display: none; }
+.w.medium .whead .right { font-size: 10px; line-height: 1.25; }
+.w.medium .rows { margin-top: 8px; gap: 4px; }
+.w.medium .row .ehl { font-size: 12px; }
+.w.medium .row .stroke { font-size: 9px; }
+.w.medium .row .evname { font-size: 12px; }
+.w.medium .row .times, .w.medium .row .when { font-size: 11px; }
+
+
+.w.large .ttl { font-size: 17px; margin-top: 0; }
+.w.large .sub { margin-top: 2px; font-size: 10px; }
+.w.large .groups { margin-top: 6px; display: flex; flex-direction: column; gap: 4px; }
+.dayband {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.dayband .day {
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+}
+.dayband .blurb { font-size: 9px; color: var(--muted); font-weight: 500; }
+.w.large .rows { margin-top: 0; gap: 3px; }
+.w.large .row { grid-template-columns: 92px minmax(0, 1fr) 36px; }
+.w.large .row .ehl { font-size: 12px; }
+.w.large .row .stroke { font-size: 9px; }
+.w.large .row .evname { font-size: 12px; }
+.w.large .row .times, .w.large .row .when { font-size: 11px; }
+.w.large .sub { font-size: 10px; }
+
+/* Deadline */
+.due-label { margin-top: 12px; }
+.due-time { margin-top: 3px; font-size: 13px; font-weight: 750; letter-spacing: -0.02em; }
+.w.medium .due-time, .w.large .due-time { font-size: 16px; }
+.w.large .due-time { font-size: 18px; margin-top: 4px; }
+.suggested { margin-top: 14px; font-size: 12px; color: var(--muted); font-weight: 500; white-space: normal; line-height: 1.35; }
+
+/* Lock */
+.w.lock-rect .top { display: flex; align-items: baseline; gap: 6px; }
+.w.lock-rect .ehl { font-size: 13px; font-weight: 750; }
+.w.lock-rect .stroke { font-size: 12px; }
+.w.lock-rect .when { margin-left: auto; font-size: 11px; }
+.w.lock-rect .mid { margin-top: 2px; font-size: 12px; font-weight: 600; color: var(--ink); }
+.w.lock-rect .times { margin-top: 2px; font-size: 11px; justify-content: flex-start; }
+.w.lock-inline .txt { font-size: 13px; font-weight: 500; color: #fff; }
