@@ -72,7 +72,7 @@ Do not invent times, ranks, meets, venues, warm-up or start times, fees, or spli
 - Lifetime best = fastest swim in merged history + provisional (official same event+course+date supersedes provisional).  
 - Mid-States window time = fastest swim with `date >= 2026-09-01`. A pre-window lifetime best can remain the headline time while the window time is shown separately (see 50 Back).  
 - Last vs. best uses the most recent swim in history for that event+course.  
-- Ranks attach only when the displayed official lifetime best still matches the `officialTimes` snapshot row.
+- Ranks come from the `officialTimes` snapshot. When the displayed best still matches that row, show the published ranks as usual. When a provisional (or otherwise newer) best is faster than the snapshot time, keep those official ranks visible with the caption “Official ranks on <official time>” and a dotted line “<X>s faster than <official> · rank update pending.” Never invent a new place number.
 
 ## Maintaining the meets array
 

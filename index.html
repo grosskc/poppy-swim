@@ -104,6 +104,11 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
 .rank .v { font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; }
 .rank.hot .v { color:var(--ok); }
 .rank .of { font-weight:600; color:var(--quiet); font-size:10.5px; }
+.ranks-wrap { grid-area:ranks; margin-top:6px; }
+.ranks-wrap .ranks { margin-top:0; }
+.rank-cap { display:block; font-size:10.5px; font-weight:650; color:var(--quiet); margin-bottom:4px; letter-spacing:.01em; }
+.rank-prov { display:inline-flex; flex-wrap:wrap; align-items:baseline; gap:0 5px; margin-top:6px; padding:3px 9px; border-radius:999px; border:1.5px dotted #8A6D3B; color:#6E572F; background:#FBF8F2; font-size:11px; font-weight:650; font-variant-numeric:tabular-nums; line-height:1.35; max-width:100%; }
+.rank-prov strong { font-weight:800; color:#8A6D3B; }
 .honor { padding:8px 16px 10px; font-size:12px; color:var(--ink-soft); font-weight:600; border-top:1px dashed var(--line); background:#FAFBFC; }
 .honor strong { color:var(--ink); font-variant-numeric:tabular-nums; }
 .notes { margin-top:16px; color:var(--muted); font-size:12px; line-height:1.55; }
@@ -2085,12 +2090,25 @@ function windowBestOf(rows){
   return bestOf(rows.filter(s=>isInWindow(s.date)));
 }
 function ranksFor(best, officialTimes){
-  // Only show snapshot ranks when the displayed official best still matches the snapshot row.
-  if(!best||best.provisional) return {ohio:null,centralZone:null,usa:null};
-  const row=officialTimes.find(t=>t.event===best.event&&t.course===best.course);
-  if(!row) return {ohio:null,centralZone:null,usa:null};
-  if(row.time===best.time && row.date===best.date) return row.ranks||{ohio:null,centralZone:null,usa:null};
-  return {ohio:null,centralZone:null,usa:null};
+  const empty={ohio:null,centralZone:null,usa:null};
+  if(!best) return {...empty};
+  const row=(officialTimes||[]).find(t=>t.event===best.event&&t.course===best.course);
+  const official=row&&row.ranks?row.ranks:empty;
+  const match=row && row.time===best.time && row.date===best.date && !best.provisional;
+  if(match) return {...official};
+  // Keep official snapshot ranks when a newer unofficial (or unmatched) best is showing.
+  // Never invent a new place.
+  const fasterBy=row && Number.isFinite(toSec(row.time)) && Number.isFinite(toSec(best.time))
+    ? toSec(row.time)-toSec(best.time)
+    : null;
+  return {
+    ...official,
+    snapshotTime:row?row.time:null,
+    snapshotDate:row?row.date:null,
+    pending:true,
+    provisional:!!best.provisional,
+    fasterBy:fasterBy!=null && fasterBy>0?fasterBy:null
+  };
 }
 function buildBests(state,course){
   const catalog=DATA.eventCatalog[courseKey(course)];
@@ -2282,14 +2300,10 @@ function renderTimes(root){
 
   const notes=el("p",{class:"notes"});
   notes.appendChild(el("strong",{text:"Ranks"}));
-  notes.appendChild(document.createTextNode(" are shown only where MySwimApp published them, and only while the lifetime best still matches that snapshot. After you add a newer official file on this device, ranks hide for that event until a Grok Bot refresh. Mid-States counts times from Sept 1, 2026. Motivational cuts are USA Swimming 2024–2028 10&U girls standards. Opposite-course times are her real official bests, not conversions. "));
+  notes.appendChild(document.createTextNode(" come from a MySwimApp snapshot of official times. If an unofficial swim is faster, those ranks stay (on the official time) and we note how much faster the new swim is. The place updates after official results are posted. "));
   const a1=el("a",{href:DATA.meta.ohioResultsUrl,target:"_blank",rel:"noopener",text:"Ohio Swimming results"});
-  notes.appendChild(document.createTextNode("After a meet, download the official results zip from "));
+  notes.appendChild(document.createTextNode("Cuts are USA Swimming 2024–2028 10&U girls standards. After a meet, add the official zip from "));
   notes.appendChild(a1);
-  notes.appendChild(document.createTextNode(" and use “Add official results.” This page cannot fetch those files itself. "));
-  const a2=el("a",{href:DATA.meta.profileUrl,target:"_blank",rel:"noopener",text:"MySwimApp profile"});
-  notes.appendChild(document.createTextNode("Public times also live on her "));
-  notes.appendChild(a2);
   notes.appendChild(document.createTextNode("."));
 
   const wrap=el("div",{class:"wrap"},[cards,sections,notes]);
@@ -2340,13 +2354,36 @@ function renderEvent(ev, other){
   const last=lastLine(ev);
   const lastEl=last?el("div",{class:"last"},[el("span",{class:last.kind,text:last.text})]):null;
 
+  const r=ev.ranks||{};
   const rankItems=[];
-  if(ev.ranks.ohio) rankItems.push({label:"Ohio",rec:ev.ranks.ohio,hot:ev.ranks.ohio.rank<=6});
-  if(ev.ranks.centralZone) rankItems.push({label:"C. Zone",rec:ev.ranks.centralZone});
-  if(ev.ranks.usa) rankItems.push({label:"USA",rec:ev.ranks.usa});
-  const ranks=rankItems.length?el("div",{class:"ranks"}, rankItems.map(it=>el("span",{class:it.hot?"rank hot":"rank"},[
+  if(r.ohio) rankItems.push({label:"Ohio",rec:r.ohio,hot:r.ohio.rank<=6});
+  if(r.centralZone) rankItems.push({label:"C. Zone",rec:r.centralZone});
+  if(r.usa) rankItems.push({label:"USA",rec:r.usa});
+  const chips=rankItems.length?el("div",{class:"ranks"}, rankItems.map(it=>el("span",{class:it.hot?"rank hot":"rank"},[
     el("span",{class:"k",text:it.label}), el("span",{class:"v",text:fmtRank(it.rec.rank)}), it.rec.of?el("span",{class:"of",text:fmtOf(it.rec.of)}):null
   ]))):null;
+  let ranks=null;
+  if(r.pending){
+    const kids=[];
+    if(chips){
+      kids.push(el("span",{class:"rank-cap",text:r.snapshotTime?("Official ranks on "+r.snapshotTime):"Official ranks"}));
+      kids.push(chips);
+    }
+    const provBits=[];
+    if(r.provisional && r.fasterBy!=null){
+      provBits.push(el("strong",{text:fmtDrop(r.fasterBy)+" faster"}));
+      provBits.push(document.createTextNode(r.snapshotTime?(" than "+r.snapshotTime):" than the ranked time"));
+      provBits.push(document.createTextNode(" · rank update pending"));
+    } else if(r.provisional){
+      provBits.push(document.createTextNode("Unofficial · rank update pending"));
+    } else {
+      provBits.push(document.createTextNode("Rank update pending"));
+    }
+    kids.push(el("div",{class:"rank-prov",title:"Based on unofficial results, compared with the last official MySwimApp snapshot. A new place is not estimated until official results are in."},provBits));
+    ranks=el("div",{class:"ranks-wrap"},kids);
+  } else {
+    ranks=chips;
+  }
 
   return el("div",{class:preWindow?"event stale":"event"},[
     el("div",{class:"ev-name",text:ev.event}),
