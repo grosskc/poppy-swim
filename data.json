@@ -661,7 +661,7 @@
       "time": "1:16.03",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 3
@@ -672,7 +672,7 @@
       "time": "39.27",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 1
@@ -683,7 +683,7 @@
       "time": "1:17.63",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -694,7 +694,7 @@
       "time": "33.80",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -705,7 +705,7 @@
       "time": "1:25.59",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 2
@@ -1064,7 +1064,7 @@
       "time": "1:16.03",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 3
@@ -1075,7 +1075,7 @@
       "time": "39.27",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 1
@@ -1086,7 +1086,7 @@
       "time": "1:17.63",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -1097,7 +1097,7 @@
       "time": "33.80",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -1108,7 +1108,7 @@
       "time": "1:25.59",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 2
@@ -1198,9 +1198,7 @@
           }
         ]
       },
-      "entriesSource": "Meet Mobile screenshot (Kevin)",
-      "entriesSourceNote": "Heats, lanes, and scheduled start times are from Meet Mobile event-detail screenshots Kevin sent. The Saturday 200 Free Relay heat and lane were not on those screenshots, so they stay TBA. Individual and relay times are unofficial until official results are posted. 100 Fly was NS. 50 Back had not started when the screenshot was taken.",
-      "entriesRelaysNote": "The 200 Free Relay (#231) and 200 Medley Relay A (#337, Dayton Raider Swim Club) are on the table as unofficial team results, not individual times. Heat and lane for the free relay were not on the screenshots.",
+      "entriesSource": "Meet Mobile",
       "entries": [
         {
           "date": "2026-11-14",
@@ -1233,7 +1231,7 @@
           "stroke": "Back",
           "heat": 11,
           "lane": 6,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:13.90",
           "estStart": "1:07 PM",
           "time": "1:16.03",
@@ -1253,7 +1251,7 @@
           "stroke": "Fly",
           "heat": 6,
           "lane": 3,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:24.06",
           "estStart": "2:07 PM",
           "status": "NS"
@@ -1270,7 +1268,7 @@
           "stroke": "Breast",
           "heat": 12,
           "lane": 5,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "39.96",
           "estStart": "3:19 PM",
           "time": "39.27",
@@ -1289,7 +1287,7 @@
           "stroke": "IM",
           "heat": 12,
           "lane": 8,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:22.32",
           "estStart": "3:49 PM",
           "time": "1:17.63",
@@ -1308,7 +1306,7 @@
           "stroke": "Medley relay",
           "heat": 2,
           "lane": 5,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "2:17.18",
           "estStart": "12:30 PM",
           "time": "2:10.21",
@@ -1329,7 +1327,7 @@
           "stroke": "Fly",
           "heat": 12,
           "lane": 1,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "36.43",
           "estStart": "12:57 PM",
           "time": "33.80",
@@ -1348,7 +1346,7 @@
           "stroke": "Breast",
           "heat": 10,
           "lane": 5,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:26.84",
           "estStart": "1:37 PM",
           "time": "1:25.59",
@@ -1367,7 +1365,7 @@
           "stroke": "Back",
           "heat": 14,
           "lane": 3,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "35.77",
           "estStart": "3:16 PM"
         }
@@ -1398,7 +1396,6 @@
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9z1nch03wgt4n37fe1r57i"
         }
       ],
-      "notes": "Official results were not posted as of this snapshot. Heats, lanes, scheduled starts, and times are unofficial, from Meet Mobile screenshots Kevin sent.",
       "relays": [
         {
           "eventNumber": "231",
@@ -1520,7 +1517,7 @@
           "50 Fly",
           "100 Breast"
         ],
-        "suggestedNote": "Suggested picks for Kevin and her coach to decide. Kevin or Mandy ticks the boxes and submits on Captyn — this dashboard never signs her up. 50 Free still needs a time from Sept 1 onward to count for Mid-States."
+        "suggestedNote": "50 Free still needs a time from Sept 1 onward to count for Mid-States. Entries are submitted on Captyn, not from this page."
       },
       "links": [
         {

@@ -233,22 +233,22 @@ table.ehls-table th {
 table.ehls-table td { padding:8px; border-bottom:1px solid var(--line); font-size:13px; font-weight:600; color:var(--ink-soft); vertical-align:middle; }
 table.ehls-table tr:last-child td { border-bottom:0; }
 table.ehls-table .ev { font-weight:800; color:var(--ink); }
+table.ehls-table th.r, table.ehls-table td.r { text-align:right; }
 table.ehls-table .tba { color:var(--warn); font-weight:800; letter-spacing:.04em; font-size:12px; }
-table.ehls-table .write { width:4.2em; }
-table.ehls-table .blank, .ehls-card .blank { display:block; height:22px; border-bottom:1.5px solid #C5D2DE; min-width:3.6em; }
 .ehls-day, table.ehls-table .ehls-day td {
   font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--aqua-deep);
   background:#EAF7F6; border-bottom:0;
 }
 .ehls-cards { display:none; }
-.ehls-card { border-top:1px solid var(--line); padding:10px 0 8px; }
+.ehls-card { border-top:1px solid var(--line); padding:12px 0 10px; }
 .ehls-card:first-of-type { border-top:0; }
-.ehls-card .row1 { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
-.ehls-card .ev { font-weight:800; font-size:15px; letter-spacing:-.02em; color:var(--ink); }
-.ehls-card .stk { font-size:12px; font-weight:800; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; }
-.ehls-card .meta { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px 8px; margin-top:6px; font-size:12.5px; font-weight:600; color:var(--ink-soft); }
+.ehls-day + .ehls-card { border-top:0; }
+.ehls-card .row1 { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+.ehls-card .evname { font-weight:800; font-size:16px; letter-spacing:-.02em; color:var(--ink); text-align:right; padding-top:2px; }
+.ehls-card .meta { display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:6px 8px; margin-top:8px; font-size:13.5px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
 .ehls-card .meta .lab { display:block; font-size:9.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
 .ehls-card .tba { color:var(--warn); font-weight:800; letter-spacing:.04em; }
+table.ehls-table .ehl .code, .ehls-card .ehl .code { font-size:18px; }
 .season-past { margin:22px 0 8px; }
 .season-past .section-head { margin-bottom:10px; }
 .past-card {
@@ -269,28 +269,31 @@ table.ehls-table .blank, .ehls-card .blank { display:block; height:22px; border-
 .notecard {
   background:#fffef8; color:var(--ink);
   border:1.5px solid #1A2A3A; border-radius:6px;
-  padding:14px 16px 12px; width:100%;
+  padding:12px 14px 10px; width:100%;
   display:flex; flex-direction:column;
 }
 .nc-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
-.nc-name { font-weight:800; font-size:22px; letter-spacing:-.03em; line-height:1.05; margin:0; text-transform:none; }
-.nc-meet { font-weight:800; font-size:12.5px; color:var(--ink-soft); margin:2px 0 0; }
+.nc-name { font-weight:800; font-size:21px; letter-spacing:-.03em; line-height:1.05; margin:0; text-transform:none; }
+.nc-meet { font-weight:800; font-size:12.5px; color:var(--ink-soft); margin:3px 0 0; }
 .nc-session { text-align:right; font-weight:800; font-size:13px; line-height:1.25; }
-.nc-session .day { font-size:15px; letter-spacing:-.02em; }
-.nc-times { font-size:12.5px; font-weight:700; color:var(--ink-soft); margin:6px 0 8px; padding-bottom:6px; border-bottom:2px solid var(--ink); }
+.nc-session .day { font-size:15.5px; letter-spacing:-.02em; }
+.nc-times { font-size:12.5px; font-weight:700; color:var(--ink-soft); margin:6px 0 6px; padding-bottom:5px; border-bottom:2px solid var(--ink); }
 .nc-table { width:100%; border-collapse:collapse; flex:1; font-variant-numeric:tabular-nums; }
-.nc-table th { text-align:left; font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:3px 6px 4px 0; }
-.nc-table th.ctr, .nc-table td.ctr { text-align:center; }
-.nc-table th.r, .nc-table td.r { text-align:right; }
-.nc-table td { padding:6px 6px 6px 0; border-top:1px solid #E4E0D4; font-size:15px; font-weight:700; vertical-align:middle; }
-.nc-table .ev { font-weight:800; font-size:16px; letter-spacing:-.02em; color:var(--ink); white-space:nowrap; }
-.nc-table td.r, .nc-table td.ctr { white-space:nowrap; }
-.nc-table .stk { font-size:14px; font-weight:800; color:var(--ink-soft); }
-.nc-table .tba { color:var(--warn); font-weight:800; font-size:13px; letter-spacing:.04em; }
-.nc-table .line { display:block; width:3.2em; height:1.15em; border-bottom:1.5px solid #9AA8B4; margin-left:auto; }
-.nc-foot { margin-top:auto; padding-top:6px; font-size:9.5px; font-weight:650; color:var(--muted); letter-spacing:.01em; }
+.nc-table th { text-align:left; font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:2px 8px 3px 0; }
+.nc-table th.r, .nc-table td.r { text-align:right; padding-left:14px; }
+.nc-table td { padding:6px 8px 6px 0; border-top:1px solid #E4E0D4; font-size:15px; font-weight:700; vertical-align:middle; }
+.nc-table td:last-child, .nc-table th:last-child { padding-right:0; }
+.nc-table .ev { font-weight:800; font-size:15.5px; letter-spacing:-.02em; color:var(--ink); white-space:nowrap; }
+.nc-table td.r { white-space:nowrap; }
+.ehl .code { font-weight:800; font-size:19px; letter-spacing:-.03em; color:var(--ink); line-height:1.05; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.ehl .sep { display:inline-block; padding:0 .12em; font-weight:700; color:#7A8A99; }
+.ehl .tba { color:var(--warn); font-weight:800; letter-spacing:.02em; font-size:14px; }
+.ehl .abbr { margin-top:2px; font-size:10.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+.goal { white-space:nowrap; font-weight:800; color:var(--ink); }
+.goal .cut { display:inline-block; margin-right:.32em; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#0A5E5E; }
+.nc-foot { margin-top:auto; padding-top:6px; font-size:10px; font-weight:650; color:var(--muted); letter-spacing:.01em; white-space:nowrap; }
 
-@page { size: 6in 4in; margin: 0.18in; }
+@page { size: 6in 4in; margin: 0; }
 @media print {
   body.print-ehls header.hero,
   body.print-ehls .status,
@@ -302,15 +305,16 @@ table.ehls-table .blank, .ehls-card .blank { display:block; height:22px; border-
   body.print-ehls #ehls-print { display:block !important; }
   body.print-ehls .print-page {
     display:block;
-    width: 5.64in;
-    height: 3.64in;
+    width: 6in;
+    height: 4in;
     page-break-after: always;
     break-after: page;
+    padding: 0;
   }
   body.print-ehls .print-page:last-child { page-break-after: auto; break-after: auto; }
   body.print-ehls .print-page .notecard {
     box-shadow:none; border-radius:0; border:0;
-    width:100%; height:100%; padding:0;
+    width:100%; height:100%; padding:0.18in;
   }
 }
 
@@ -1019,7 +1023,7 @@ const DATA = {
       "time": "1:16.03",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 3
@@ -1030,7 +1034,7 @@ const DATA = {
       "time": "39.27",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 1
@@ -1041,7 +1045,7 @@ const DATA = {
       "time": "1:17.63",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -1052,7 +1056,7 @@ const DATA = {
       "time": "33.80",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -1063,7 +1067,7 @@ const DATA = {
       "time": "1:25.59",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 2
@@ -1422,7 +1426,7 @@ const DATA = {
       "time": "1:16.03",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 3
@@ -1433,7 +1437,7 @@ const DATA = {
       "time": "39.27",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 1
@@ -1444,7 +1448,7 @@ const DATA = {
       "time": "1:17.63",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -1455,7 +1459,7 @@ const DATA = {
       "time": "33.80",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 4
@@ -1466,7 +1470,7 @@ const DATA = {
       "time": "1:25.59",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile screenshot (Kevin)",
+      "source": "Meet Mobile",
       "provisional": true,
       "splits": [],
       "place": 2
@@ -1556,9 +1560,7 @@ const DATA = {
           }
         ]
       },
-      "entriesSource": "Meet Mobile screenshot (Kevin)",
-      "entriesSourceNote": "Heats, lanes, and scheduled start times are from Meet Mobile event-detail screenshots Kevin sent. The Saturday 200 Free Relay heat and lane were not on those screenshots, so they stay TBA. Individual and relay times are unofficial until official results are posted. 100 Fly was NS. 50 Back had not started when the screenshot was taken.",
-      "entriesRelaysNote": "The 200 Free Relay (#231) and 200 Medley Relay A (#337, Dayton Raider Swim Club) are on the table as unofficial team results, not individual times. Heat and lane for the free relay were not on the screenshots.",
+      "entriesSource": "Meet Mobile",
       "entries": [
         {
           "date": "2026-11-14",
@@ -1591,7 +1593,7 @@ const DATA = {
           "stroke": "Back",
           "heat": 11,
           "lane": 6,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:13.90",
           "estStart": "1:07 PM",
           "time": "1:16.03",
@@ -1611,7 +1613,7 @@ const DATA = {
           "stroke": "Fly",
           "heat": 6,
           "lane": 3,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:24.06",
           "estStart": "2:07 PM",
           "status": "NS"
@@ -1628,7 +1630,7 @@ const DATA = {
           "stroke": "Breast",
           "heat": 12,
           "lane": 5,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "39.96",
           "estStart": "3:19 PM",
           "time": "39.27",
@@ -1647,7 +1649,7 @@ const DATA = {
           "stroke": "IM",
           "heat": 12,
           "lane": 8,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:22.32",
           "estStart": "3:49 PM",
           "time": "1:17.63",
@@ -1666,7 +1668,7 @@ const DATA = {
           "stroke": "Medley relay",
           "heat": 2,
           "lane": 5,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "2:17.18",
           "estStart": "12:30 PM",
           "time": "2:10.21",
@@ -1687,7 +1689,7 @@ const DATA = {
           "stroke": "Fly",
           "heat": 12,
           "lane": 1,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "36.43",
           "estStart": "12:57 PM",
           "time": "33.80",
@@ -1706,7 +1708,7 @@ const DATA = {
           "stroke": "Breast",
           "heat": 10,
           "lane": 5,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "1:26.84",
           "estStart": "1:37 PM",
           "time": "1:25.59",
@@ -1725,7 +1727,7 @@ const DATA = {
           "stroke": "Back",
           "heat": 14,
           "lane": 3,
-          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "heatLaneSource": "Meet Mobile",
           "seed": "35.77",
           "estStart": "3:16 PM"
         }
@@ -1756,7 +1758,6 @@ const DATA = {
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9z1nch03wgt4n37fe1r57i"
         }
       ],
-      "notes": "Official results were not posted as of this snapshot. Heats, lanes, scheduled starts, and times are unofficial, from Meet Mobile screenshots Kevin sent.",
       "relays": [
         {
           "eventNumber": "231",
@@ -1878,7 +1879,7 @@ const DATA = {
           "50 Fly",
           "100 Breast"
         ],
-        "suggestedNote": "Suggested picks for Kevin and her coach to decide. Kevin or Mandy ticks the boxes and submits on Captyn — this dashboard never signs her up. 50 Free still needs a time from Sept 1 onward to count for Mid-States."
+        "suggestedNote": "50 Free still needs a time from Sept 1 onward to count for Mid-States. Entries are submitted on Captyn, not from this page."
       },
       "links": [
         {
@@ -3045,24 +3046,78 @@ function sessionBand(g){
   return bits.join(" · ");
 }
 function notecardFoot(m){
-  const rows=m.entries||[];
-  const tba=entriesHaveTBA(rows);
-  const anyHeat=rows.some(r=>ehlsValue(r.heat)&&ehlsValue(r.lane));
-  const src=(m.entriesSource||"").toLowerCase();
-  let heatLine;
-  if(tba && anyHeat && src.includes("meet mobile")){
-    heatLine="Heats and lanes from a Meet Mobile screenshot where listed; otherwise TBA.";
-  } else if(tba){
-    heatLine="Heat & Lane TBA — no public heat sheet as of "+(DATA.meta.meetsAsOfLabel||"this snapshot")+".";
-  } else if(src.includes("meet mobile")){
-    heatLine="Heats and lanes from a Meet Mobile screenshot.";
-  } else if(src.includes("heat sheet")){
-    heatLine="Heats and lanes from the posted heat sheet.";
-  } else {
-    heatLine=m.entriesSource ? "Heats and lanes: "+m.entriesSource+"." : "";
-  }
-  const startLine=src.includes("meet mobile")?"Start times are from Meet Mobile where listed.":"Start times are from the meet timeline.";
-  return (heatLine+" "+startLine+" Times are unofficial until official results are posted.").trim();
+  return "E-H-L = event-heat-lane. Goal = next USA Swimming 10&U cut.";
+}
+function strokeAbbr(r){
+  const s=String(r.stroke||"")+" "+String(r.name||"");
+  if(/medley\s+relay/i.test(s)) return "MR";
+  if(/free\s+relay/i.test(s)) return "FR-R";
+  if(/\bIM\b/i.test(s)) return "IM";
+  if(/back/i.test(s)) return "BK";
+  if(/breast/i.test(s)) return "BR";
+  if(/fly/i.test(s)) return "FL";
+  if(/free/i.test(s)) return "FR";
+  return (String(r.stroke||"").trim()||"—").slice(0,4).toUpperCase();
+}
+function isRelayEntry(r){
+  return !!(r&& (r.relay || /relay/i.test(r.stroke||"") || /relay/i.test(r.name||"")));
+}
+function entryEventName(r){
+  let name=r.name||"";
+  if(r.team && /^A/.test(String(r.team))) name=name+"\u00a0A";
+  return name;
+}
+function ehlNode(r){
+  const ev=r.eventNumber!=null && r.eventNumber!=="" ? String(r.eventNumber) : "—";
+  const heat=ehlsValue(r.heat);
+  const lane=ehlsValue(r.lane);
+  const sep=()=>el("span",{class:"sep",text:"·"});
+  const slot=v=> v ? document.createTextNode(String(v)) : el("span",{class:"tba",text:"TBA"});
+  return el("div",{class:"ehl"},[
+    el("div",{class:"code"},[
+      document.createTextNode(ev), sep(), slot(heat), sep(), slot(lane)
+    ]),
+    el("div",{class:"abbr",text:strokeAbbr(r)})
+  ]);
+}
+function bestBeforeMeet(event, course, beforeDate, state){
+  if(!event||!beforeDate) return null;
+  const rows=[];
+  const seen=new Set();
+  const add=s=>{
+    if(!s||s.event!==event) return;
+    if((s.course||"SCY")!==course) return;
+    if(!s.time||!s.date||s.date>=beforeDate) return;
+    if(s.status==="NS"||s.relay||s.ns) return;
+    const k=[s.event,s.course||"SCY",s.date,s.time].join("|");
+    if(seen.has(k)) return;
+    seen.add(k);
+    rows.push(s);
+  };
+  for(const s of (DATA.officialTimes||[])) add(s);
+  for(const s of (state&&state.history)||[]) add(s);
+  for(const s of (state&&state.provisional)||[]) add(s);
+  if(!rows.length) return null;
+  return rows.reduce((b,s)=> toSec(s.time)<toSec(b.time)?s:b);
+}
+function goalForEntry(r, m, state){
+  if(!r||isRelayEntry(r)) return null;
+  const course=m.course||"SCY";
+  const before=m.startDate||"";
+  const best=bestBeforeMeet(r.name, course, before, state);
+  if(!best||!best.time) return null;
+  const info=standardFor(course, r.name, best.time);
+  if(!info.next) return {label:"PB", time:best.time};
+  const cuts=DATA.standards[courseKey(course)] && DATA.standards[courseKey(course)][r.name];
+  if(!cuts||!cuts[info.next]) return null;
+  return {label:info.next, time:cuts[info.next]};
+}
+function goalNode(goal){
+  if(!goal) return el("span");
+  return el("span",{class:"goal"},[
+    el("span",{class:"cut",text:goal.label}),
+    document.createTextNode(goal.time)
+  ]);
 }
 function ordinal(n){
   const x=Number(n);
@@ -3098,36 +3153,24 @@ function renderEhlsTable(m){
   const rows=m.entries||[];
   if(!rows.length) return null;
   const groups=groupEntries(rows);
-  const tba=entriesHaveTBA(rows);
-  const hint=m.entriesSourceNote || (tba
-    ? "Heat and Lane are TBA — no public heat sheet was found. Event numbers and seeds come from the psych sheet."
-    : null);
+  const state=mergeState();
   const thead=el("thead",{},[el("tr",{},[
-    el("th",{text:"Day"}),
+    el("th",{text:"E-H-L"}),
     el("th",{text:"Event"}),
-    el("th",{text:"Stroke"}),
-    el("th",{text:"Heat"}),
-    el("th",{text:"Lane"}),
-    el("th",{text:"Seed"}),
-    el("th",{text:"Est. start"}),
-    el("th",{text:"Time"})
+    el("th",{class:"r",text:"Seed"}),
+    el("th",{class:"r",text:"Goal"}),
+    el("th",{class:"r",text:"Start"})
   ])]);
   const tb=el("tbody");
   for(const g of groups){
-    tb.appendChild(el("tr",{class:"ehls-day"},[el("td",{colspan:"8",text:sessionBand(g)})]));
-    const dayShort=(g.dayLabel||"").slice(0,3) || "";
+    tb.appendChild(el("tr",{class:"ehls-day"},[el("td",{colspan:"5",text:sessionBand(g)})]));
     for(const r of g.rows){
-      const heat=ehlsValue(r.heat);
-      const lane=ehlsValue(r.lane);
       tb.appendChild(el("tr",{},[
-        el("td",{text:dayShort}),
-        el("td",{class:"ev",text:eventCell(r)}),
-        el("td",{text:r.stroke||""}),
-        el("td",{class:heat?"":"tba",text:heat||"TBA"}),
-        el("td",{class:lane?"":"tba",text:lane||"TBA"}),
-        el("td",{text:r.seed||""}),
-        el("td",{text:r.estStart||""}),
-        el("td",{class:"write"},[entryTimeNode(r,false)])
+        el("td",{},[ehlNode(r)]),
+        el("td",{class:"ev",text:entryEventName(r)}),
+        el("td",{class:"r",text:r.seed||""}),
+        el("td",{class:"r"},[goalNode(goalForEntry(r,m,state))]),
+        el("td",{class:"r",text:r.estStart||""})
       ]));
     }
   }
@@ -3135,67 +3178,43 @@ function renderEhlsTable(m){
   for(const g of groups){
     cards.appendChild(el("div",{class:"ehls-day",text:sessionBand(g)}));
     for(const r of g.rows){
-      const heat=ehlsValue(r.heat);
-      const lane=ehlsValue(r.lane);
+      const goal=goalForEntry(r,m,state);
       cards.appendChild(el("div",{class:"ehls-card"},[
         el("div",{class:"row1"},[
-          el("div",{class:"ev",text:eventCell(r)}),
-          el("div",{class:"stk",text:r.stroke||""})
+          ehlNode(r),
+          el("div",{class:"evname",text:entryEventName(r)})
         ]),
         el("div",{class:"meta"},[
-          el("div",{},[el("span",{class:"lab",text:"Heat"}), el("span",{class:heat?"":"tba",text:heat||"TBA"})]),
-          el("div",{},[el("span",{class:"lab",text:"Lane"}), el("span",{class:lane?"":"tba",text:lane||"TBA"})]),
           el("div",{},[el("span",{class:"lab",text:"Seed"}), document.createTextNode(r.seed||"")]),
-          el("div",{},[el("span",{class:"lab",text:"Est. start"}), document.createTextNode(r.estStart||"")]),
-          el("div",{},[el("span",{class:"lab",text:"Time"}), entryTimeNode(r,false)])
+          el("div",{},[el("span",{class:"lab",text:"Goal"}), goalNode(goal)]),
+          el("div",{},[el("span",{class:"lab",text:"Start"}), document.createTextNode(r.estStart||"")])
         ])
       ]));
     }
   }
-  const notes=[];
-  if(m.entriesRelaysNote) notes.push(m.entriesRelaysNote);
-  let relays=null;
-  const relayRows=(m.entries||[]).some(r=>r.relay || /relay/i.test(r.stroke||"") || /relay/i.test(r.name||""));
-  if(m.relays && m.relays.length && !relayRows){
-    const parts=m.relays.map(r=>{
-      const num=r.eventNumber?"#"+r.eventNumber+" ":"";
-      const place=r.place!=null?" ("+ordinal(r.place)+")":"";
-      return num+(r.name||"Relay")+" "+(r.time||"")+place;
-    });
-    relays=el("p",{class:"ehls-relays"},[
-      el("strong",{text:"Relays (unofficial): "}),
-      document.createTextNode(parts.join(" · ")+". Team results from a Meet Mobile screenshot, not individual times.")
-    ]);
-  }
   const box=el("div",{class:"ehls",id:"ehls-"+m.id},[
     el("div",{class:"ehls-head"},[
       el("div",{},[
-        el("h3",{text:"Event · Heat · Lane · Stroke"}),
-        hint?el("p",{class:"hint",text:hint}):null
+        el("h3",{text:"Event · Heat · Lane · Stroke"})
       ]),
       el("button",{class:"ehls-print-btn",type:"button",onclick:()=>printMeetNotecards(m),text:"Print notecard"})
     ]),
     el("table",{class:"ehls-table"},[thead, tb]),
-    cards,
-    relays,
-    notes.length?el("p",{class:"meet-note",text:notes.join(" ")}):null
+    cards
   ]);
   return box;
 }
 function buildNotecard(m, g){
+  const state=mergeState();
   const foot=notecardFoot(m);
   const tb=el("tbody");
   for(const r of g.rows){
-    const heat=ehlsValue(r.heat);
-    const lane=ehlsValue(r.lane);
     tb.appendChild(el("tr",{},[
-      el("td",{class:"ev",text:eventCell(r)}),
-      el("td",{class:"stk",text:r.stroke||""}),
-      el("td",{class:"ctr"+(heat?"":" tba"),text:heat||"TBA"}),
-      el("td",{class:"ctr"+(lane?"":" tba"),text:lane||"TBA"}),
+      el("td",{},[ehlNode(r)]),
+      el("td",{class:"ev",text:entryEventName(r)}),
       el("td",{class:"r",text:r.seed||""}),
-      el("td",{class:"r",text:(r.estStart||"").replace(/\s*(AM|PM)$/i,"").trim()}),
-      el("td",{class:"r"},[entryTimeNode(r,true)])
+      el("td",{class:"r"},[goalNode(goalForEntry(r,m,state))]),
+      el("td",{class:"r",text:(r.estStart||"").replace(/\s*(AM|PM)$/i,"").trim()})
     ]));
   }
   return el("div",{class:"notecard"},[
@@ -3212,13 +3231,11 @@ function buildNotecard(m, g){
     el("div",{class:"nc-times",text:"Warm-up "+(g.warmup||"TBA")+" · Start "+(g.start||"TBA")}),
     el("table",{class:"nc-table"},[
       el("thead",{},[el("tr",{},[
+        el("th",{text:"E-H-L"}),
         el("th",{text:"Event"}),
-        el("th",{text:"Stroke"}),
-        el("th",{class:"ctr",text:"Heat"}),
-        el("th",{class:"ctr",text:"Lane"}),
         el("th",{class:"r",text:"Seed"}),
-        el("th",{class:"r",text:"Start"}),
-        el("th",{class:"r",text:"Time"})
+        el("th",{class:"r",text:"Goal"}),
+        el("th",{class:"r",text:"Start"})
       ])]),
       tb
     ]),
@@ -3434,7 +3451,7 @@ function renderMeetCard(m, today, state){
   let suggested=null;
   if(m.poppy&&m.poppy.suggestedEvents&&m.poppy.suggestedEvents.length){
     suggested=el("div",{class:"suggested"},[
-      el("div",{class:"lead",text:"Suggested events (for Kevin and her coach to decide)"}),
+      el("div",{class:"lead",text:"Suggested events"}),
       el("ul",{}, m.poppy.suggestedEvents.map(name=>el("li",{},[
         el("span",{class:"ev",text:name}),
         el("span",{class:"why",text:littleElvesWhy(state,name)})
