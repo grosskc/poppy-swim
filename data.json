@@ -1198,10 +1198,29 @@
           }
         ]
       },
-      "entriesSource": "psych sheet, meet timeline, and Meet Mobile screenshot",
-      "entriesSourceNote": "Heat and Lane are from a Meet Mobile screenshot where listed (50 Back: Heat 14, Lane 3); otherwise TBA — no public heat sheet was found. Event numbers, seeds, and estimated start times come from the psych sheet (Nov 10) and the meet timeline. Individual times are unofficial, from Meet Mobile, until official results are posted. 100 Fly was NS (no swim).",
-      "entriesRelaysNote": "Relays are listed separately below the individual table. The public psych sheet did not name her relay legs or heats. Unofficial team times are from a Meet Mobile screenshot.",
+      "entriesSource": "Meet Mobile screenshot (Kevin)",
+      "entriesSourceNote": "Heats, lanes, and scheduled start times are from Meet Mobile event-detail screenshots Kevin sent. The Saturday 200 Free Relay heat and lane were not on those screenshots, so they stay TBA. Individual and relay times are unofficial until official results are posted. 100 Fly was NS. 50 Back had not started when the screenshot was taken.",
+      "entriesRelaysNote": "The 200 Free Relay (#231) and 200 Medley Relay A (#337, Dayton Raider Swim Club) are on the table as unofficial team results, not individual times. Heat and lane for the free relay were not on the screenshots.",
       "entries": [
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "231",
+          "name": "200 Free Relay",
+          "stroke": "Free relay",
+          "heat": null,
+          "lane": null,
+          "seed": null,
+          "estStart": null,
+          "time": "1:57.72",
+          "place": 1,
+          "provisional": true,
+          "relay": true
+        },
         {
           "date": "2026-11-14",
           "dayLabel": "Saturday, Nov 14",
@@ -1212,12 +1231,14 @@
           "eventNumber": "237",
           "name": "100 Back",
           "stroke": "Back",
-          "heat": null,
-          "lane": null,
+          "heat": 11,
+          "lane": 6,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "1:13.90",
-          "estStart": "12:37 PM",
+          "estStart": "1:07 PM",
           "time": "1:16.03",
           "place": 3,
+          "heatPlace": 3,
           "provisional": true
         },
         {
@@ -1230,10 +1251,11 @@
           "eventNumber": "243",
           "name": "100 Fly",
           "stroke": "Fly",
-          "heat": null,
-          "lane": null,
+          "heat": 6,
+          "lane": 3,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "1:24.06",
-          "estStart": "1:37 PM",
+          "estStart": "2:07 PM",
           "status": "NS"
         },
         {
@@ -1246,10 +1268,11 @@
           "eventNumber": "253",
           "name": "50 Breast",
           "stroke": "Breast",
-          "heat": null,
-          "lane": null,
+          "heat": 12,
+          "lane": 5,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "39.96",
-          "estStart": "2:47 PM",
+          "estStart": "3:19 PM",
           "time": "39.27",
           "place": 1,
           "provisional": true
@@ -1264,10 +1287,11 @@
           "eventNumber": "257",
           "name": "100 IM",
           "stroke": "IM",
-          "heat": null,
-          "lane": null,
+          "heat": 12,
+          "lane": 8,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "1:22.32",
-          "estStart": "3:16 PM",
+          "estStart": "3:49 PM",
           "time": "1:17.63",
           "place": 4,
           "provisional": true
@@ -1279,11 +1303,33 @@
           "sessionDetail": "10 & Under · North pool",
           "warmup": "11:30–12:25 PM",
           "start": "12:30 PM",
+          "eventNumber": "337",
+          "name": "200 Medley Relay",
+          "stroke": "Medley relay",
+          "heat": 2,
+          "lane": 5,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
+          "seed": "2:17.18",
+          "estStart": "12:30 PM",
+          "time": "2:10.21",
+          "place": 1,
+          "provisional": true,
+          "relay": true,
+          "team": "A — Dayton Raider Swim Club"
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
           "eventNumber": "343",
           "name": "50 Fly",
           "stroke": "Fly",
-          "heat": null,
-          "lane": null,
+          "heat": 12,
+          "lane": 1,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "36.43",
           "estStart": "12:57 PM",
           "time": "33.80",
@@ -1300,10 +1346,11 @@
           "eventNumber": "349",
           "name": "100 Breast",
           "stroke": "Breast",
-          "heat": null,
-          "lane": null,
+          "heat": 10,
+          "lane": 5,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "1:26.84",
-          "estStart": "1:40 PM",
+          "estStart": "1:37 PM",
           "time": "1:25.59",
           "place": 2,
           "provisional": true
@@ -1320,9 +1367,9 @@
           "stroke": "Back",
           "heat": 14,
           "lane": 3,
+          "heatLaneSource": "Meet Mobile screenshot (Kevin)",
           "seed": "35.77",
-          "estStart": "3:21 PM",
-          "heatLaneSource": "Meet Mobile screenshot"
+          "estStart": "3:16 PM"
         }
       ],
       "links": [
@@ -1351,7 +1398,7 @@
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9z1nch03wgt4n37fe1r57i"
         }
       ],
-      "notes": "Official results were not posted as of this snapshot. Individual times and the 50 Back heat and lane are unofficial, from a Meet Mobile screenshot Kevin sent.",
+      "notes": "Official results were not posted as of this snapshot. Heats, lanes, scheduled starts, and times are unofficial, from Meet Mobile screenshots Kevin sent.",
       "relays": [
         {
           "eventNumber": "231",
@@ -1365,7 +1412,11 @@
           "name": "200 Medley Relay",
           "time": "2:10.21",
           "place": 1,
-          "date": "2026-11-15"
+          "date": "2026-11-15",
+          "heat": 2,
+          "lane": 5,
+          "seed": "2:17.18",
+          "team": "A — Dayton Raider Swim Club"
         }
       ]
     },
