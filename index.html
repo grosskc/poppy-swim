@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Poppy Gawelek-Gross — Times Dashboard</title>
-<meta name="description" content="Times, cuts, and official results for Poppy Gawelek-Gross, Dayton Raiders.">
+<meta name="description" content="Times, cuts, meet schedule, and official results for Poppy Gawelek-Gross, Dayton Raiders.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -124,6 +124,63 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
 .modal .actions .cancel { background:#F3F6F8; color:var(--ink-soft); }
 .modal .actions .go { background:var(--ink); color:#fff; }
 .file-hint { font-size:12px; color:var(--quiet); margin-top:8px; }
+
+.view-toggle { margin-right:4px; }
+body[data-view="meets"] #course-toggle { display:none; }
+.deadlines { display:flex; flex-direction:column; gap:8px; margin:18px 0 18px; }
+.deadlines-head { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0 2px 2px; }
+.deadline { background:var(--card); border:1px solid rgba(16,42,67,.04); border-left:4px solid var(--warn); border-radius:12px; box-shadow:var(--shadow); padding:10px 14px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.deadline.soft { border-left-color:#C5D2DE; }
+.deadline.muted { border-left-color:var(--line); }
+.deadline .dl-when { font-weight:800; color:var(--ink); font-size:14px; letter-spacing:-.02em; }
+.deadline .dl-meet { font-size:13px; font-weight:600; color:var(--ink-soft); }
+.deadline .dl-status { font-size:12.5px; font-weight:700; color:var(--warn); }
+.deadline.muted .dl-status { color:var(--muted); }
+.deadline .dl-until { font-size:11.5px; font-weight:700; color:var(--quiet); }
+.meet-card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 18px 14px; border:1px solid rgba(16,42,67,.04); margin-bottom:12px; }
+.meet-card.current { border:1px solid #C6E4E2; background:linear-gradient(180deg,#FFFFFF,#EAF7F6); }
+.meet-card.ineligible { opacity:.92; }
+.meet-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+.meet-card h2 { font-size:18px; font-weight:800; letter-spacing:-.02em; text-transform:none; color:var(--ink); margin:0; line-height:1.25; }
+.meet-official { display:block; font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0; text-transform:none; margin-top:2px; }
+.meet-dates { font-size:13.5px; font-weight:800; color:var(--ink-soft); }
+.meet-badge { display:inline-flex; align-items:center; border-radius:999px; padding:2px 8px; font-size:10.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-left:8px; vertical-align:middle; }
+.meet-badge.now { background:#E7F6EC; color:var(--ok); }
+.meet-badge.warn { background:var(--warn-bg); color:var(--warn); }
+.meet-badge.quiet { background:#F3F6F8; color:var(--muted); }
+.meet-flags { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px; }
+.meet-flags .meet-badge { text-transform:none; letter-spacing:0; font-size:11px; padding:3px 8px; }
+.meet-grid { display:grid; grid-template-columns:148px 1fr; gap:7px 16px; font-size:13px; line-height:1.45; }
+.meet-grid .k { font-weight:800; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
+.meet-grid .v { font-weight:600; color:var(--ink-soft); }
+.meet-grid .v strong { color:var(--ink); font-weight:800; }
+.meet-grid a { color:var(--aqua-deep); font-weight:700; text-decoration:none; }
+.meet-grid a:hover { text-decoration:underline; }
+.meet-events { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:2px; }
+.meet-events li { display:flex; gap:10px; flex-wrap:wrap; }
+.meet-events .num { font-weight:800; color:var(--quiet); width:2.4em; font-variant-numeric:tabular-nums; }
+.meet-events .ev { font-weight:800; color:var(--ink); min-width:7em; }
+.meet-events .seed { color:var(--muted); font-weight:600; font-variant-numeric:tabular-nums; }
+.meet-events li.pick { background:#EAF7F6; border-radius:6px; padding:1px 6px; margin-left:-6px; }
+.suggested { margin-top:6px; }
+.suggested .lead { font-size:13px; font-weight:800; color:var(--ink); margin-bottom:4px; }
+.suggested ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:4px; }
+.suggested li { display:grid; grid-template-columns:92px 1fr; gap:8px; font-size:13px; }
+.suggested .ev { font-weight:800; color:var(--ink); }
+.suggested .why { color:var(--ink-soft); font-weight:600; }
+.meet-links { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.meet-links a { display:inline-flex; align-items:center; background:#F3F6F8; color:var(--aqua-deep); font-size:12px; font-weight:700; padding:6px 10px; border-radius:999px; text-decoration:none; }
+.meet-links a:hover { background:#E7EEF2; }
+.meet-note { margin-top:8px; font-size:12px; color:var(--muted); font-weight:500; line-height:1.45; }
+.past-meets { margin:18px 0 8px; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid rgba(16,42,67,.04); padding:4px 16px 8px; }
+.past-meets > summary { cursor:pointer; list-style:none; font-size:13px; font-weight:800; color:var(--ink); padding:10px 0; display:flex; justify-content:space-between; align-items:center; }
+.past-meets > summary::-webkit-details-marker { display:none; }
+.past-meets > summary::after { content:"Show"; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--aqua-deep); }
+.past-meets[open] > summary::after { content:"Hide"; }
+.past-meets .meet-card { box-shadow:none; border:1px solid var(--line); }
+.meets-foot { margin:16px 2px 0; color:var(--muted); font-size:12px; line-height:1.55; }
+.meets-foot a { color:var(--aqua-deep); font-weight:700; }
+
 @media (max-width:700px) {
   header.hero, .status .inner, .wrap { padding-left:14px; padding-right:14px; }
   header.hero { padding-top:14px; padding-bottom:12px; }
@@ -139,6 +196,13 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
   .time { text-align:left; font-size:28px; }
   .time-col .badges { justify-content:flex-start; }
   .ev-name { padding-top:0; }
+  body[data-view="meets"] .hero-actions { justify-content:flex-start; }
+  .meet-grid { grid-template-columns:1fr; gap:2px 0; }
+  .meet-grid .k { padding-top:8px; }
+  .deadline { flex-direction:column; gap:2px; }
+  .meet-card { padding:14px; }
+  .meet-card h2 { font-size:17px; }
+  .suggested li { grid-template-columns:1fr; gap:0; }
 }
 
 </style>
@@ -156,7 +220,11 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
       </div>
     </div>
     <div class="hero-actions">
-      <div class="toggle" role="tablist" aria-label="Course">
+      <div class="toggle view-toggle" role="tablist" aria-label="Dashboard section">
+        <button type="button" id="btn-times" data-view="times" aria-pressed="true">Times</button>
+        <button type="button" id="btn-meets" data-view="meets" aria-pressed="false">Meets</button>
+      </div>
+      <div class="toggle" id="course-toggle" role="tablist" aria-label="Course">
         <button type="button" id="btn-scy" data-course="SCY" aria-pressed="true">SCY</button>
         <button type="button" id="btn-lcm" data-course="LCM" aria-pressed="false">LCM</button>
       </div>
@@ -189,7 +257,7 @@ const DATA = {
     "snapshotUpdatedLabel": "Nov 15, 2026, 12:00 PM ET",
     "masonMeet": {
       "name": "City of Mason November Invitational",
-      "dates": "Nov 13\u201315, 2026",
+      "dates": "Nov 13–15, 2026",
       "resultsPosted": false
     },
     "zonesReadiness": {
@@ -198,26 +266,9 @@ const DATA = {
       "scope": "Ohio 10&U girls",
       "metric": "MySwimApp Power Score",
       "source": "MySwimApp"
-    }
-  },
-  "meets": {
-    "littleElves": {
-      "name": "Little Elves",
-      "date": "Dec 6, 2026"
     },
-    "midStates": {
-      "name": "Mid-States",
-      "date": "Jan 9\u201310, 2027"
-    },
-    "ohioJcs": {
-      "name": "Ohio JCs",
-      "date": "Mar 10\u201315, 2027",
-      "place": "Spire"
-    },
-    "zones": {
-      "name": "Zones (LCM)",
-      "date": "Aug 5\u20138, 2027"
-    }
+    "meetsAsOf": "2026-11-15",
+    "meetsAsOfLabel": "Nov 15, 2026"
   },
   "eventCatalog": {
     "scy": [
@@ -1191,6 +1242,575 @@ const DATA = {
       "splits": [],
       "provisional": false
     }
+  ],
+  "seasonTargets": {
+    "littleElves": {
+      "name": "Little Elves",
+      "date": "Dec 6, 2026"
+    },
+    "midStates": {
+      "name": "Mid-States",
+      "date": "Jan 9–10, 2027"
+    },
+    "ohioJcs": {
+      "name": "Ohio JCs",
+      "date": "Mar 10–15, 2027",
+      "place": "Spire"
+    },
+    "zones": {
+      "name": "Zones (LCM)",
+      "date": "Aug 5–8, 2027"
+    }
+  },
+  "meets": [
+    {
+      "id": "cmu9z1nch03wgt4n37fe1r57i",
+      "name": "City of Mason November Invitational",
+      "datesLabel": "Fri–Sun, Nov 13–15, 2026",
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-15",
+      "sanction": "OH-27SC-47",
+      "host": "Mason Manta Rays",
+      "venue": {
+        "name": "Mason Municipal Aquatic Center",
+        "address": "6249 Mason Montgomery Rd, Mason, OH 45040",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=6249%20Mason%20Montgomery%20Rd%2C%20Mason%2C%20OH%2045040"
+      },
+      "sessions": [
+        {
+          "label": "Saturday Session 6 — 10 & Under, North pool",
+          "date": "2026-11-14",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "notes": "Dayton Raiders assigned North pool lanes 3–4."
+        },
+        {
+          "label": "Sunday Session 11 — 10 & Under, North pool",
+          "date": "2026-11-15",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "notes": "Dayton Raiders assigned North pool lanes 3–4."
+        }
+      ],
+      "eligibility": {
+        "eligible": true,
+        "label": "Eligible — she was entered and swam."
+      },
+      "entry": {
+        "maxEventsLabel": "10 & Under: 4 individual events and 1 relay per day, maximum 10 individual and 2 relays for the meet",
+        "fee": "$8 per individual event, $10 per relay, plus $4 Ohio LSC and $12 facility fee per swimmer",
+        "deadline": "2026-10-23",
+        "deadlineLabel": "Fri, Oct 23, 2026, 12:00 PM (host deadline; now closed)"
+      },
+      "poppy": {
+        "status": "swam",
+        "statusLabel": "Entered and swam",
+        "events": [
+          {
+            "session": "Saturday Session 6",
+            "items": [
+              "200 Free relay C",
+              "100 Back",
+              "100 Fly",
+              "50 Breast",
+              "100 IM"
+            ]
+          },
+          {
+            "session": "Sunday Session 11",
+            "items": [
+              "200 IM relay C",
+              "50 Fly",
+              "100 Breast",
+              "50 Back"
+            ]
+          }
+        ]
+      },
+      "links": [
+        {
+          "label": "Meet info",
+          "url": "https://api.captyn.com/s3/c11df68e-18b6-442e-8254-ac04f828bf7c"
+        },
+        {
+          "label": "Entries report",
+          "url": "https://api.captyn.com/s3/d1f949cb-ac01-44d2-98ab-5ef94a630702"
+        },
+        {
+          "label": "Psych sheet",
+          "url": "https://api.captyn.com/s3/57a71b98-3217-412d-afab-5bc517b0f8ea"
+        },
+        {
+          "label": "Timeline",
+          "url": "https://api.captyn.com/s3/a53581bd-91b2-4ea6-9973-faa0240ae406"
+        },
+        {
+          "label": "Warm-ups",
+          "url": "https://api.captyn.com/s3/a0cf6cb8-de18-4b91-9fa7-5666f75e6a4a"
+        },
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmu9z1nch03wgt4n37fe1r57i"
+        }
+      ],
+      "notes": "Results were not posted as of this snapshot."
+    },
+    {
+      "id": "cmw57c22t01b015obb85d0rko",
+      "name": "Little Elves",
+      "officialName": "2026 Little Elves' Holiday Spirit Classic",
+      "datesLabel": "Sun, Dec 6, 2026",
+      "startDate": "2026-12-06",
+      "endDate": "2026-12-06",
+      "sanction": "OH-27SC-65",
+      "host": "Miami University Makos",
+      "venue": {
+        "name": "Corwin M. Nixon Aquatic Center, Miami University",
+        "address": "750 S. Oak St., Oxford, OH 45056",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=750%20S.%20Oak%20St.%2C%20Oxford%2C%20OH%2045056"
+      },
+      "sessions": [
+        {
+          "label": "9–10 session",
+          "date": "2026-12-06",
+          "deckOpens": "8:15 AM",
+          "warmup": "8:30 AM",
+          "start": null,
+          "notes": "Poppy is a 9–10 swimmer. The 8 & Under session is in the afternoon. Meet start time is not listed in the announcement."
+        }
+      ],
+      "eligibility": {
+        "eligible": true,
+        "label": "Eligible — 10 & Under invitational"
+      },
+      "entry": {
+        "maxEventsLabel": "Maximum 4 individual events",
+        "fee": "$7 per individual event, $10 per relay, plus $4 Ohio LSC and $12 facility surcharge per swimmer",
+        "deadline": "2026-11-27T23:59:00-05:00",
+        "deadlineLabel": "Fri, Nov 27, 2026, 11:59 PM ET",
+        "deadlineKind": "team",
+        "hostDeadlineLabel": "Mon, Nov 30, 2026 (host receipt deadline; no time listed)",
+        "open": true
+      },
+      "offeredEvents": [
+        {
+          "number": "103",
+          "name": "100 IM",
+          "seed": "1:22.32"
+        },
+        {
+          "number": "105",
+          "name": "50 Free",
+          "seed": "31.47"
+        },
+        {
+          "number": "107",
+          "name": "50 Fly",
+          "seed": "36.43"
+        },
+        {
+          "number": "109",
+          "name": "100 Back",
+          "seed": "1:13.90"
+        },
+        {
+          "number": "111",
+          "name": "100 Breast",
+          "seed": "1:26.84"
+        },
+        {
+          "number": "113",
+          "name": "200 Free",
+          "seed": "2:37.28"
+        },
+        {
+          "number": "115",
+          "name": "50 Back",
+          "seed": "35.77"
+        },
+        {
+          "number": "117",
+          "name": "50 Breast",
+          "seed": "39.96"
+        },
+        {
+          "number": "119",
+          "name": "100 Free",
+          "seed": "1:11.87"
+        },
+        {
+          "number": "121",
+          "name": "100 Fly",
+          "seed": "1:24.06"
+        }
+      ],
+      "poppy": {
+        "status": "opted_in_no_events",
+        "statusLabel": "Opted in, no events picked",
+        "events": [],
+        "relaysChecked": false,
+        "suggestedEvents": [
+          "50 Free",
+          "50 Breast",
+          "50 Fly",
+          "100 Breast"
+        ],
+        "suggestedNote": "Suggested picks for Kevin and her coach to decide. Kevin or Mandy ticks the boxes and submits on Captyn — this dashboard never signs her up. 50 Free still needs a time from Sept 1 onward to count for Mid-States."
+      },
+      "links": [
+        {
+          "label": "Meet announcement",
+          "url": "https://api.captyn.com/s3/878dfbb3-e492-429c-a86f-a99363eadef2"
+        },
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmw57c22t01b015obb85d0rko"
+        }
+      ]
+    },
+    {
+      "id": "cmw56w7ib012a13mupz44lma8",
+      "name": "Bill Houk Holiday Classic",
+      "datesLabel": "Fri–Sun, Dec 11–13, 2026",
+      "startDate": "2026-12-11",
+      "endDate": "2026-12-13",
+      "host": null,
+      "venue": {
+        "name": "Oxford, OH",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": {
+        "eligible": false,
+        "label": "Poppy is not eligible"
+      },
+      "entry": {
+        "maxEventsLabel": null,
+        "fee": null,
+        "deadline": "2026-11-29",
+        "deadlineLabel": "Sun, Nov 29, 2026",
+        "deadlineKind": "team",
+        "open": true
+      },
+      "poppy": {
+        "status": "not_eligible",
+        "statusLabel": "Not eligible"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmw56w7ib012a13mupz44lma8"
+        }
+      ]
+    },
+    {
+      "id": "cmuwxawbe0fas0yok1m1fqbu3",
+      "name": "Virtual Distance Challenge",
+      "datesLabel": "Sun, Dec 20, 2026",
+      "startDate": "2026-12-20",
+      "endDate": "2026-12-20",
+      "host": null,
+      "venue": {
+        "name": "Kettering, OH",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": null,
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": null
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — signup not open yet"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuwxawbe0fas0yok1m1fqbu3"
+        }
+      ]
+    },
+    {
+      "id": "cmuww8j0j0j371ookqb5fn2vz",
+      "name": "2027 Mid-States",
+      "datesLabel": "Sat–Sun, Jan 9–10, 2027",
+      "startDate": "2027-01-09",
+      "endDate": "2027-01-10",
+      "host": "Team Ohio",
+      "venue": {
+        "name": "IUPUI, Indianapolis",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": {
+        "eligible": null,
+        "label": "By Team Ohio application — top 4 Ohio swimmers per event. Only times from Sept 1, 2026 onward count. At most 6 events."
+      },
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": "Applications roughly mid-December",
+        "deadlineKind": "soft",
+        "signupPath": "Applied through Team Ohio, not as a Dayton Raiders team entry."
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — Team Ohio application, roughly mid-December"
+      },
+      "flags": [
+        "Same weekend as the DR Winter Invite"
+      ],
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuww8j0j0j371ookqb5fn2vz"
+        }
+      ]
+    },
+    {
+      "id": "cmuwwb6ft0fem15ok5tdb937t",
+      "name": "DR Winter Invite",
+      "datesLabel": "Sat–Sun, Jan 9–10, 2027",
+      "startDate": "2027-01-09",
+      "endDate": "2027-01-10",
+      "host": "Dayton Raiders",
+      "venue": {
+        "name": "DRAC (home meet)",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": null,
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": null
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — signup not open yet"
+      },
+      "flags": [
+        "Same weekend as Mid-States"
+      ],
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuwwb6ft0fem15ok5tdb937t"
+        }
+      ]
+    },
+    {
+      "id": "cmuwwgprh0oag1cnd8t4lm8a7",
+      "name": "WAVE Bischoff Medals Meet",
+      "datesLabel": "Fri–Sun, Jan 22–24, 2027",
+      "startDate": "2027-01-22",
+      "endDate": "2027-01-24",
+      "host": null,
+      "venue": {
+        "name": "Kettering, OH",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": null,
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": null
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — signup not open yet"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuwwgprh0oag1cnd8t4lm8a7"
+        }
+      ]
+    },
+    {
+      "id": "cmuwwk3450n6w1ondx9itiquh",
+      "name": "RAYS February Invite",
+      "datesLabel": "Fri–Sun, Jan 29–31, 2027",
+      "startDate": "2027-01-29",
+      "endDate": "2027-01-31",
+      "host": null,
+      "venue": {
+        "name": "Mason, OH",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": null,
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": null
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — signup not open yet"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuwwk3450n6w1ondx9itiquh"
+        }
+      ]
+    },
+    {
+      "id": "cmuwwqzlh0f8c0yokr46ycrq1",
+      "name": "Regional Championships",
+      "datesLabel": "Fri–Sun, Feb 19–21, 2027",
+      "startDate": "2027-02-19",
+      "endDate": "2027-02-21",
+      "host": null,
+      "venue": {
+        "name": "Kettering, OH",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": {
+        "eligible": null,
+        "label": "14 & Under. Qualifying standards are not confirmed in this snapshot."
+      },
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": null
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — signup not open yet"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuwwqzlh0f8c0yokr46ycrq1"
+        }
+      ]
+    },
+    {
+      "id": "cmuwwy7m30n8j1ondybdtq81g",
+      "name": "SC Junior Championships",
+      "datesLabel": "Thu–Sun, Mar 11–14, 2027",
+      "startDate": "2027-03-11",
+      "endDate": "2027-03-14",
+      "host": null,
+      "venue": {
+        "name": null,
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": {
+        "eligible": true,
+        "label": "Qualifiers. Poppy has all Ohio JC cuts."
+      },
+      "entry": {
+        "open": false,
+        "deadline": null,
+        "deadlineLabel": null
+      },
+      "poppy": {
+        "status": "info_only",
+        "statusLabel": "Info only — signup not open yet"
+      },
+      "notes": "Venue is listed as TBD on Captyn.",
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmuwwy7m30n8j1ondybdtq81g"
+        }
+      ]
+    },
+    {
+      "id": "cmu4ijvnj0scv1cn1xyugk956",
+      "name": "CSC Fall Frenzy",
+      "datesLabel": "Fri–Sun, Nov 6–8, 2026",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-08",
+      "host": null,
+      "venue": {
+        "name": "Carmel, IN",
+        "address": null,
+        "mapsUrl": null
+      },
+      "sessions": [],
+      "eligibility": {
+        "eligible": true,
+        "label": "Eligible — she swam."
+      },
+      "entry": null,
+      "poppy": {
+        "status": "swam",
+        "statusLabel": "Swam"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmu4ijvnj0scv1cn1xyugk956"
+        }
+      ]
+    },
+    {
+      "id": "cmu9y616c035n0xmvugltb04k",
+      "name": "Payson's Journey Memorial",
+      "datesLabel": "Fri–Sun, Oct 16–18, 2026",
+      "startDate": "2026-10-16",
+      "endDate": "2026-10-18",
+      "host": null,
+      "venue": null,
+      "sessions": [],
+      "eligibility": {
+        "eligible": true,
+        "label": "Eligible — she swam."
+      },
+      "entry": null,
+      "poppy": {
+        "status": "swam",
+        "statusLabel": "Swam"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmu9y616c035n0xmvugltb04k"
+        }
+      ]
+    },
+    {
+      "id": "cmtkb9jwb00sz1olpkmym0dls",
+      "name": "DR Intrasquad",
+      "datesLabel": "Sat, Sep 26, 2026",
+      "startDate": "2026-09-26",
+      "endDate": "2026-09-26",
+      "host": "Dayton Raiders",
+      "venue": null,
+      "sessions": [],
+      "eligibility": {
+        "eligible": true,
+        "label": "Eligible — she swam."
+      },
+      "entry": null,
+      "poppy": {
+        "status": "swam",
+        "statusLabel": "Swam"
+      },
+      "links": [
+        {
+          "label": "Captyn meet page",
+          "url": "https://daytonraiders.captyn.com/account/meets/cmtkb9jwb00sz1olpkmym0dls"
+        }
+      ]
+    }
   ]
 };
 
@@ -1571,10 +2191,8 @@ function lastLine(ev){
   const sign=off>0?fmtDrop(off)+" off best":fmtDrop(-off)+" faster than previous best";
   return {text:"Last "+last.time+" · "+fmtDate(last.date)+(last.meet?" · "+last.meet:"")+" · "+sign+" · "+count, kind:off>0?"off":"best"};
 }
-function render(){
+function renderTimes(root){
   const state=mergeState();
-  const root=document.getElementById("app");
-  root.replaceChildren();
   const events=buildBests(state,course);
   const otherEvents=buildBests(state,opposite(course));
   const scy=buildBests(state,"SCY");
@@ -1606,13 +2224,13 @@ function render(){
 
   const cards=el("div",{class:"cards"},[
     el("div",{class:"card soon"},[
-      el("h2",{},[document.createTextNode("Next meet "), el("span",{class:"when",text:DATA.meets.littleElves.name+" · Dec 6"})]),
+      el("h2",{},[document.createTextNode("Next meet "), el("span",{class:"when",text:DATA.seasonTargets.littleElves.name+" · Dec 6"})]),
       el("div",{class:"lead",text:"Four events worth discussing with her coach"}),
       el("ul",{class:"slist"}, DATA.littleElvesEvents.map(name=>el("li",{},[el("span",{class:"ev",text:name}),el("span",{class:"why",text:littleElvesWhy(state,name)})]))),
       el("p",{class:"whisper",text:"Entry call is the coach’s. These are the gaps that matter most right now — not just the smallest ones."})
     ]),
     el("div",{class:"card"},[
-      el("h2",{},[document.createTextNode("Mid-States window "), el("span",{class:"when",text:DATA.meets.midStates.date.replace(", 2027","")})]),
+      el("h2",{},[document.createTextNode("Mid-States window "), el("span",{class:"when",text:DATA.seasonTargets.midStates.date.replace(", 2027","")})]),
       el("div",{class:"lead",text:midIn+" of "+midTotal+" events have a Sept 1+ time"}),
       el("p",{text: midMissing.length ? ("Still needs a 26–27 time in "+midMissing.join(" and ")+". Those lifetime bests are from March and will not count.") : "Every SCY event has a time from Sept 1 onward."}),
       el("p",{class:"whisper",text:"Ohio typically selects the fastest four applicants per event. The 2027 Ohio packet is not posted yet."})
@@ -1620,7 +2238,7 @@ function render(){
     el("div",{class:"card"},[
       el("h2",{text:"Qualifying"}),
       el("div",{class:"qual"},[
-        el("div",{class:"qualrow"},[el("span",{class:"mark ok",text:"✓"}), el("div",{},[el("span",{class:"k",text:"Ohio JCs"}), document.createTextNode(" "), el("span",{class:"v",text:"All cuts made · "+DATA.meets.ohioJcs.date.replace(", 2027","")+" · "+DATA.meets.ohioJcs.place})])]),
+        el("div",{class:"qualrow"},[el("span",{class:"mark ok",text:"✓"}), el("div",{},[el("span",{class:"k",text:"Ohio JCs"}), document.createTextNode(" "), el("span",{class:"v",text:"All cuts made · "+DATA.seasonTargets.ohioJcs.date.replace(", 2027","")+" · "+DATA.seasonTargets.ohioJcs.place})])]),
         el("div",{class:"qualrow"},[el("span",{class:"mark partial",text:String(aaaSwims.filter(e=>e.course==="SCY").length|| (aaaLabel?1:0))}), el("div",{},[
           el("span",{class:"k",text:"Zones"}), document.createTextNode(" "),
           el("span",{class:"v",text:(aaaLabel?"AAA in "+aaaLabel+". ":"No AAA time yet. ")+(breastScyAaa&&breastLcmAaa&&!breastScyAaa.made ? ("Next closest: 50 Breast ("+fmtDrop(breastScyAaa.drop)+" SCY, "+fmtDrop(breastLcmAaa.drop)+" LCM). ") : nextAaa?("Next closest: "+nextAaa.ev.event+" ("+fmtDrop(nextAaa.drop)+"). "):"")+"If last year’s any-AAA rule holds, she’s already eligible."})
@@ -1676,9 +2294,6 @@ function render(){
 
   const wrap=el("div",{class:"wrap"},[cards,sections,notes]);
   root.append(status, wrap);
-
-  // update toggle
-  document.querySelectorAll(".toggle button").forEach(b=>b.setAttribute("aria-pressed", b.getAttribute("data-course")===course ? "true":"false"));
 }
 function renderEvent(ev, other){
   const d=dropInfo(course,ev);
@@ -1824,8 +2439,264 @@ function tryAutoFetch(){
   .catch(()=>{ /* expected: no Access-Control-Allow-Origin */ });
 }
 
+
+function todayET(){
+  return new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});
+}
+function meetPhase(m, today){
+  if(m.endDate && m.endDate < today) return "past";
+  if(m.startDate && m.endDate && m.startDate <= today && today <= m.endDate) return "current";
+  return "upcoming";
+}
+function parseDeadlineDay(entry){
+  if(!entry||!entry.deadline) return null;
+  return String(entry.deadline).slice(0,10);
+}
+function daysUntilET(isoDay, today){
+  if(!isoDay||!today) return null;
+  const a=new Date(isoDay+"T12:00:00-05:00");
+  const b=new Date(today+"T12:00:00-05:00");
+  return Math.round((a-b)/86400000);
+}
+function venueLine(venue){
+  if(!venue) return null;
+  const name=venue.name||venue.address;
+  if(!name) return null;
+  const bits=[];
+  if(venue.name) bits.push(venue.name);
+  if(venue.address && venue.address!==venue.name) bits.push(venue.address);
+  const text=bits.join(" · ");
+  if(venue.mapsUrl){
+    return el("span",{},[
+      document.createTextNode(text+" · "),
+      el("a",{href:venue.mapsUrl,target:"_blank",rel:"noopener",text:"Map"})
+    ]);
+  }
+  return el("span",{text:text});
+}
+function sessionTimeText(s){
+  const parts=[];
+  if(s.deckOpens) parts.push("Deck opens "+s.deckOpens);
+  parts.push("Warm-up "+(s.warmup||"TBA"));
+  parts.push("Start "+(s.start||"TBA"));
+  return parts.join(" · ");
+}
+function addMeetRow(grid, label, valueNode){
+  if(!valueNode) return;
+  grid.appendChild(el("div",{class:"k",text:label}));
+  grid.appendChild(el("div",{class:"v"}, [valueNode]));
+}
+function textOrNode(v){
+  if(v==null||v===false||v==="") return null;
+  if(typeof v==="string") return el("span",{text:v});
+  return v;
+}
+function renderDeadlineStrip(meets, today){
+  const items=[];
+  for(const m of meets){
+    const entry=m.entry||{};
+    const day=parseDeadlineDay(entry);
+    const soft=!day && entry.deadlineLabel;
+    if(day && day < today) continue;
+    if(!day && !soft) continue;
+    if(meetPhase(m,today)==="past") continue;
+    const days=day?daysUntilET(day,today):null;
+    items.push({m, entry, day, soft, days, sort: day||"9999-12-31"});
+  }
+  items.sort((a,b)=>a.sort<b.sort?-1:a.sort>b.sort?1:0);
+  if(!items.length) return null;
+  const box=el("div",{class:"deadlines"},[
+    el("div",{class:"deadlines-head",text:"Upcoming entry deadlines"})
+  ]);
+  for(const it of items){
+    const status=(it.m.poppy&&it.m.poppy.statusLabel)||"";
+    const muted=it.m.poppy&&(it.m.poppy.status==="not_eligible"||it.m.poppy.status==="info_only");
+    const cls="deadline"+(it.soft?" soft":"")+(muted?" muted":"");
+    const until=it.days==null?null:it.days===0?"Due today":it.days===1?"Due tomorrow":it.days+" days left";
+    box.appendChild(el("div",{class:cls},[
+      el("div",{},[
+        el("div",{class:"dl-when",text:it.entry.deadlineLabel||"TBA"}),
+        el("div",{class:"dl-meet",text:it.m.name})
+      ]),
+      el("div",{style:{textAlign:"right"}},[
+        el("div",{class:"dl-status",text:status}),
+        until?el("div",{class:"dl-until",text:until}):null
+      ])
+    ]));
+  }
+  return box;
+}
+function renderMeetCard(m, today, state){
+  const phase=meetPhase(m,today);
+  const classes=["meet-card"];
+  if(phase==="current") classes.push("current");
+  if(m.poppy&&m.poppy.status==="not_eligible") classes.push("ineligible");
+  const badge=phase==="current"?el("span",{class:"meet-badge now",text:"This weekend"}):null;
+  const titleKids=[document.createTextNode(m.name)];
+  if(m.officialName&&m.officialName!==m.name){
+    titleKids.push(el("span",{class:"meet-official",text:m.officialName}));
+  }
+  const head=el("div",{class:"meet-card-head"},[
+    el("h2",{},titleKids),
+    el("div",{class:"meet-dates"},[document.createTextNode(m.datesLabel||"TBA"), badge])
+  ]);
+  const flags=el("div",{class:"meet-flags"});
+  for(const f of (m.flags||[])) flags.appendChild(el("span",{class:"meet-badge warn",text:f}));
+  if(m.poppy&&m.poppy.status==="opted_in_no_events") flags.appendChild(el("span",{class:"meet-badge warn",text:m.poppy.statusLabel}));
+  else if(m.poppy&&m.poppy.status==="not_eligible") flags.appendChild(el("span",{class:"meet-badge quiet",text:"Not eligible"}));
+  else if(m.poppy&&m.poppy.status==="info_only") flags.appendChild(el("span",{class:"meet-badge quiet",text:"Signup not open"}));
+  else if(m.poppy&&m.poppy.status==="swam") flags.appendChild(el("span",{class:"meet-badge now",text:m.poppy.statusLabel||"Swam"}));
+
+  const grid=el("div",{class:"meet-grid"});
+  const sessions=m.sessions||[];
+  if(sessions.length){
+    const sessBox=el("div");
+    sessions.forEach((s,i)=>{
+      if(i) sessBox.appendChild(el("br"));
+      const line=(s.label?s.label+" — ":"")+sessionTimeText(s)+(s.notes?" · "+s.notes:"");
+      sessBox.appendChild(el("span",{text:line}));
+    });
+    addMeetRow(grid,"Warm-up & start",sessBox);
+  } else {
+    addMeetRow(grid,"Warm-up & start",el("span",{text:"TBA"}));
+  }
+  addMeetRow(grid,"Venue", venueLine(m.venue) || el("span",{text:"TBA"}));
+  if(m.host) addMeetRow(grid,"Host", el("span",{text:m.host}));
+  if(m.eligibility&&m.eligibility.label) addMeetRow(grid,"Eligibility", el("span",{text:m.eligibility.label}));
+  const entry=m.entry||{};
+  if(entry.maxEventsLabel) addMeetRow(grid,"Event limit", el("span",{text:entry.maxEventsLabel}));
+  if(entry.fee) addMeetRow(grid,"Entry fee", el("span",{text:entry.fee}));
+  if(entry.deadlineLabel){
+    const dl=[el("strong",{text:entry.deadlineLabel})];
+    if(entry.hostDeadlineLabel){
+      dl.push(document.createTextNode(" · "+entry.hostDeadlineLabel));
+    }
+    if(entry.signupPath){
+      dl.push(document.createTextNode(" · "+entry.signupPath));
+    }
+    addMeetRow(grid,"Entry deadline", el("span",{},dl));
+  }
+  if(m.poppy){
+    const st=[el("strong",{text:m.poppy.statusLabel||""})];
+    const evGroups=m.poppy.events||[];
+    if(evGroups.length){
+      evGroups.forEach(g=>{
+        st.push(el("br"));
+        const label=g.session?g.session+": " : "";
+        const items=Array.isArray(g.items)?g.items.join(", "):(g.name||"");
+        st.push(document.createTextNode(label+items));
+      });
+    } else if(m.poppy.status==="opted_in_no_events"){
+      st.push(document.createTextNode(" Relays are not checked."));
+    }
+    addMeetRow(grid,"Poppy’s status", el("span",{},st));
+  }
+
+  let offered=null;
+  if(m.offeredEvents&&m.offeredEvents.length){
+    const picks=new Set((m.poppy&&m.poppy.suggestedEvents)||[]);
+    offered=el("div",{style:{marginTop:"10px"}},[
+      el("div",{class:"k",style:{marginBottom:"4px"},text:"Events offered"}),
+      el("ul",{class:"meet-events"}, m.offeredEvents.map(ev=>{
+        const li=el("li",{class:picks.has(ev.name)?"pick":""},[
+          ev.number?el("span",{class:"num",text:"#"+ev.number}):null,
+          el("span",{class:"ev",text:ev.name}),
+          ev.seed?el("span",{class:"seed",text:"seed "+ev.seed}):null
+        ]);
+        return li;
+      }))
+    ]);
+  }
+
+  let suggested=null;
+  if(m.poppy&&m.poppy.suggestedEvents&&m.poppy.suggestedEvents.length){
+    suggested=el("div",{class:"suggested"},[
+      el("div",{class:"lead",text:"Suggested events (for Kevin and her coach to decide)"}),
+      el("ul",{}, m.poppy.suggestedEvents.map(name=>el("li",{},[
+        el("span",{class:"ev",text:name}),
+        el("span",{class:"why",text:littleElvesWhy(state,name)})
+      ]))),
+      m.poppy.suggestedNote?el("p",{class:"meet-note",text:m.poppy.suggestedNote}):null
+    ]);
+  }
+
+  const links=el("div",{class:"meet-links"}, (m.links||[]).filter(l=>l&&l.url).map(l=>
+    el("a",{href:l.url,target:"_blank",rel:"noopener",text:l.label})
+  ));
+
+  const card=el("div",{class:classes.join(" "), id:"meet-"+m.id},[
+    head,
+    flags.childNodes.length?flags:null,
+    grid,
+    offered,
+    suggested,
+    links.childNodes.length?links:null,
+    m.notes?el("p",{class:"meet-note",text:m.notes}):null
+  ]);
+  return card;
+}
+function renderMeets(root){
+  const state=mergeState();
+  const today=todayET();
+  const meets=Array.isArray(DATA.meets)?DATA.meets.slice():[];
+  const upcoming=meets.filter(m=>meetPhase(m,today)!=="past").sort((a,b)=>(a.startDate||"").localeCompare(b.startDate||"")||a.name.localeCompare(b.name));
+  const past=meets.filter(m=>meetPhase(m,today)==="past").sort((a,b)=>(b.endDate||"").localeCompare(a.endDate||""));
+
+  const status=el("div",{class:"status"},[el("div",{class:"inner"},[
+    el("span",{text:"Meet list as of "+(DATA.meta.meetsAsOfLabel||DATA.meta.snapshotUpdatedLabel)+". Signup is never submitted from this page."}),
+    el("span",{class:"fresh",text:"Official bests as of "+DATA.meta.bestTimesAsOfLabel+(DATA.meta.masonMeet&&!DATA.meta.masonMeet.resultsPosted?" · Mason results not posted yet":"")})
+  ])]);
+
+  const wrap=el("div",{class:"wrap"});
+  const strip=renderDeadlineStrip(meets,today);
+  if(strip) wrap.appendChild(strip);
+  upcoming.forEach(m=>wrap.appendChild(renderMeetCard(m,today,state)));
+  if(past.length){
+    const details=el("details",{class:"past-meets"});
+    details.appendChild(el("summary",{text:"Past meets ("+past.length+")"}));
+    past.forEach(m=>details.appendChild(renderMeetCard(m,today,state)));
+    wrap.appendChild(details);
+  }
+  const foot=el("p",{class:"meets-foot"});
+  foot.appendChild(document.createTextNode("Documents link to public Captyn files when they are available without a login. The "));
+  const team=el("a",{href:"https://daytonraiders.captyn.com",target:"_blank",rel:"noopener",text:"Dayton Raiders Captyn site"});
+  foot.appendChild(team);
+  foot.appendChild(document.createTextNode(" still requires a family login to change declarations. Missing times, fees, or venues are shown as TBA rather than guessed. Band is not monitored from this page — forward anything important that only shows up there."));
+  wrap.appendChild(foot);
+
+  root.append(status, wrap);
+}
+
+
+function currentView(){
+  return location.hash.replace(/^#/, "") === "meets" ? "meets" : "times";
+}
+let view = currentView();
+function setView(v){
+  view = v;
+  const hash = "#" + v;
+  if (location.hash !== hash) history.replaceState(null, "", hash);
+  render();
+}
+function syncChrome(){
+  document.body.dataset.view = view;
+  document.querySelectorAll(".view-toggle button").forEach(b => b.setAttribute("aria-pressed", b.getAttribute("data-view") === view ? "true" : "false"));
+  document.querySelectorAll("#course-toggle button").forEach(b => b.setAttribute("aria-pressed", b.getAttribute("data-course") === course ? "true" : "false"));
+}
+function render(){
+  view = currentView();
+  syncChrome();
+  const root = document.getElementById("app");
+  root.replaceChildren();
+  if (view === "meets") renderMeets(root);
+  else renderTimes(root);
+}
+
 document.getElementById("btn-scy").addEventListener("click",()=>{course="SCY";render();});
 document.getElementById("btn-lcm").addEventListener("click",()=>{course="LCM";render();});
+document.getElementById("btn-times").addEventListener("click",()=>setView("times"));
+document.getElementById("btn-meets").addEventListener("click",()=>setView("meets"));
+window.addEventListener("hashchange",()=>{ const v=currentView(); if(v!==view){ view=v; render(); } });
 document.getElementById("btn-import").addEventListener("click",()=>document.getElementById("file").click());
 document.getElementById("file").addEventListener("change",e=>{ onFiles(e.target.files); e.target.value=""; });
 document.getElementById("btn-unofficial").addEventListener("click",openAddUnofficial);
