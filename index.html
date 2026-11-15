@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poppy Gawelek-Gross — Times Dashboard</title>
+<meta name="description" content="Times, cuts, and official results for Poppy Gawelek-Gross, Dayton Raiders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --ink:#0C1B2E; --ink-soft:#24364A; --paper:#E8EEF2; --card:#FFFFFF; --line:#D7E0E7;
+  --muted:#5A6B7C; --quiet:#7A8A99; --text:#152032; --aqua:#0C7C7C; --aqua-deep:#0A5E5E;
+  --warn:#8A4B12; --warn-bg:#F8EEDF; --ok:#176B3A; --ok-bg:#E7F6EC; --radius:14px;
+  --sans:Manrope,"Segoe UI",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(16,42,67,.05),0 6px 18px rgba(16,42,67,.05);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { background:var(--paper); color:var(--text); font-family:var(--sans); min-height:100%; }
+button,input,select { font:inherit; }
+.wrap { max-width:1120px; margin:0 auto; padding:0 40px 48px; }
+header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:#F4F7FA; padding:16px 40px 14px; position:sticky; top:0; z-index:20; }
+.hero-inner { max-width:1120px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.name-block h1 { font-weight:800; font-size:20px; letter-spacing:-.02em; line-height:1.2; }
+.meta { margin-top:3px; color:#C5D2DE; font-size:12.5px; font-weight:500; display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; }
+.dot { width:3px; height:3px; border-radius:50%; background:#7F93A6; display:inline-block; }
+.chip { display:inline-flex; align-items:center; gap:5px; background:rgba(46,168,120,.18); border:1px solid rgba(120,210,170,.28); color:#C8F0DC; border-radius:999px; padding:1px 8px; font-size:11px; font-weight:700; }
+.chip i { width:6px; height:6px; border-radius:50%; background:#3DDC97; display:inline-block; }
+.hero-actions { display:flex; align-items:center; gap:10px; flex:0 0 auto; flex-wrap:wrap; justify-content:flex-end; }
+.toggle { display:inline-flex; background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:3px; gap:2px; }
+.toggle button { appearance:none; border:0; background:transparent; color:#C5D2DE; font:700 12.5px/1 var(--sans); padding:7px 14px; border-radius:999px; cursor:pointer; letter-spacing:.04em; }
+.toggle button[aria-pressed="true"] { background:#F4F7FA; color:var(--ink); }
+.btn-quiet { color:#C5D2DE; font:600 12.5px/1 var(--sans); background:transparent; border:0; cursor:pointer; padding:6px 2px; white-space:nowrap; }
+.status { background:#F3E6C8; border-bottom:1px solid #E6D2A8; color:#6A4A12; font-size:12.5px; font-weight:600; }
+.status .inner { max-width:1120px; margin:0 auto; padding:8px 40px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline; }
+.status .fresh { color:#5A6B7C; font-weight:500; }
+.cards { display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:12px; margin:18px 0 22px; }
+.card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px 16px; border:1px solid rgba(16,42,67,.04); }
+.card h2 { font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 6px; display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.card h2 .when { letter-spacing:0; text-transform:none; font-weight:700; color:var(--ink-soft); font-size:12px; }
+.card.soon { border:1px solid #C6E4E2; background:linear-gradient(180deg,#FFFFFF,#EAF7F6); }
+.lead { font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; margin-bottom:8px; line-height:1.3; }
+.slist { list-style:none; display:flex; flex-direction:column; gap:5px; }
+.slist li { display:grid; grid-template-columns:92px 1fr; gap:8px; font-size:13px; align-items:baseline; }
+.slist .ev { font-weight:800; color:var(--ink); }
+.slist .why { color:var(--ink-soft); font-weight:600; }
+.whisper { margin-top:8px; font-size:11.5px; color:var(--quiet); font-weight:500; line-height:1.4; }
+.card p { font-size:12.5px; color:var(--ink-soft); font-weight:500; line-height:1.4; }
+.qual { display:flex; flex-direction:column; gap:8px; }
+.qualrow { display:flex; gap:8px; align-items:flex-start; font-size:13px; line-height:1.35; }
+.mark { flex:0 0 auto; margin-top:1px; min-width:18px; height:18px; padding:0 5px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; }
+.mark.ok { background:var(--ok-bg); color:var(--ok); }
+.mark.partial { background:#F8E7B0; color:#8A5A00; }
+.qualrow .k { font-weight:800; color:var(--ink); }
+.qualrow .v { color:var(--ink-soft); font-weight:600; }
+.section-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:6px 2px 10px; }
+.section-head h2 { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0; }
+.section-head .hint { font-size:12px; color:var(--muted); font-weight:500; }
+.stroke { margin-bottom:14px; }
+.stroke-head { display:flex; align-items:center; gap:8px; margin:0 2px 6px; }
+.swatch { width:8px; height:8px; border-radius:2px; }
+.stroke-head h3 { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0; }
+.stroke-card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid rgba(16,42,67,.04); overflow:hidden; border-left:4px solid var(--stroke); }
+.event { padding:11px 16px 10px; border-top:1px solid var(--line); display:grid; grid-template-columns:132px 140px 1fr 168px; grid-template-areas:"name time mid gap" "meta meta mid gap" "last last last last" "ranks ranks ranks ranks"; gap:2px 16px; align-items:start; }
+.event:first-child { border-top:0; }
+.event.stale { background:#FBF8F2; }
+.event.empty { opacity:.8; background:#F8FAFB; }
+.ev-name { grid-area:name; font-weight:800; font-size:14.5px; color:var(--ink); letter-spacing:-.01em; padding-top:4px; }
+.time-col { grid-area:time; }
+.time { font-weight:800; font-size:26px; letter-spacing:-.03em; color:var(--ink); font-variant-numeric:tabular-nums lining-nums; line-height:1; text-align:right; width:100%; }
+.time.none { font-size:18px; font-weight:700; color:var(--quiet); }
+.time-col .badges { display:flex; justify-content:flex-end; gap:6px; margin-top:5px; flex-wrap:wrap; }
+.badge { display:inline-flex; align-items:center; justify-content:center; min-width:36px; height:18px; padding:0 6px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:.05em; }
+.badge.B { background:#D7DEE5; color:#3A4A5A; }
+.badge.BB { background:#E3EEF9; color:#1D4E89; }
+.badge.A { background:#D8F1EC; color:#0A5E5E; }
+.badge.AA { background:#D8F3E4; color:#176B3A; }
+.badge.AAA { background:#F8E7B0; color:#8A5A00; }
+.badge.AAAA { background:#EDE4FA; color:#5B2D91; }
+.unofficial { display:inline-flex; align-items:center; padding:1px 7px; border-radius:999px; border:1.5px dotted #8A6D3B; color:#8A6D3B; background:transparent; font-size:9.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; cursor:help; }
+.gap { grid-area:gap; text-align:right; padding-top:4px; }
+.gap .need { font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.gap .amt { font-size:16px; font-weight:800; letter-spacing:-.02em; color:var(--ink); font-variant-numeric:tabular-nums lining-nums; margin-top:1px; }
+.gap.close .amt { color:var(--aqua-deep); }
+.gap .to { display:block; font-size:12px; font-weight:600; color:var(--ink-soft); margin-top:1px; }
+.mid { grid-area:mid; display:flex; flex-wrap:wrap; gap:5px; align-content:flex-start; padding-top:5px; }
+.tag { display:inline-flex; align-items:center; gap:4px; border-radius:6px; padding:2px 7px; font-size:10.5px; font-weight:750; }
+.tag.ok { background:var(--ok-bg); color:var(--ok); }
+.tag.warn { background:var(--warn-bg); color:var(--warn); }
+.tag.gold { background:#F8E7B0; color:#8A5A00; }
+.tag.quiet { background:#F3F6F8; color:var(--muted); }
+.emeta { grid-area:meta; font-size:11.5px; font-weight:600; color:var(--quiet); padding-top:2px; line-height:1.45; }
+.emeta strong { color:var(--warn); font-weight:800; }
+.also { color:var(--muted); font-weight:600; }
+.last { grid-area:last; font-size:11.5px; font-weight:600; color:var(--ink-soft); margin-top:4px; font-variant-numeric:tabular-nums; }
+.last .off { color:var(--warn); font-weight:800; }
+.last .best { color:var(--ok); font-weight:800; }
+.ranks { grid-area:ranks; display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+.rank { display:inline-flex; align-items:baseline; gap:4px; background:#F3F6F8; border-radius:999px; padding:2px 8px 2px 7px; font-size:11px; }
+.rank.hot { background:#E7F6EC; }
+.rank .k { font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-size:9.5px; }
+.rank .v { font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; }
+.rank.hot .v { color:var(--ok); }
+.rank .of { font-weight:600; color:var(--quiet); font-size:10.5px; }
+.honor { padding:8px 16px 10px; font-size:12px; color:var(--ink-soft); font-weight:600; border-top:1px dashed var(--line); background:#FAFBFC; }
+.honor strong { color:var(--ink); font-variant-numeric:tabular-nums; }
+.notes { margin-top:16px; color:var(--muted); font-size:12px; line-height:1.55; }
+.notes a { color:var(--aqua-deep); font-weight:700; }
+.notes strong { color:var(--ink-soft); font-weight:700; }
+.toast { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); background:var(--ink); color:#fff; padding:10px 16px; border-radius:10px; font-size:13px; font-weight:600; z-index:40; max-width:min(520px,92vw); box-shadow:var(--shadow); display:none; }
+.toast.show { display:block; }
+.modal-bg { position:fixed; inset:0; background:rgba(12,27,46,.45); z-index:30; display:none; align-items:flex-end; justify-content:center; padding:16px; }
+.modal-bg.show { display:flex; }
+.modal { background:#fff; border-radius:16px; padding:18px 18px 16px; width:min(440px,100%); box-shadow:var(--shadow); }
+.modal h3 { font-size:16px; font-weight:800; color:var(--ink); margin-bottom:8px; }
+.modal p { font-size:13px; color:var(--ink-soft); line-height:1.45; margin-bottom:12px; }
+.modal label { display:block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:8px 0 4px; }
+.modal input,.modal select { width:100%; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:14px; }
+.modal .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.modal .actions { display:flex; justify-content:flex-end; gap:8px; margin-top:14px; }
+.modal .actions button { border:0; border-radius:999px; padding:8px 14px; font-weight:700; cursor:pointer; }
+.modal .actions .cancel { background:#F3F6F8; color:var(--ink-soft); }
+.modal .actions .go { background:var(--ink); color:#fff; }
+.file-hint { font-size:12px; color:var(--quiet); margin-top:8px; }
+@media (max-width:700px) {
+  header.hero, .status .inner, .wrap { padding-left:14px; padding-right:14px; }
+  header.hero { padding-top:14px; padding-bottom:12px; }
+  .hero-inner { flex-direction:column; align-items:stretch; gap:10px; }
+  .hero-actions { justify-content:space-between; }
+  .toggle { flex:1; }
+  .toggle button { flex:1; text-align:center; }
+  .name-block h1 { font-size:18px; }
+  .status .inner { flex-direction:column; gap:2px; }
+  .cards { grid-template-columns:1fr; }
+  .section-head { flex-direction:column; gap:4px; }
+  .event { grid-template-columns:1fr auto; grid-template-areas:"name gap" "time gap" "mid mid" "meta meta" "last last" "ranks ranks"; gap:3px 10px; }
+  .time { text-align:left; font-size:28px; }
+  .time-col .badges { justify-content:flex-start; }
+  .ev-name { padding-top:0; }
+}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="name-block">
+      <h1>Poppy Gawelek-Gross</h1>
+      <div class="meta">
+        <span>10 &amp; Under girls</span><span class="dot"></span>
+        <span>Dayton Raiders</span><span class="dot"></span>
+        <span>Ohio LSC</span>
+        <span class="chip"><i></i>All Ohio JC cuts made</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <div class="toggle" role="tablist" aria-label="Course">
+        <button type="button" id="btn-scy" data-course="SCY" aria-pressed="true">SCY</button>
+        <button type="button" id="btn-lcm" data-course="LCM" aria-pressed="false">LCM</button>
+      </div>
+      <button type="button" class="btn-quiet" id="btn-import">Add official results</button>
+      <button type="button" class="btn-quiet" id="btn-unofficial">Add unofficial time</button>
+      <input id="file" type="file" accept=".zip,.hy3,.cl2,.HY3,.CL2,application/zip" multiple hidden>
+    </div>
+  </div>
+</header>
+<div id="app"></div>
+<div id="toast" class="toast" role="status"></div>
+<div id="modal-bg" class="modal-bg"></div>
+<script>
+const DATA = {
+  "version": 1,
+  "meta": {
+    "swimmer": "Poppy Gawelek-Gross",
+    "ageGroup": "10 & Under girls",
+    "club": "Dayton Raiders",
+    "lsc": "Ohio LSC",
+    "born": "2016-09-05",
+    "profileUrl": "https://myswimapp.com/swimmer/140062",
+    "ohioResultsUrl": "https://www.gomotionapp.com/team/czohlsc/page/meets/25-26-sc-scheduleresults",
+    "lastChecked": "2026-11-14T20:55:00-05:00",
+    "lastCheckedLabel": "Nov 14, 2026, 8:55 PM ET",
+    "bestTimesAsOf": "2026-11-08",
+    "bestTimesAsOfLabel": "Nov 8, 2026",
+    "midStatesWindowStart": "2026-09-01",
+    "snapshotUpdated": "2026-11-15T12:00:00-05:00",
+    "snapshotUpdatedLabel": "Nov 15, 2026, 12:00 PM ET",
+    "masonMeet": {
+      "name": "City of Mason November Invitational",
+      "dates": "Nov 13\u201315, 2026",
+      "resultsPosted": false
+    },
+    "zonesReadiness": {
+      "rank": 3,
+      "of": 1419,
+      "scope": "Ohio 10&U girls",
+      "metric": "MySwimApp Power Score",
+      "source": "MySwimApp"
+    }
+  },
+  "meets": {
+    "littleElves": {
+      "name": "Little Elves",
+      "date": "Dec 6, 2026"
+    },
+    "midStates": {
+      "name": "Mid-States",
+      "date": "Jan 9\u201310, 2027"
+    },
+    "ohioJcs": {
+      "name": "Ohio JCs",
+      "date": "Mar 10\u201315, 2027",
+      "place": "Spire"
+    },
+    "zones": {
+      "name": "Zones (LCM)",
+      "date": "Aug 5\u20138, 2027"
+    }
+  },
+  "eventCatalog": {
+    "scy": [
+      {
+        "name": "50 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "100 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "200 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "500 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "50 Back",
+        "stroke": "Backstroke"
+      },
+      {
+        "name": "100 Back",
+        "stroke": "Backstroke"
+      },
+      {
+        "name": "50 Breast",
+        "stroke": "Breaststroke"
+      },
+      {
+        "name": "100 Breast",
+        "stroke": "Breaststroke"
+      },
+      {
+        "name": "50 Fly",
+        "stroke": "Butterfly"
+      },
+      {
+        "name": "100 Fly",
+        "stroke": "Butterfly"
+      },
+      {
+        "name": "100 IM",
+        "stroke": "Individual Medley"
+      },
+      {
+        "name": "200 IM",
+        "stroke": "Individual Medley"
+      }
+    ],
+    "lcm": [
+      {
+        "name": "50 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "100 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "200 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "400 Free",
+        "stroke": "Freestyle"
+      },
+      {
+        "name": "50 Back",
+        "stroke": "Backstroke"
+      },
+      {
+        "name": "100 Back",
+        "stroke": "Backstroke"
+      },
+      {
+        "name": "50 Breast",
+        "stroke": "Breaststroke"
+      },
+      {
+        "name": "100 Breast",
+        "stroke": "Breaststroke"
+      },
+      {
+        "name": "50 Fly",
+        "stroke": "Butterfly"
+      },
+      {
+        "name": "100 Fly",
+        "stroke": "Butterfly"
+      },
+      {
+        "name": "200 IM",
+        "stroke": "Individual Medley"
+      }
+    ]
+  },
+  "standards": {
+    "scy": {
+      "50 Free": {
+        "B": "39.79",
+        "BB": "35.99",
+        "A": "32.09",
+        "AA": "30.89",
+        "AAA": "29.59",
+        "AAAA": "28.29"
+      },
+      "100 Free": {
+        "B": "1:30.79",
+        "BB": "1:21.09",
+        "A": "1:11.49",
+        "AA": "1:08.29",
+        "AAA": "1:04.99",
+        "AAAA": "1:01.79"
+      },
+      "200 Free": {
+        "B": "3:22.79",
+        "BB": "3:00.59",
+        "A": "2:38.39",
+        "AA": "2:30.99",
+        "AAA": "2:23.59",
+        "AAAA": "2:16.19"
+      },
+      "500 Free": {
+        "B": "8:36.69",
+        "BB": "7:45.09",
+        "A": "6:53.39",
+        "AA": "6:36.19",
+        "AAA": "6:18.99",
+        "AAAA": "6:01.69"
+      },
+      "50 Back": {
+        "B": "48.59",
+        "BB": "43.29",
+        "A": "37.99",
+        "AA": "36.19",
+        "AAA": "34.39",
+        "AAAA": "32.59"
+      },
+      "100 Back": {
+        "B": "1:45.79",
+        "BB": "1:33.99",
+        "A": "1:22.29",
+        "AA": "1:18.39",
+        "AAA": "1:14.49",
+        "AAAA": "1:10.59"
+      },
+      "50 Breast": {
+        "B": "54.59",
+        "BB": "48.69",
+        "A": "42.79",
+        "AA": "40.89",
+        "AAA": "38.89",
+        "AAAA": "36.89"
+      },
+      "100 Breast": {
+        "B": "2:00.29",
+        "BB": "1:46.89",
+        "A": "1:33.59",
+        "AA": "1:29.09",
+        "AAA": "1:24.69",
+        "AAAA": "1:20.19"
+      },
+      "50 Fly": {
+        "B": "48.39",
+        "BB": "42.69",
+        "A": "36.99",
+        "AA": "35.09",
+        "AAA": "33.19",
+        "AAAA": "31.29"
+      },
+      "100 Fly": {
+        "B": "1:56.69",
+        "BB": "1:41.39",
+        "A": "1:26.09",
+        "AA": "1:20.99",
+        "AAA": "1:15.99",
+        "AAAA": "1:10.89"
+      },
+      "100 IM": {
+        "B": "1:44.29",
+        "BB": "1:33.19",
+        "A": "1:22.09",
+        "AA": "1:18.39",
+        "AAA": "1:14.69",
+        "AAAA": "1:10.99"
+      },
+      "200 IM": {
+        "B": "3:42.09",
+        "BB": "3:18.79",
+        "A": "2:55.49",
+        "AA": "2:47.69",
+        "AAA": "2:39.99",
+        "AAAA": "2:32.19"
+      }
+    },
+    "lcm": {
+      "50 Free": {
+        "B": "45.29",
+        "BB": "40.89",
+        "A": "36.59",
+        "AA": "35.09",
+        "AAA": "33.69",
+        "AAAA": "32.19"
+      },
+      "100 Free": {
+        "B": "1:44.09",
+        "BB": "1:32.99",
+        "A": "1:21.89",
+        "AA": "1:18.19",
+        "AAA": "1:14.49",
+        "AAAA": "1:10.79"
+      },
+      "200 Free": {
+        "B": "3:50.99",
+        "BB": "3:25.69",
+        "A": "3:00.39",
+        "AA": "2:51.99",
+        "AAA": "2:43.49",
+        "AAAA": "2:35.09"
+      },
+      "400 Free": {
+        "B": "7:48.59",
+        "BB": "7:01.69",
+        "A": "6:14.89",
+        "AA": "5:59.29",
+        "AAA": "5:43.69",
+        "AAAA": "5:27.99"
+      },
+      "50 Back": {
+        "B": "55.79",
+        "BB": "49.69",
+        "A": "43.59",
+        "AA": "41.59",
+        "AAA": "39.49",
+        "AAAA": "37.49"
+      },
+      "100 Back": {
+        "B": "2:01.59",
+        "BB": "1:48.09",
+        "A": "1:34.59",
+        "AA": "1:30.09",
+        "AAA": "1:25.59",
+        "AAAA": "1:21.09"
+      },
+      "50 Breast": {
+        "B": "1:02.19",
+        "BB": "55.49",
+        "A": "48.79",
+        "AA": "46.49",
+        "AAA": "44.29",
+        "AAAA": "42.09"
+      },
+      "100 Breast": {
+        "B": "2:19.39",
+        "BB": "2:03.89",
+        "A": "1:48.39",
+        "AA": "1:43.29",
+        "AAA": "1:38.09",
+        "AAAA": "1:32.99"
+      },
+      "50 Fly": {
+        "B": "54.49",
+        "BB": "48.09",
+        "A": "41.59",
+        "AA": "39.49",
+        "AAA": "37.29",
+        "AAAA": "35.19"
+      },
+      "100 Fly": {
+        "B": "2:12.79",
+        "BB": "1:55.39",
+        "A": "1:37.99",
+        "AA": "1:32.19",
+        "AAA": "1:26.39",
+        "AAAA": "1:20.59"
+      },
+      "200 IM": {
+        "B": "4:15.69",
+        "BB": "3:48.89",
+        "A": "3:22.09",
+        "AA": "3:13.09",
+        "AAA": "3:04.19",
+        "AAAA": "2:55.29"
+      }
+    }
+  },
+  "officialTimes": [
+    {
+      "event": "50 Free",
+      "course": "SCY",
+      "time": "31.47",
+      "date": "2026-03-03",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": {
+          "rank": 147,
+          "of": 10554
+        },
+        "usa": {
+          "rank": 734
+        }
+      }
+    },
+    {
+      "event": "100 Free",
+      "course": "SCY",
+      "time": "1:11.87",
+      "date": "2026-10-17",
+      "meet": "Payson's Journey Memorial",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 18,
+          "of": 1111
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 1068
+        }
+      }
+    },
+    {
+      "event": "200 Free",
+      "course": "SCY",
+      "time": "2:37.28",
+      "date": "2026-10-18",
+      "meet": "Payson's Journey Memorial",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 16,
+          "of": 334
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 845
+        }
+      }
+    },
+    {
+      "event": "500 Free",
+      "course": "SCY",
+      "time": "6:59.46",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 6,
+          "of": 87
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 543
+        }
+      }
+    },
+    {
+      "event": "50 Back",
+      "course": "SCY",
+      "time": "35.77",
+      "date": "2026-03-13",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": null,
+        "usa": {
+          "rank": 393,
+          "of": 35502
+        }
+      }
+    },
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:13.90",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": null,
+        "usa": {
+          "rank": 181,
+          "of": 16281
+        }
+      }
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "39.96",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": {
+          "rank": 38,
+          "of": 6045
+        },
+        "usa": {
+          "rank": 285
+        }
+      }
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:26.84",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 3,
+          "of": 430
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 248
+        }
+      }
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "36.43",
+      "date": "2026-10-17",
+      "meet": "Payson's Journey Memorial",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 29,
+          "of": 755
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 1006
+        }
+      }
+    },
+    {
+      "event": "100 Fly",
+      "course": "SCY",
+      "time": "1:24.06",
+      "date": "2026-10-18",
+      "meet": "Payson's Journey Memorial",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 15,
+          "of": 135
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 618
+        }
+      }
+    },
+    {
+      "event": "100 IM",
+      "course": "SCY",
+      "time": "1:22.32",
+      "date": "2026-09-26",
+      "meet": "DR Intrasquad",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 19,
+          "of": 786
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 947
+        }
+      }
+    },
+    {
+      "event": "200 IM",
+      "course": "SCY",
+      "time": "2:41.83",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": {
+          "rank": 27,
+          "of": 1300
+        },
+        "usa": {
+          "rank": 187
+        }
+      }
+    },
+    {
+      "event": "50 Free",
+      "course": "LCM",
+      "time": "35.56",
+      "date": "2026-05-31",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": {
+          "rank": 131,
+          "of": 4381
+        },
+        "usa": {
+          "rank": 611
+        }
+      }
+    },
+    {
+      "event": "100 Free",
+      "course": "LCM",
+      "time": "1:20.62",
+      "date": "2026-05-31",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 15,
+          "of": 407
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 738
+        }
+      }
+    },
+    {
+      "event": "50 Back",
+      "course": "LCM",
+      "time": "40.64",
+      "date": "2026-06-19",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": {
+          "rank": 64,
+          "of": 4243
+        },
+        "usa": {
+          "rank": 299
+        }
+      }
+    },
+    {
+      "event": "100 Back",
+      "course": "LCM",
+      "time": "1:24.09",
+      "date": "2026-06-20",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": null,
+        "usa": {
+          "rank": 125,
+          "of": 10182
+        }
+      }
+    },
+    {
+      "event": "50 Breast",
+      "course": "LCM",
+      "time": "44.69",
+      "date": "2026-07-30",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": null,
+        "usa": {
+          "rank": 149,
+          "of": 13215
+        }
+      }
+    },
+    {
+      "event": "50 Fly",
+      "course": "LCM",
+      "time": "38.56",
+      "date": "2026-07-31",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": null,
+        "centralZone": {
+          "rank": 71,
+          "of": 2425
+        },
+        "usa": {
+          "rank": 364
+        }
+      }
+    },
+    {
+      "event": "200 IM",
+      "course": "LCM",
+      "time": "3:16.81",
+      "date": "2026-06-19",
+      "meet": null,
+      "source": "MySwimApp",
+      "ranks": {
+        "ohio": {
+          "rank": 10,
+          "of": 125
+        },
+        "centralZone": null,
+        "usa": {
+          "rank": 537
+        }
+      }
+    }
+  ],
+  "provisionalTimes": [],
+  "honors": [
+    {
+      "event": "25 Free",
+      "course": "SCY",
+      "time": "14.13",
+      "date": "2026-09-26",
+      "meet": "DR Intrasquad",
+      "note": "Dayton Raiders team record",
+      "source": "MySwimApp"
+    }
+  ],
+  "littleElvesEvents": [
+    "50 Breast",
+    "50 Free",
+    "50 Fly",
+    "100 Breast"
+  ],
+  "swimHistory": [
+    {
+      "event": "50 Free",
+      "course": "SCY",
+      "time": "31.47",
+      "date": "2026-03-03",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Back",
+      "course": "SCY",
+      "time": "35.77",
+      "date": "2026-03-13",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "100 Free",
+      "course": "LCM",
+      "time": "1:20.62",
+      "date": "2026-05-31",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Free",
+      "course": "LCM",
+      "time": "35.56",
+      "date": "2026-05-31",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "200 IM",
+      "course": "LCM",
+      "time": "3:16.81",
+      "date": "2026-06-19",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Back",
+      "course": "LCM",
+      "time": "40.64",
+      "date": "2026-06-19",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "100 Back",
+      "course": "LCM",
+      "time": "1:24.09",
+      "date": "2026-06-20",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Breast",
+      "course": "LCM",
+      "time": "44.69",
+      "date": "2026-07-30",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Fly",
+      "course": "LCM",
+      "time": "38.56",
+      "date": "2026-07-31",
+      "meet": null,
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "100 IM",
+      "course": "SCY",
+      "time": "1:22.32",
+      "date": "2026-09-26",
+      "meet": "DR Intrasquad",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "38.20"
+        },
+        {
+          "at": 100,
+          "time": "1:22.32"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "25 Free",
+      "course": "SCY",
+      "time": "14.13",
+      "date": "2026-09-26",
+      "meet": "DR Intrasquad",
+      "source": "Ohio results file",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Back",
+      "course": "SCY",
+      "time": "36.77",
+      "date": "2026-09-26",
+      "meet": "DR Intrasquad",
+      "source": "Ohio results file",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "40.92",
+      "date": "2026-09-26",
+      "meet": "DR Intrasquad",
+      "source": "Ohio results file",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:29.58",
+      "date": "2026-10-17",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "42.84"
+        },
+        {
+          "at": 100,
+          "time": "1:29.58"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "100 Free",
+      "course": "SCY",
+      "time": "1:11.87",
+      "date": "2026-10-17",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "34.71"
+        },
+        {
+          "at": 100,
+          "time": "1:11.87"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "200 IM",
+      "course": "SCY",
+      "time": "2:45.30",
+      "date": "2026-10-17",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "38.31"
+        },
+        {
+          "at": 100,
+          "time": "1:19.99"
+        },
+        {
+          "at": 150,
+          "time": "2:08.95"
+        },
+        {
+          "at": 200,
+          "time": "2:45.30"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "36.43",
+      "date": "2026-10-17",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:15.87",
+      "date": "2026-10-18",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "37.41"
+        },
+        {
+          "at": 100,
+          "time": "1:15.87"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "100 Fly",
+      "course": "SCY",
+      "time": "1:24.06",
+      "date": "2026-10-18",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "37.52"
+        },
+        {
+          "at": 100,
+          "time": "1:24.06"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "200 Free",
+      "course": "SCY",
+      "time": "2:37.28",
+      "date": "2026-10-18",
+      "meet": "Payson's Journey Memorial",
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "35.57"
+        },
+        {
+          "at": 100,
+          "time": "1:16.61"
+        },
+        {
+          "at": 150,
+          "time": "1:58.32"
+        },
+        {
+          "at": 200,
+          "time": "2:37.28"
+        }
+      ],
+      "provisional": false
+    },
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:13.90",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:26.84",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "200 IM",
+      "course": "SCY",
+      "time": "2:41.83",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "39.96",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    },
+    {
+      "event": "500 Free",
+      "course": "SCY",
+      "time": "6:59.46",
+      "date": "2026-11-08",
+      "meet": "CSC Fall Frenzy",
+      "source": "MySwimApp",
+      "splits": [],
+      "provisional": false
+    }
+  ]
+};
+
+const STROKE_HY3 = {A:"Free",B:"Back",C:"Breast",D:"Fly",E:"IM"};
+const STROKE_CL2 = {1:"Free",2:"Back",3:"Breast",4:"Fly",5:"IM"};
+const TARGET_LAST = "Gawelek-Gross";
+const TARGET_FIRST = "Poppy";
+
+function fmtSec(sec){
+  if(sec==null || !(sec>0)) return null;
+  sec = Math.round((sec+1e-9)*100)/100;
+  if(sec<60) return sec.toFixed(2);
+  const m=Math.floor(sec/60);
+  const r=sec-m*60;
+  return m+":"+r.toFixed(2).padStart(5,"0");
+}
+function toSec(t){
+  if(t==null||t==="") return Infinity;
+  const p=String(t).split(":");
+  if(p.length===1) return parseFloat(p[0]);
+  if(p.length===2) return parseInt(p[0],10)*60+parseFloat(p[1]);
+  return parseInt(p[0],10)*3600+parseInt(p[1],10)*60+parseFloat(p[2]);
+}
+function normTime(t){ const s=toSec(t); return Number.isFinite(s)?fmtSec(s):null; }
+function parseHy3TimeToken(s){
+  if(!s) return null;
+  s=String(s).trim().replace(/[YLS]/g,"");
+  if(!s||s==="0.00") return null;
+  const v=parseFloat(s);
+  return v>0?v:null;
+}
+function parseMmddyyyy(s){
+  const d=String(s).replace(/\D/g,"").slice(0,8);
+  if(d.length!==8) return null;
+  return d.slice(4,8)+"-"+d.slice(0,2)+"-"+d.slice(2,4);
+}
+function parseSplits(g1){
+  if(!g1) return [];
+  const parts=[...g1.slice(3).matchAll(/(\d+)\s+(\d+\.\d+|\d+:\d+\.\d+)/g)];
+  return parts.map(([_,code,t])=>({at:parseInt(code,10)*25, time: t.includes(":")?t:fmtSec(parseFloat(t))}));
+}
+function parseHy3(text){
+  const lines=text.split(/\r?\n/);
+  let meet="Unknown meet", courseDefault="SCY";
+  for(const ln of lines){
+    if(ln.startsWith("B1")) meet=(ln.slice(2,45).trim()||meet);
+    if(ln.startsWith("B2") && /Y/.test(ln)) courseDefault="SCY";
+  }
+  const out=[];
+  let athlete=false, cur=null;
+  const flush=()=>{ if(cur && cur.time && !cur.dq) out.push(cur); cur=null; };
+  for(const ln of lines){
+    const typ=ln.slice(0,2);
+    if(typ==="D1"){
+      flush();
+      const last=(ln.slice(8,28)||"").trim();
+      const first=(ln.slice(28,48)||"").trim();
+      athlete=last.includes("Gawelek") && first.includes("Poppy");
+      continue;
+    }
+    if(typ==="C1"){ flush(); athlete=false; continue; }
+    if(!athlete) continue;
+    if(typ==="E1"){
+      flush();
+      const dist=ln.slice(17,21).trim();
+      const stroke=ln.charAt(21);
+      const ch=ln.charAt(31);
+      const course={S:"SCY",Y:"SCY",L:"LCM",M:"SCM"}[ch]||courseDefault;
+      const ev=dist+" "+(STROKE_HY3[stroke]||stroke);
+      cur={event:ev, course, meet};
+    } else if(typ==="E2" && cur){
+      const m=ln.match(/^E2.\s*([0-9.]+)/);
+      const final=parseHy3TimeToken(m&&m[1]);
+      const dm=ln.match(/(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(20\d{2})/);
+      const date=dm?parseMmddyyyy(dm[0]):null;
+      const dq=/\b(DQ|NS|SCR|DFS)\b/.test(ln);
+      cur.time=fmtSec(final); cur.date=date; cur.dq=dq; cur.splits=[];
+    } else if(typ==="G1" && cur){
+      cur.splits=parseSplits(ln);
+    }
+  }
+  flush();
+  return {meet, swims:out};
+}
+function parseCl2(text){
+  const lines=text.split(/\r?\n/);
+  let meet="Unknown meet", courseDefault="SCY";
+  const out=[];
+  for(const ln of lines){
+    if(ln.startsWith("B1")){
+      meet=(ln.slice(11,45).trim()||meet);
+      if(ln.includes("LCM")||/\sL\s/.test(ln.slice(80))) courseDefault="LCM";
+    }
+    if(!ln.startsWith("D0") && !ln.startsWith("D01")) continue;
+    if(!/Gawelek/i.test(ln) || !/Poppy/i.test(ln)) continue;
+    // event code after age: e.g. 1005113, 504221, 2001311, 251101
+    const evm=ln.match(/\d{2}F[A-Z]\s+(\d{2,3})([1-5])(\d{3})/);
+    let event=null;
+    if(evm) event=evm[1]+" "+(STROKE_CL2[evm[2]]||evm[2]);
+    const times=[...ln.matchAll(/(\d{0,2}:?\d{1,2}\.\d{2})[YLS]/g)].map(m=>normTime(m[1]));
+    const final=times.length?times[times.length-1]:null;
+    const dm=ln.match(/(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(20\d{2})/);
+    const date=dm?parseMmddyyyy(dm[0]):null;
+    const course=/L\d{0,1}\s*$/.test(final||"")?courseDefault: (ln.includes("LCM")?"LCM":"SCY");
+    // course letter next to time
+    let course2="SCY";
+    const cm=ln.match(/\d{0,2}:?\d{1,2}\.\d{2}([YLS])/g);
+    if(cm&&cm.length){
+      const last=cm[cm.length-1].slice(-1);
+      course2={Y:"SCY",L:"LCM",S:"SCM"}[last]||"SCY";
+    }
+    if(!event||!final||!date) continue;
+    if(/\b(DQ|NS|SCR|DFS)\b/.test(ln)) continue;
+    out.push({event, course:course2, time:final, date, meet, splits:[]});
+  }
+  return {meet, swims:out};
+}
+async function inflateRaw(bytes){
+  if(typeof DecompressionStream!=="function") throw new Error("This browser can't unzip files. Open the zip and choose the .hy3 or .cl2 file instead.");
+  const ds=new DecompressionStream("deflate-raw");
+  const stream=new Blob([bytes]).stream().pipeThrough(ds);
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+function latin1(bytes){ return new TextDecoder("latin1").decode(bytes); }
+async function unzip(buf){
+  const view=new DataView(buf);
+  const files=[];
+  let offset=0;
+  while(offset+30<=view.byteLength){
+    const sig=view.getUint32(offset,true);
+    if(sig!==0x04034b50) break;
+    const flag=view.getUint16(offset+6,true);
+    const method=view.getUint16(offset+8,true);
+    let compSize=view.getUint32(offset+18,true);
+    let uncompSize=view.getUint32(offset+22,true);
+    const nameLen=view.getUint16(offset+26,true);
+    const extraLen=view.getUint16(offset+28,true);
+    const name=latin1(new Uint8Array(buf,offset+30,nameLen));
+    let dataStart=offset+30+nameLen+extraLen;
+    if(flag&0x8){
+      // data descriptor after data; scan for signature
+      throw new Error("This zip uses a layout this page can't read. Unzip it and choose the .hy3 file.");
+    }
+    const data=new Uint8Array(buf,dataStart,compSize);
+    let raw;
+    if(method===0) raw=data;
+    else if(method===8) raw=await inflateRaw(data);
+    else throw new Error("Unsupported zip compression in "+name);
+    files.push({name, data:raw});
+    offset=dataStart+compSize;
+  }
+  if(!files.length) throw new Error("Couldn't find files inside that zip.");
+  return files;
+}
+function displayMeetName(raw){
+  if(!raw) return "Unknown meet";
+  let s=raw.replace(/^20\d{2}\s+OH\s+/i,"").replace(/\s+Meet$/i,"").trim();
+  if(/Payson/i.test(s)) return "Payson's Journey Memorial";
+  if(/DR Intrasquad/i.test(s)) return "DR Intrasquad";
+  return s||raw;
+}
+async function parseResultsFile(file){
+  const buf=await file.arrayBuffer();
+  const name=(file.name||"").toLowerCase();
+  const items=[];
+  if(name.endsWith(".zip") || (buf.byteLength>4 && new DataView(buf).getUint32(0,true)===0x04034b50)){
+    const files=await unzip(buf);
+    for(const f of files){
+      const n=f.name.toLowerCase();
+      if(n.endsWith(".hy3")||n.endsWith(".cl2")||n.endsWith(".sd3")){
+        items.push({name:f.name, text:latin1(f.data)});
+      }
+    }
+  } else {
+    items.push({name:file.name, text:latin1(new Uint8Array(buf))});
+  }
+  const hy=items.filter(f=>/\.hy3$/i.test(f.name));
+  const cl=items.filter(f=>/\.(cl2|sd3)$/i.test(f.name));
+  let parsed=null;
+  if(hy.length) parsed=parseHy3(hy[0].text);
+  else if(cl.length) parsed=parseCl2(cl[0].text);
+  else throw new Error("No .hy3 or .cl2 results file was found.");
+  const swims=parsed.swims.map(s=>({
+    event:s.event,
+    course:s.course,
+    time:s.time,
+    date:s.date,
+    meet:displayMeetName(s.meet||parsed.meet),
+    source:"Ohio results file",
+    splits:s.splits||[],
+    provisional:false
+  })).filter(s=>s.event&&s.time&&s.date);
+  return {meet:displayMeetName(parsed.meet), swims};
+}
+
+
+const STORAGE_KEY="poppy-dashboard-v1";
+const STD_ORDER=["B","BB","A","AA","AAA","AAAA"];
+const STROKE_COLOR={Freestyle:"#0E8A9A",Backstroke:"#2B62B3",Breaststroke:"#C44B6A",Butterfly:"#6B4C9A","Individual Medley":"#C78B12"};
+
+function courseKey(c){ return c==="LCM"?"lcm":"scy"; }
+function opposite(c){ return c==="SCY"?"LCM":"SCY"; }
+function fmtDrop(sec){ if(sec<60) return sec.toFixed(2)+"s"; const m=Math.floor(sec/60); const s=(sec%60).toFixed(2).padStart(5,"0"); return m+":"+s; }
+function fmtRank(n){ return "#"+Number(n).toLocaleString("en-US"); }
+function fmtOf(n){ return n?"of "+Number(n).toLocaleString("en-US"):""; }
+function fmtDate(iso){
+  if(!iso) return "";
+  const [y,m,d]=iso.split("-").map(x=>parseInt(x,10));
+  const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  if(!y||!m||!d) return iso;
+  return months[m-1]+" "+d+", "+y;
+}
+function standardFor(course,event,time){
+  const cuts=DATA.standards[courseKey(course)][event];
+  if(!cuts) return {std:null,next:null};
+  const t=toSec(time);
+  let achieved=null;
+  for(const s of STD_ORDER){ if(t<=toSec(cuts[s])) achieved=s; }
+  if(achieved===null) return {std:null,next:"B"};
+  if(achieved==="AAAA") return {std:"AAAA",next:null};
+  return {std:achieved,next:STD_ORDER[STD_ORDER.indexOf(achieved)+1]};
+}
+function isInWindow(date){ return date>=DATA.meta.midStatesWindowStart; }
+function swimKey(s){ return [s.event,s.course,s.date,normTime(s.time)].join("|"); }
+function loadLocal(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||"null")||{history:[],provisional:[],importedFiles:[]}; }
+  catch(e){ return {history:[],provisional:[],importedFiles:[]}; }
+}
+function saveLocal(loc){ localStorage.setItem(STORAGE_KEY, JSON.stringify(loc)); }
+function mergeState(){
+  const loc=loadLocal();
+  const snapH=DATA.swimHistory||[];
+  const snapP=(DATA.provisionalTimes||[]).map(p=>({...p,provisional:true,source:p.source||"Provisional",splits:p.splits||[]}));
+  const seen=new Set();
+  const history=[];
+  for(const s of [...snapH, ...(loc.history||[])]){
+    const k=swimKey(s);
+    if(!s.event||!s.time||!s.date||seen.has(k)) continue;
+    seen.add(k);
+    history.push({...s, time:normTime(s.time), provisional:!!s.provisional});
+  }
+  const officialDates=new Set(history.filter(s=>!s.provisional).map(s=>s.event+"|"+s.course+"|"+s.date));
+  const provisional=[];
+  for(const p of [...snapP, ...(loc.provisional||[])]){
+    const id=p.event+"|"+p.course+"|"+p.date;
+    if(officialDates.has(id)) continue;
+    const k=swimKey(p);
+    if(seen.has(k)) continue;
+    seen.add(k);
+    provisional.push({...p, time:normTime(p.time), provisional:true, source:p.source||"Provisional", splits:p.splits||[]});
+  }
+  return {history, provisional, local:loc};
+}
+function swimsForEvent(state,event,course){
+  return [...state.history,...state.provisional].filter(s=>s.event===event&&s.course===course);
+}
+function bestOf(rows){
+  return rows.reduce((b,s)=>{
+    if(!b||toSec(s.time)<toSec(b.time)) return s;
+    return b;
+  },null);
+}
+function lastOf(rows){
+  return rows.reduce((b,s)=>{
+    if(!b) return s;
+    if(s.date>b.date) return s;
+    if(s.date===b.date && toSec(s.time)<toSec(b.time)) return s;
+    return b;
+  },null);
+}
+function windowBestOf(rows){
+  return bestOf(rows.filter(s=>isInWindow(s.date)));
+}
+function ranksFor(best, officialTimes){
+  // Only show snapshot ranks when the displayed official best still matches the snapshot row.
+  if(!best||best.provisional) return {ohio:null,centralZone:null,usa:null};
+  const row=officialTimes.find(t=>t.event===best.event&&t.course===best.course);
+  if(!row) return {ohio:null,centralZone:null,usa:null};
+  if(row.time===best.time && row.date===best.date) return row.ranks||{ohio:null,centralZone:null,usa:null};
+  return {ohio:null,centralZone:null,usa:null};
+}
+function buildBests(state,course){
+  const catalog=DATA.eventCatalog[courseKey(course)];
+  return catalog.map(def=>{
+    const rows=swimsForEvent(state,def.name,course);
+    const best=bestOf(rows);
+    const last=lastOf(rows);
+    const win=windowBestOf(rows);
+    if(!best){
+      return {event:def.name,stroke:def.stroke,course,time:"",date:"",meet:null,unofficial:false,ranks:{ohio:null,centralZone:null,usa:null},std:null,next:null,last:null,windowBest:null,count:0};
+    }
+    const stds=standardFor(course,def.name,best.time);
+    return {
+      event:def.name, stroke:def.stroke, course,
+      time:best.time, date:best.date, meet:best.meet||null,
+      unofficial:!!best.provisional,
+      ranks:ranksFor(best, DATA.officialTimes),
+      std:stds.std, next:stds.next,
+      last, previous: last?previousOf(rows,last):null, windowBest:win, count:rows.length
+    };
+  });
+}
+function dropInfo(course,ev){
+  if(!ev.time||!ev.next) return null;
+  const cuts=DATA.standards[courseKey(course)][ev.event];
+  if(!cuts) return null;
+  return {drop:toSec(ev.time)-toSec(cuts[ev.next]), nextTime:cuts[ev.next], next:ev.next};
+}
+function dropToAaa(course,ev){
+  if(!ev.time) return null;
+  const cuts=DATA.standards[courseKey(course)][ev.event];
+  if(!cuts) return null;
+  const drop=toSec(ev.time)-toSec(cuts.AAA);
+  return {made:drop<=0, drop:Math.max(0,drop)};
+}
+function el(tag, attrs, kids){
+  const n=document.createElement(tag);
+  if(attrs){
+    for(const [k,v] of Object.entries(attrs)){
+      if(v==null||v===false) continue;
+      if(k==="class") n.className=v;
+      else if(k==="style" && typeof v==="object") Object.assign(n.style,v);
+      else if(k.startsWith("on")&&typeof v==="function") n.addEventListener(k.slice(2),v);
+      else if(k==="text") n.textContent=v;
+      else n.setAttribute(k,v===true?"":v);
+    }
+  }
+  for(const c of (kids||[])){ if(c) n.appendChild(c); }
+  return n;
+}
+
+let course="SCY";
+let lastToast=null;
+function toast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;
+  t.classList.add("show");
+  clearTimeout(lastToast);
+  lastToast=setTimeout(()=>t.classList.remove("show"), 4200);
+}
+function littleElvesWhy(state,event){
+  const ev=buildBests(state,"SCY").find(e=>e.event===event);
+  if(!ev||!ev.time) return "No SCY time on file";
+  if(!ev.windowBest) return "Needs a time that counts for Mid-States";
+  const aaa=dropToAaa("SCY",ev);
+  const next=dropInfo("SCY",ev);
+  if(aaa&&!aaa.made) return fmtDrop(aaa.drop)+" from a Zones AAA";
+  if(aaa&&aaa.made) return "Zones AAA in hand";
+  if(next) return fmtDrop(next.drop)+" from "+next.next;
+  return ev.std?ev.std+" time":"";
+}
+function previousOf(rows, last){
+  const rest=rows.filter(s=>!(s.date===last.date && s.time===last.time));
+  return rest.reduce((b,s)=>{
+    if(!b) return s;
+    if(s.date>b.date) return s;
+    if(s.date===b.date && toSec(s.time)<toSec(b.time)) return s;
+    return b;
+  },null);
+}
+function lastLine(ev){
+  if(!ev.last||!ev.time) return null;
+  const last=ev.last;
+  const same=last.time===ev.time && last.date===ev.date;
+  const n=ev.count||1;
+  const unofficial=!!ev.unofficial || (ev.last&&ev.last.provisional);
+  const count=n===1?(unofficial?"1 swim on file":"1 official swim"):(unofficial?n+" swims on file":n+" official swims");
+  if(same){
+    const prev=ev.previous;
+    if(prev){
+      const off=toSec(prev.time)-toSec(ev.time);
+      const sign=off>0?fmtDrop(off)+" slower":fmtDrop(-off)+" faster";
+      return {text:"Last swim was her best · "+fmtDate(last.date)+(last.meet?" · "+last.meet:"")+" · Previous "+prev.time+" · "+fmtDate(prev.date)+" · "+sign+" · "+count, kind:"best"};
+    }
+    return {text:"Last swim was her best · "+fmtDate(last.date)+(last.meet?" · "+last.meet:"")+" · "+count, kind:"best"};
+  }
+  const off=toSec(last.time)-toSec(ev.time);
+  const sign=off>0?fmtDrop(off)+" off best":fmtDrop(-off)+" faster than previous best";
+  return {text:"Last "+last.time+" · "+fmtDate(last.date)+(last.meet?" · "+last.meet:"")+" · "+sign+" · "+count, kind:off>0?"off":"best"};
+}
+function render(){
+  const state=mergeState();
+  const root=document.getElementById("app");
+  root.replaceChildren();
+  const events=buildBests(state,course);
+  const otherEvents=buildBests(state,opposite(course));
+  const scy=buildBests(state,"SCY");
+  const lcm=buildBests(state,"LCM");
+  const midTotal=scy.length;
+  const midIn=scy.filter(e=>e.windowBest).length;
+  const midMissing=scy.filter(e=>e.time && !e.windowBest).map(e=>e.event);
+  const aaaSwims=[...scy,...lcm].filter(e=>e.std==="AAA"||e.std==="AAAA");
+  const aaaLabel=[...new Set(aaaSwims.map(e=>e.event))].join(", ");
+  let nextAaa=null;
+  for(const ev of [...scy,...lcm]){
+    const aaa=dropToAaa(ev.course,ev);
+    if(!aaa||aaa.made) continue;
+    if(!nextAaa||aaa.drop<nextAaa.drop) nextAaa={ev,drop:aaa.drop};
+  }
+  const breastScy=scy.find(e=>e.event==="50 Breast");
+  const breastLcm=lcm.find(e=>e.event==="50 Breast");
+  const breastScyAaa=breastScy?dropToAaa("SCY",breastScy):null;
+  const breastLcmAaa=breastLcm?dropToAaa("LCM",breastLcm):null;
+  const unofficialUsed=events.some(e=>e.unofficial);
+  const honors=(DATA.honors||[]).filter(h=>h.course===course);
+  const loc=state.local;
+  const localCount=(loc.history||[]).length+(loc.provisional||[]).length;
+
+  const status=el("div",{class:"status"},[el("div",{class:"inner"},[
+    el("span",{text: DATA.meta.masonMeet.resultsPosted ? DATA.meta.masonMeet.name+" results are posted." : "Mason Invitational ("+DATA.meta.masonMeet.dates+") results are not posted yet."}),
+    el("span",{class:"fresh",text:"Official bests as of "+DATA.meta.bestTimesAsOfLabel+" · ranks checked "+DATA.meta.lastCheckedLabel+(unofficialUsed?" · Includes unofficial times":"")+(localCount?" · This device has "+localCount+" added result"+(localCount===1?"":"s"):"")})
+  ])]);
+
+  const cards=el("div",{class:"cards"},[
+    el("div",{class:"card soon"},[
+      el("h2",{},[document.createTextNode("Next meet "), el("span",{class:"when",text:DATA.meets.littleElves.name+" · Dec 6"})]),
+      el("div",{class:"lead",text:"Four events worth discussing with her coach"}),
+      el("ul",{class:"slist"}, DATA.littleElvesEvents.map(name=>el("li",{},[el("span",{class:"ev",text:name}),el("span",{class:"why",text:littleElvesWhy(state,name)})]))),
+      el("p",{class:"whisper",text:"Entry call is the coach’s. These are the gaps that matter most right now — not just the smallest ones."})
+    ]),
+    el("div",{class:"card"},[
+      el("h2",{},[document.createTextNode("Mid-States window "), el("span",{class:"when",text:DATA.meets.midStates.date.replace(", 2027","")})]),
+      el("div",{class:"lead",text:midIn+" of "+midTotal+" events have a Sept 1+ time"}),
+      el("p",{text: midMissing.length ? ("Still needs a 26–27 time in "+midMissing.join(" and ")+". Those lifetime bests are from March and will not count.") : "Every SCY event has a time from Sept 1 onward."}),
+      el("p",{class:"whisper",text:"Ohio typically selects the fastest four applicants per event. The 2027 Ohio packet is not posted yet."})
+    ]),
+    el("div",{class:"card"},[
+      el("h2",{text:"Qualifying"}),
+      el("div",{class:"qual"},[
+        el("div",{class:"qualrow"},[el("span",{class:"mark ok",text:"✓"}), el("div",{},[el("span",{class:"k",text:"Ohio JCs"}), document.createTextNode(" "), el("span",{class:"v",text:"All cuts made · "+DATA.meets.ohioJcs.date.replace(", 2027","")+" · "+DATA.meets.ohioJcs.place})])]),
+        el("div",{class:"qualrow"},[el("span",{class:"mark partial",text:String(aaaSwims.filter(e=>e.course==="SCY").length|| (aaaLabel?1:0))}), el("div",{},[
+          el("span",{class:"k",text:"Zones"}), document.createTextNode(" "),
+          el("span",{class:"v",text:(aaaLabel?"AAA in "+aaaLabel+". ":"No AAA time yet. ")+(breastScyAaa&&breastLcmAaa&&!breastScyAaa.made ? ("Next closest: 50 Breast ("+fmtDrop(breastScyAaa.drop)+" SCY, "+fmtDrop(breastLcmAaa.drop)+" LCM). ") : nextAaa?("Next closest: "+nextAaa.ev.event+" ("+fmtDrop(nextAaa.drop)+"). "):"")+"If last year’s any-AAA rule holds, she’s already eligible."})
+        ])])
+      ]),
+      el("p",{class:"whisper",text:"MySwimApp Power Score ranks her #"+DATA.meta.zonesReadiness.rank+" of "+DATA.meta.zonesReadiness.of.toLocaleString("en-US")+" Ohio 10&U girls for Zones readiness — a published index, not a team selection."})
+    ])
+  ]);
+
+  const groups=[];
+  for(const ev of events){
+    if(!groups.length||groups[groups.length-1].stroke!==ev.stroke) groups.push({stroke:ev.stroke,events:[ev]});
+    else groups[groups.length-1].events.push(ev);
+  }
+
+  const sections=el("div");
+  sections.appendChild(el("div",{class:"section-head"},[
+    el("h2",{text:"Best times · "+(course==="SCY"?"short course yards":"long course meters")}),
+    el("div",{class:"hint",text: course==="SCY" ? "Times are lifetime bests. A Mid-States window time is noted when the lifetime best is from before Sept 1." : "Long course bests. Mid-States is a short-course meet, so the in-window flag is on the SCY view."})
+  ]));
+  for(const g of groups){
+    const card=el("div",{class:"stroke-card",style:{"--stroke":STROKE_COLOR[g.stroke]}});
+    for(const ev of g.events){
+      card.appendChild(renderEvent(ev, otherEvents.find(o=>o.event===ev.event&&o.time)));
+    }
+    if(g.stroke==="Freestyle"){
+      for(const h of honors){
+        card.appendChild(el("div",{class:"honor"},[
+          document.createTextNode("Also: "+h.event+" "),
+          el("strong",{text:h.time}),
+          document.createTextNode(" · "+h.note+" · "+fmtDate(h.date)+(h.meet?" · "+h.meet:"")+". Not a USA 10&U motivational event, so it stays off the cut list.")
+        ]));
+      }
+    }
+    const sec=el("section",{class:"stroke"},[
+      el("div",{class:"stroke-head"},[el("span",{class:"swatch",style:{background:STROKE_COLOR[g.stroke]}}), el("h3",{text:g.stroke})]),
+      card
+    ]);
+    sections.appendChild(sec);
+  }
+
+  const notes=el("p",{class:"notes"});
+  notes.appendChild(el("strong",{text:"Ranks"}));
+  notes.appendChild(document.createTextNode(" are shown only where MySwimApp published them, and only while the lifetime best still matches that snapshot. After you add a newer official file on this device, ranks hide for that event until a Grok Bot refresh. Mid-States counts times from Sept 1, 2026. Motivational cuts are USA Swimming 2024–2028 10&U girls standards. Opposite-course times are her real official bests, not conversions. "));
+  const a1=el("a",{href:DATA.meta.ohioResultsUrl,target:"_blank",rel:"noopener",text:"Ohio Swimming results"});
+  notes.appendChild(document.createTextNode("After a meet, download the official results zip from "));
+  notes.appendChild(a1);
+  notes.appendChild(document.createTextNode(" and use “Add official results.” This page cannot fetch those files itself. "));
+  const a2=el("a",{href:DATA.meta.profileUrl,target:"_blank",rel:"noopener",text:"MySwimApp profile"});
+  notes.appendChild(document.createTextNode("Public times also live on her "));
+  notes.appendChild(a2);
+  notes.appendChild(document.createTextNode("."));
+
+  const wrap=el("div",{class:"wrap"},[cards,sections,notes]);
+  root.append(status, wrap);
+
+  // update toggle
+  document.querySelectorAll(".toggle button").forEach(b=>b.setAttribute("aria-pressed", b.getAttribute("data-course")===course ? "true":"false"));
+}
+function renderEvent(ev, other){
+  const d=dropInfo(course,ev);
+  const aaa=dropToAaa(course,ev);
+  const close=d!=null && d.drop<=0.6;
+  const preWindow=course==="SCY" && !!ev.time && !ev.windowBest;
+  const hasWindowDiff=course==="SCY" && ev.windowBest && (ev.windowBest.time!==ev.time || ev.windowBest.date!==ev.date);
+  const otherStd=other&&other.time?standardFor(other.course,other.event,other.time).std:null;
+  const also=other&&other.time ? ("also "+other.time+" "+other.course+(otherStd?", "+otherStd:"")) : ev.time ? ("no "+opposite(course)+" time yet") : "";
+  if(!ev.time){
+    return el("div",{class:"event empty"},[
+      el("div",{class:"ev-name",text:ev.event}),
+      el("div",{class:"time-col"},[el("div",{class:"time none",text:"—" })]),
+      el("div",{class:"mid"}),
+      el("div",{class:"gap"},[el("div",{class:"need",text:"To next cut"}),el("div",{class:"amt",style:{color:"var(--quiet)"},text:"—" })]),
+      el("div",{class:"emeta",text:"No "+course+" time yet"})
+    ]);
+  }
+  const mid=[];
+  if(course==="SCY"){
+    if(preWindow) mid.push(el("span",{class:"tag warn",text:"Mid-States · no window time"}));
+    else if(hasWindowDiff){
+      const wstd=standardFor("SCY",ev.event,ev.windowBest.time).std;
+      mid.push(el("span",{class:"tag ok",text:"Mid-States · window "+ev.windowBest.time+(wstd?" "+wstd:"")}));
+    } else mid.push(el("span",{class:"tag ok",text:"Mid-States · in window"}));
+  }
+  if(aaa&&aaa.made) mid.push(el("span",{class:"tag gold",text:"Zones · AAA in hand"}));
+  else if(aaa) mid.push(el("span",{class:"tag quiet",text:"Zones · "+fmtDrop(aaa.drop)+" from AAA"}));
+
+  const metaKids=[];
+  if(course==="SCY" && ev.date && !isInWindow(ev.date)){
+    metaKids.push(document.createTextNode("Lifetime best · "+fmtDate(ev.date)+(ev.meet?" · "+ev.meet:"")));
+    metaKids.push(el("br"));
+    if(hasWindowDiff){
+      metaKids.push(el("strong",{text:"Window time "+ev.windowBest.time+" · "+fmtDate(ev.windowBest.date)+(ev.windowBest.meet?" · "+ev.windowBest.meet:"")}));
+    } else {
+      metaKids.push(el("strong",{text:"No Sept 1+ time on file"}));
+    }
+  } else {
+    metaKids.push(document.createTextNode(fmtDate(ev.date)+(ev.meet?" · "+ev.meet:"")));
+  }
+  if(also){ metaKids.push(document.createTextNode(" · ")); metaKids.push(el("span",{class:"also",text:also})); }
+
+  const last=lastLine(ev);
+  const lastEl=last?el("div",{class:"last"},[el("span",{class:last.kind,text:last.text})]):null;
+
+  const rankItems=[];
+  if(ev.ranks.ohio) rankItems.push({label:"Ohio",rec:ev.ranks.ohio,hot:ev.ranks.ohio.rank<=6});
+  if(ev.ranks.centralZone) rankItems.push({label:"C. Zone",rec:ev.ranks.centralZone});
+  if(ev.ranks.usa) rankItems.push({label:"USA",rec:ev.ranks.usa});
+  const ranks=rankItems.length?el("div",{class:"ranks"}, rankItems.map(it=>el("span",{class:it.hot?"rank hot":"rank"},[
+    el("span",{class:"k",text:it.label}), el("span",{class:"v",text:fmtRank(it.rec.rank)}), it.rec.of?el("span",{class:"of",text:fmtOf(it.rec.of)}):null
+  ]))):null;
+
+  return el("div",{class:preWindow?"event stale":"event"},[
+    el("div",{class:"ev-name",text:ev.event}),
+    el("div",{class:"time-col"},[
+      el("div",{class:"time",text:ev.time}),
+      el("div",{class:"badges"},[
+        ev.std?el("span",{class:"badge "+ev.std,text:ev.std}):null,
+        ev.unofficial?el("span",{class:"unofficial",title:"Based on unofficial results",text:"Unofficial"}):null
+      ])
+    ]),
+    el("div",{class:"mid"},mid),
+    el("div",{class:close?"gap close":"gap"}, d?[
+      el("div",{class:"need",text:"To next cut"}), el("div",{class:"amt",text:fmtDrop(d.drop)}), el("span",{class:"to",text:"from "+d.next+" · "+d.nextTime})
+    ]:[ el("div",{class:"need",text:"To next cut"}), el("div",{class:"amt",text:"AAAA"}), el("span",{class:"to",text:"cut made"}) ]),
+    el("div",{class:"emeta"},metaKids),
+    lastEl, ranks
+  ]);
+}
+
+function closeModal(){ document.getElementById("modal-bg").classList.remove("show"); document.getElementById("modal-bg").replaceChildren(); }
+function openModal(title, body, actions){
+  const bg=document.getElementById("modal-bg");
+  const box=el("div",{class:"modal"},[el("h3",{text:title}), body, el("div",{class:"actions"},actions)]);
+  bg.replaceChildren(box);
+  bg.classList.add("show");
+  bg.onclick=(e)=>{ if(e.target===bg) closeModal(); };
+}
+
+async function onFiles(fileList){
+  const files=[...fileList];
+  if(!files.length) return;
+  let added=0, meets=[];
+  const loc=loadLocal();
+  const existing=new Set((mergeState().history.concat(mergeState().provisional)).map(swimKey));
+  try{
+    for(const file of files){
+      const parsed=await parseResultsFile(file);
+      const newOnes=parsed.swims.filter(s=>!existing.has(swimKey(s)));
+      for(const s of newOnes){ loc.history.push(s); existing.add(swimKey(s)); }
+      added+=newOnes.length;
+      meets.push(parsed.meet+(newOnes.length?(" ("+newOnes.length+" new)"):" (already in this copy)"));
+      loc.importedFiles=loc.importedFiles||[];
+      loc.importedFiles.push({name:file.name, meet:parsed.meet, addedAt:new Date().toISOString(), swimCount:newOnes.length});
+    }
+    saveLocal(loc);
+    render();
+    toast(added?("Added "+added+" swim"+(added===1?"":"s")+" from "+meets.join(", ")+"."):("No new swims. "+meets.join(", ")+" is already in this copy."));
+  }catch(err){
+    toast(err.message||String(err));
+  }
+}
+
+function openAddUnofficial(){
+  const events=[...DATA.eventCatalog.scy.map(e=>e.name), "25 Free"];
+  const evSel=el("select",{id:"p-ev"}, events.filter((v,i,a)=>a.indexOf(v)===i).map(n=>el("option",{value:n,text:n})));
+  const courseSel=el("select",{id:"p-course"},[el("option",{value:"SCY",text:"SCY"}),el("option",{value:"LCM",text:"LCM"})]);
+  const timeIn=el("input",{id:"p-time",placeholder:"1:13.90 or 35.77",autocomplete:"off"});
+  const dateIn=el("input",{id:"p-date",type:"date"});
+  const meetIn=el("input",{id:"p-meet",placeholder:"Meet name"});
+  const body=el("div",{},[
+    el("p",{text:"This stays on this device only, with a dotted Unofficial badge, until an official result for the same event, course, and date is in the snapshot or a results file."}),
+    el("label",{text:"Event"}), evSel,
+    el("div",{class:"row"},[el("div",{},[el("label",{text:"Course"}),courseSel]), el("div",{},[el("label",{text:"Time"}),timeIn])]),
+    el("div",{class:"row"},[el("div",{},[el("label",{text:"Date"}),dateIn]), el("div",{},[el("label",{text:"Meet"}),meetIn])])
+  ]);
+  openModal("Add unofficial time", body, [
+    el("button",{class:"cancel",type:"button",onclick:closeModal,text:"Cancel"}),
+    el("button",{class:"go",type:"button",text:"Add",onclick:()=>{
+      const time=normTime(timeIn.value);
+      const date=dateIn.value;
+      if(!time||!date){ toast("Need a valid time and date."); return; }
+      const loc=loadLocal();
+      loc.provisional=loc.provisional||[];
+      loc.provisional.push({event:evSel.value,course:courseSel.value,time,date,meet:meetIn.value||"Unofficial result",source:"Provisional",provisional:true,splits:[]});
+      saveLocal(loc);
+      closeModal();
+      render();
+      toast("Added unofficial "+evSel.value+" "+time+".");
+    }})
+  ]);
+}
+
+function tryAutoFetch(){
+  // CORS is expected to fail; we try once and stay quiet if it does.
+  const url=DATA.meta.ohioResultsUrl;
+  fetch(url,{method:"GET",mode:"cors"}).then(r=>{
+    if(!r.ok) throw new Error("status "+r.status);
+    return r.text();
+  }).then(()=>{ /* If this ever starts working, a future refresh can list new zips. */ })
+  .catch(()=>{ /* expected: no Access-Control-Allow-Origin */ });
+}
+
+document.getElementById("btn-scy").addEventListener("click",()=>{course="SCY";render();});
+document.getElementById("btn-lcm").addEventListener("click",()=>{course="LCM";render();});
+document.getElementById("btn-import").addEventListener("click",()=>document.getElementById("file").click());
+document.getElementById("file").addEventListener("change",e=>{ onFiles(e.target.files); e.target.value=""; });
+document.getElementById("btn-unofficial").addEventListener("click",openAddUnofficial);
+window.PoppyDash={parseResultsFile,parseHy3,parseCl2,toSec,fmtSec,mergeState,displayMeetName};
+render();
+tryAutoFetch();
+
+</script>
+</body>
+</html>
