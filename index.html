@@ -28,11 +28,11 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
 .dot { width:3px; height:3px; border-radius:50%; background:#7F93A6; display:inline-block; }
 .chip { display:inline-flex; align-items:center; gap:5px; background:rgba(46,168,120,.18); border:1px solid rgba(120,210,170,.28); color:#C8F0DC; border-radius:999px; padding:1px 8px; font-size:11px; font-weight:700; }
 .chip i { width:6px; height:6px; border-radius:50%; background:#3DDC97; display:inline-block; }
-.hero-actions { display:flex; align-items:center; gap:10px; flex:0 0 auto; flex-wrap:wrap; justify-content:flex-end; }
-.toggle { display:inline-flex; background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:3px; gap:2px; }
-.toggle button { appearance:none; border:0; background:transparent; color:#C5D2DE; font:700 12.5px/1 var(--sans); padding:7px 14px; border-radius:999px; cursor:pointer; letter-spacing:.04em; }
+.hero-actions { display:flex; align-items:center; gap:10px; flex:1 1 auto; flex-wrap:wrap; justify-content:flex-end; min-width:0; }
+.toggle { display:inline-flex; background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:3px; gap:2px; flex:0 0 auto; }
+.toggle button { appearance:none; border:0; background:transparent; color:#C5D2DE; font:700 12.5px/1 var(--sans); padding:7px 14px; border-radius:999px; cursor:pointer; letter-spacing:.04em; white-space:nowrap; flex:1 0 auto; }
 .toggle button[aria-pressed="true"] { background:#F4F7FA; color:var(--ink); }
-.btn-quiet { color:#C5D2DE; font:600 12.5px/1 var(--sans); background:transparent; border:0; cursor:pointer; padding:6px 2px; white-space:nowrap; }
+.btn-quiet { color:#C5D2DE; font:600 12.5px/1 var(--sans); background:transparent; border:0; cursor:pointer; padding:6px 2px; white-space:nowrap; flex:0 0 auto; }
 .status { background:#F3E6C8; border-bottom:1px solid #E6D2A8; color:#6A4A12; font-size:12.5px; font-weight:600; }
 .status .inner { max-width:1120px; margin:0 auto; padding:8px 40px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline; }
 .status .fresh { color:#5A6B7C; font-weight:500; }
@@ -126,7 +126,6 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
 .file-hint { font-size:12px; color:var(--quiet); margin-top:8px; }
 
 .view-toggle { margin-right:4px; }
-body[data-view="meets"] #course-toggle { display:none; }
 .deadlines { display:flex; flex-direction:column; gap:8px; margin:18px 0 18px; }
 .deadlines-head { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0 2px 2px; }
 .deadline { background:var(--card); border:1px solid rgba(16,42,67,.04); border-left:4px solid var(--warn); border-radius:12px; box-shadow:var(--shadow); padding:10px 14px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
@@ -185,9 +184,11 @@ body[data-view="meets"] #course-toggle { display:none; }
   header.hero, .status .inner, .wrap { padding-left:14px; padding-right:14px; }
   header.hero { padding-top:14px; padding-bottom:12px; }
   .hero-inner { flex-direction:column; align-items:stretch; gap:10px; }
-  .hero-actions { justify-content:space-between; }
-  .toggle { flex:1; }
-  .toggle button { flex:1; text-align:center; }
+  .hero-actions { justify-content:flex-start; width:100%; }
+  .view-toggle { flex:1 1 100%; margin-right:0; }
+  .view-toggle button { flex:1 0 auto; text-align:center; }
+  #course-toggle { flex:0 1 auto; }
+  #course-toggle button { flex:1 0 auto; text-align:center; }
   .name-block h1 { font-size:18px; }
   .status .inner { flex-direction:column; gap:2px; }
   .cards { grid-template-columns:1fr; }
@@ -196,7 +197,6 @@ body[data-view="meets"] #course-toggle { display:none; }
   .time { text-align:left; font-size:28px; }
   .time-col .badges { justify-content:flex-start; }
   .ev-name { padding-top:0; }
-  body[data-view="meets"] .hero-actions { justify-content:flex-start; }
   .meet-grid { grid-template-columns:1fr; gap:2px 0; }
   .meet-grid .k { padding-top:8px; }
   .deadline { flex-direction:column; gap:2px; }
