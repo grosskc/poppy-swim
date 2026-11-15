@@ -654,7 +654,63 @@
       }
     }
   ],
-  "provisionalTimes": [],
+  "provisionalTimes": [
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:16.03",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 3
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "39.27",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 1
+    },
+    {
+      "event": "100 IM",
+      "course": "SCY",
+      "time": "1:17.63",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "33.80",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:25.59",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 2
+    }
+  ],
   "honors": [
     {
       "event": "25 Free",
@@ -1001,6 +1057,61 @@
       "source": "MySwimApp",
       "splits": [],
       "provisional": false
+    },
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:16.03",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 3
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "39.27",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 1
+    },
+    {
+      "event": "100 IM",
+      "course": "SCY",
+      "time": "1:17.63",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "33.80",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:25.59",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 2
     }
   ],
   "seasonTargets": {
@@ -1087,6 +1198,133 @@
           }
         ]
       },
+      "entriesSource": "psych sheet, meet timeline, and Meet Mobile screenshot",
+      "entriesSourceNote": "Heat and Lane are from a Meet Mobile screenshot where listed (50 Back: Heat 14, Lane 3); otherwise TBA — no public heat sheet was found. Event numbers, seeds, and estimated start times come from the psych sheet (Nov 10) and the meet timeline. Individual times are unofficial, from Meet Mobile, until official results are posted. 100 Fly was NS (no swim).",
+      "entriesRelaysNote": "Relays are listed separately below the individual table. The public psych sheet did not name her relay legs or heats. Unofficial team times are from a Meet Mobile screenshot.",
+      "entries": [
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "237",
+          "name": "100 Back",
+          "stroke": "Back",
+          "heat": null,
+          "lane": null,
+          "seed": "1:13.90",
+          "estStart": "12:37 PM",
+          "time": "1:16.03",
+          "place": 3,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "243",
+          "name": "100 Fly",
+          "stroke": "Fly",
+          "heat": null,
+          "lane": null,
+          "seed": "1:24.06",
+          "estStart": "1:37 PM",
+          "status": "NS"
+        },
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "253",
+          "name": "50 Breast",
+          "stroke": "Breast",
+          "heat": null,
+          "lane": null,
+          "seed": "39.96",
+          "estStart": "2:47 PM",
+          "time": "39.27",
+          "place": 1,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "257",
+          "name": "100 IM",
+          "stroke": "IM",
+          "heat": null,
+          "lane": null,
+          "seed": "1:22.32",
+          "estStart": "3:16 PM",
+          "time": "1:17.63",
+          "place": 4,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "eventNumber": "343",
+          "name": "50 Fly",
+          "stroke": "Fly",
+          "heat": null,
+          "lane": null,
+          "seed": "36.43",
+          "estStart": "12:57 PM",
+          "time": "33.80",
+          "place": 4,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "eventNumber": "349",
+          "name": "100 Breast",
+          "stroke": "Breast",
+          "heat": null,
+          "lane": null,
+          "seed": "1:26.84",
+          "estStart": "1:40 PM",
+          "time": "1:25.59",
+          "place": 2,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "eventNumber": "359",
+          "name": "50 Back",
+          "stroke": "Back",
+          "heat": 14,
+          "lane": 3,
+          "seed": "35.77",
+          "estStart": "3:21 PM",
+          "heatLaneSource": "Meet Mobile screenshot"
+        }
+      ],
       "links": [
         {
           "label": "Meet info",
@@ -1113,7 +1351,23 @@
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9z1nch03wgt4n37fe1r57i"
         }
       ],
-      "notes": "Results were not posted as of this snapshot."
+      "notes": "Official results were not posted as of this snapshot. Individual times and the 50 Back heat and lane are unofficial, from a Meet Mobile screenshot Kevin sent.",
+      "relays": [
+        {
+          "eventNumber": "231",
+          "name": "200 Free Relay",
+          "time": "1:57.72",
+          "place": 1,
+          "date": "2026-11-14"
+        },
+        {
+          "eventNumber": "337",
+          "name": "200 Medley Relay",
+          "time": "2:10.21",
+          "place": 1,
+          "date": "2026-11-15"
+        }
+      ]
     },
     {
       "id": "cmw57c22t01b015obb85d0rko",
@@ -1516,10 +1770,15 @@
       },
       "links": [
         {
+          "label": "MySwimApp profile",
+          "url": "https://myswimapp.com/swimmer/140062"
+        },
+        {
           "label": "Captyn meet page",
           "url": "https://daytonraiders.captyn.com/account/meets/cmu4ijvnj0scv1cn1xyugk956"
         }
-      ]
+      ],
+      "notes": "No Ohio LSC results PDF is on file for this Indiana meet. Times are from the official MySwimApp snapshot."
     },
     {
       "id": "cmu9y616c035n0xmvugltb04k",
@@ -1540,6 +1799,14 @@
         "statusLabel": "Swam"
       },
       "links": [
+        {
+          "label": "Results PDF",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/2026-paysons-journey-memorial-swim-meet-results_029507.pdf"
+        },
+        {
+          "label": "Results zip",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/meet-results-2026-oh-dr-payson-s-journey-memorial-meet-16oct2026-no-dobs_099083.zip"
+        },
         {
           "label": "Captyn meet page",
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9y616c035n0xmvugltb04k"
@@ -1566,10 +1833,19 @@
       },
       "links": [
         {
+          "label": "Results PDF",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/2026-dr-intrasquad-results_021531.pdf"
+        },
+        {
+          "label": "Results zip",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/meet-results-2026-oh-dr-intrasquad-26sep2026-no-dobs_061932.zip"
+        },
+        {
           "label": "Captyn meet page",
           "url": "https://daytonraiders.captyn.com/account/meets/cmtkb9jwb00sz1olpkmym0dls"
         }
-      ]
+      ],
+      "notes": "“Window” on 50 Back means this is her Mid-States-eligible time (lifetime best 35.77 is from March). 25 Free is a team record and is not a USA 10&U motivational event."
     }
   ]
 }

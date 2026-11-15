@@ -78,7 +78,7 @@ Do not invent times, ranks, meets, venues, warm-up or start times, fees, or spli
 
 A separate routine should check Captyn (and Ohio results / host pages in meet weeks) a couple of times a week, and more often during meet week. Alert Kevin only on new meets, deadlines 7 and 2 days out, posted heat sheets or results, and declaration-status changes. Never submit entries or tick event boxes.
 
-For each Dayton Raiders meet, keep one object in `meets[]` with a common shape. Upcoming and in-progress meets (`endDate` on or after today in America/New_York) render first; past meets are listed under a collapsed section.
+For each Dayton Raiders meet, keep one object in `meets[]` with a common shape. Upcoming and in-progress meets (`endDate` on or after today in America/New_York) render first. Meets she already swam since `meta.midStatesWindowStart` (Sept 1, 2026) appear under a visible **This season** section, with official (and unofficial, flagged) times from `swimHistory` / `provisionalTimes` and results links.
 
 ```json
 {
@@ -133,6 +133,46 @@ For each Dayton Raiders meet, keep one object in `meets[]` with a common shape. 
 ```
 
 `poppy.status` values in use: `opted_in_no_events`, `swam`, `not_eligible`, `info_only`. Use `poppy.events` as `{ "session", "items": [] }` groups when she is entered or has already swam. `deadlineKind` may be `team`, `host`, or `soft` (an approximate date with no ISO deadline).
+
+### Race-day entries (Event · Heat · Lane · Stroke)
+
+When Poppy is entered in a current or upcoming meet, add a per-meet `entries` array. The Meets card shows it as an Event · Heat · Lane · Stroke table with a **Print notecard** button (one 6×4 inch landscape card per day). Never invent a heat or lane.
+
+```json
+{
+  "date": "2026-11-15",
+  "dayLabel": "Sunday, Nov 15",
+  "session": "Session 11",
+  "sessionDetail": "10 & Under · North pool",
+  "warmup": "11:30–12:25 PM",
+  "start": "12:30 PM",
+  "eventNumber": "359",
+  "name": "50 Back",
+  "stroke": "Back",
+  "heat": 14,
+  "lane": 3,
+  "heatLaneSource": "Meet Mobile screenshot",
+  "seed": "35.77",
+  "estStart": "3:21 PM",
+  "time": null,
+  "status": null
+}
+```
+
+- `heat` / `lane`: a number or string when known; `null` or omitted renders as **TBA**.
+- `heatLaneSource`: how that heat and lane were obtained, e.g. `"posted heat sheet PDF"` or `"Meet Mobile screenshot"`.
+- `estStart` is the published session timeline for the event, not a heat start time. Label it that way in `entriesSourceNote`.
+- `time` / `place`: unofficial or official finish, when known. `status: "NS"` for a no-swim (do not also add a provisional time).
+- Meet-level fields: `entriesSource`, `entriesSourceNote`, `entriesRelaysNote`, and optional `relays` (team results only — never store a relay as an individual `provisionalTimes` row).
+- Omit a relay from `entries` unless a heat sheet or Meet Mobile screenshot actually lists her heat, lane, and (if present) leg.
+
+#### How to fill heats and lanes
+
+1. **Public heat sheet PDF** (preferred when posted). Check Captyn `api.captyn.com/s3/<docid>` documents, the Ohio LSC meet page, and the host team site, 1–3 days before the meet and again on race morning. If a heat sheet lists Poppy, copy event number, heat, and lane exactly, set `entriesSource` to `"posted heat sheet PDF"`, and add a "Heat sheet" link.
+2. **Meet Mobile screenshots from Kevin.** Meet Mobile is fed by the host’s Hy-Tek Meet Manager file after they seed the meet, usually a day or two beforehand, and then live results. It has no public website or API, and its terms do not allow scraping — do not try to log in or harvest it. When Kevin sends screenshots, transcribe only what is visible: heat, lane, and any individual times or NS. Set `heatLaneSource` to `"Meet Mobile screenshot"` and `entriesSource` so it includes that phrase (for example `"psych sheet, meet timeline, and Meet Mobile screenshot"`). Add finished individual times to `provisionalTimes[]` (and to `swimHistory[]` with `"provisional": true`) with `source: "Meet Mobile screenshot (Kevin)"`. They follow the usual unofficial rules: they count in the display, carry an Unofficial marker, keep official snapshot ranks with “rank update pending,” and are dropped when an official result for the same event, course, and date is posted. Do not add NS, DQ, or relay times as individual swims.
+3. If neither source has heats yet, leave Heat/Lane as TBA, keep event numbers and seeds from the psych sheet, and say so clearly in `entriesSourceNote`.
+
+The meets-watch routine should look for a posted heat sheet **1–3 days before each meet** (and more often during meet week), update `entries` when one appears, and message Kevin when a heat sheet or results post — or remind him to send Meet Mobile screenshots if no public heat sheet is up.
 
 ### Documents and Captyn links
 

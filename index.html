@@ -208,7 +208,118 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
   .meet-card { padding:14px; }
   .meet-card h2 { font-size:17px; }
   .suggested li { grid-template-columns:1fr; gap:0; }
+  table.ehls-table { display:none !important; }
+  .ehls-cards { display:block !important; }
+  .ehls-head { flex-direction:column; align-items:stretch; }
+  .ehls-print-btn { width:100%; text-align:center; }
 }
+
+
+.ehls { margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); }
+.ehls-head { display:flex; justify-content:space-between; align-items:flex-end; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+.ehls h3 { margin:0; font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:none; color:var(--ink); }
+.ehls .hint { font-size:12px; font-weight:600; color:var(--warn); max-width:36em; line-height:1.4; margin:6px 0 0; }
+.ehls-print-btn {
+  appearance:none; border:0; background:var(--ink); color:#fff;
+  font:800 12.5px/1 var(--sans); letter-spacing:.03em;
+  padding:9px 14px; border-radius:999px; cursor:pointer; white-space:nowrap;
+}
+.ehls-print-btn:hover { background:#18314A; }
+table.ehls-table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; margin-top:8px; }
+table.ehls-table th {
+  text-align:left; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); padding:6px 8px; border-bottom:2px solid var(--ink);
+}
+table.ehls-table td { padding:8px; border-bottom:1px solid var(--line); font-size:13px; font-weight:600; color:var(--ink-soft); vertical-align:middle; }
+table.ehls-table tr:last-child td { border-bottom:0; }
+table.ehls-table .ev { font-weight:800; color:var(--ink); }
+table.ehls-table .tba { color:var(--warn); font-weight:800; letter-spacing:.04em; font-size:12px; }
+table.ehls-table .write { width:4.2em; }
+table.ehls-table .blank, .ehls-card .blank { display:block; height:22px; border-bottom:1.5px solid #C5D2DE; min-width:3.6em; }
+.ehls-day, table.ehls-table .ehls-day td {
+  font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--aqua-deep);
+  background:#EAF7F6; border-bottom:0;
+}
+.ehls-cards { display:none; }
+.ehls-card { border-top:1px solid var(--line); padding:10px 0 8px; }
+.ehls-card:first-of-type { border-top:0; }
+.ehls-card .row1 { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.ehls-card .ev { font-weight:800; font-size:15px; letter-spacing:-.02em; color:var(--ink); }
+.ehls-card .stk { font-size:12px; font-weight:800; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; }
+.ehls-card .meta { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px 8px; margin-top:6px; font-size:12.5px; font-weight:600; color:var(--ink-soft); }
+.ehls-card .meta .lab { display:block; font-size:9.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.ehls-card .tba { color:var(--warn); font-weight:800; letter-spacing:.04em; }
+.season-past { margin:22px 0 8px; }
+.season-past .section-head { margin-bottom:10px; }
+.past-card {
+  background:var(--card); border-radius:var(--radius); border:1px solid rgba(16,42,67,.04);
+  box-shadow:var(--shadow); padding:14px 16px 12px; margin-bottom:10px;
+}
+.past-card h3 { margin:0; font-size:16px; font-weight:800; letter-spacing:-.02em; text-transform:none; color:var(--ink); }
+.past-meta { font-size:12.5px; font-weight:600; color:var(--muted); margin:2px 0 8px; }
+.past-swims { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+.past-swims td { padding:4px 8px 4px 0; font-size:13px; font-weight:600; color:var(--ink-soft); }
+.past-swims .ev { font-weight:800; color:var(--ink); }
+.past-swims .tm { font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; }
+.past-flag { display:inline-flex; align-items:center; border-radius:999px; padding:1px 6px; font-size:9.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-left:6px; vertical-align:middle; }
+.past-flag.best { background:var(--ok-bg); color:var(--ok); }
+.past-flag.record { background:#F8E7B0; color:#8A5A00; }
+.past-flag.window { background:#E3EEF9; color:#1D4E89; }
+#ehls-print { display:none; }
+.notecard {
+  background:#fffef8; color:var(--ink);
+  border:1.5px solid #1A2A3A; border-radius:6px;
+  padding:14px 16px 12px; width:100%;
+  display:flex; flex-direction:column;
+}
+.nc-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
+.nc-name { font-weight:800; font-size:22px; letter-spacing:-.03em; line-height:1.05; margin:0; text-transform:none; }
+.nc-meet { font-weight:800; font-size:12.5px; color:var(--ink-soft); margin:2px 0 0; }
+.nc-session { text-align:right; font-weight:800; font-size:13px; line-height:1.25; }
+.nc-session .day { font-size:15px; letter-spacing:-.02em; }
+.nc-times { font-size:12.5px; font-weight:700; color:var(--ink-soft); margin:6px 0 8px; padding-bottom:6px; border-bottom:2px solid var(--ink); }
+.nc-table { width:100%; border-collapse:collapse; flex:1; font-variant-numeric:tabular-nums; }
+.nc-table th { text-align:left; font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:3px 6px 4px 0; }
+.nc-table th.ctr, .nc-table td.ctr { text-align:center; }
+.nc-table th.r, .nc-table td.r { text-align:right; }
+.nc-table td { padding:6px 6px 6px 0; border-top:1px solid #E4E0D4; font-size:15px; font-weight:700; vertical-align:middle; }
+.nc-table .ev { font-weight:800; font-size:16px; letter-spacing:-.02em; color:var(--ink); }
+.nc-table .stk { font-size:14px; font-weight:800; color:var(--ink-soft); }
+.nc-table .tba { color:var(--warn); font-weight:800; font-size:13px; letter-spacing:.04em; }
+.nc-table .line { display:block; width:3.2em; height:1.15em; border-bottom:1.5px solid #9AA8B4; margin-left:auto; }
+.nc-foot { margin-top:auto; padding-top:6px; font-size:9.5px; font-weight:650; color:var(--muted); letter-spacing:.01em; }
+
+@page { size: 6in 4in; margin: 0.18in; }
+@media print {
+  body.print-ehls header.hero,
+  body.print-ehls .status,
+  body.print-ehls .wrap,
+  body.print-ehls #toast,
+  body.print-ehls #modal-bg,
+  body.print-ehls #file { display:none !important; }
+  body.print-ehls { background:#fff; }
+  body.print-ehls #ehls-print { display:block !important; }
+  body.print-ehls .print-page {
+    display:block;
+    width: 5.64in;
+    height: 3.64in;
+    page-break-after: always;
+    break-after: page;
+  }
+  body.print-ehls .print-page:last-child { page-break-after: auto; break-after: auto; }
+  body.print-ehls .print-page .notecard {
+    box-shadow:none; border-radius:0; border:0;
+    width:100%; height:100%; padding:0;
+  }
+}
+
+.ehls-time { font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; }
+.ehls-time.ns { letter-spacing:.04em; color:var(--muted); }
+.ehls-time .uo { display:inline-block; margin-left:6px; font-size:9.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#8A6D3B; }
+.ehls-time .place { font-weight:700; color:var(--ink-soft); }
+.ehls-relays { margin-top:10px; font-size:13px; font-weight:600; color:var(--ink-soft); line-height:1.45; }
+.ehls-relays strong { color:var(--ink); font-weight:800; }
+.past-flag.unofficial { background:#F8EEDF; color:#8A6D3B; }
 
 </style>
 </head>
@@ -240,6 +351,7 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
   </div>
 </header>
 <div id="app"></div>
+<div id="ehls-print" class="ehls-print" aria-hidden="true"></div>
 <div id="toast" class="toast" role="status"></div>
 <div id="modal-bg" class="modal-bg"></div>
 <script>
@@ -899,7 +1011,63 @@ const DATA = {
       }
     }
   ],
-  "provisionalTimes": [],
+  "provisionalTimes": [
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:16.03",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 3
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "39.27",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 1
+    },
+    {
+      "event": "100 IM",
+      "course": "SCY",
+      "time": "1:17.63",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "33.80",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:25.59",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 2
+    }
+  ],
   "honors": [
     {
       "event": "25 Free",
@@ -1246,6 +1414,61 @@ const DATA = {
       "source": "MySwimApp",
       "splits": [],
       "provisional": false
+    },
+    {
+      "event": "100 Back",
+      "course": "SCY",
+      "time": "1:16.03",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 3
+    },
+    {
+      "event": "50 Breast",
+      "course": "SCY",
+      "time": "39.27",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 1
+    },
+    {
+      "event": "100 IM",
+      "course": "SCY",
+      "time": "1:17.63",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "33.80",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 4
+    },
+    {
+      "event": "100 Breast",
+      "course": "SCY",
+      "time": "1:25.59",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Meet Mobile screenshot (Kevin)",
+      "provisional": true,
+      "splits": [],
+      "place": 2
     }
   ],
   "seasonTargets": {
@@ -1332,6 +1555,133 @@ const DATA = {
           }
         ]
       },
+      "entriesSource": "psych sheet, meet timeline, and Meet Mobile screenshot",
+      "entriesSourceNote": "Heat and Lane are from a Meet Mobile screenshot where listed (50 Back: Heat 14, Lane 3); otherwise TBA — no public heat sheet was found. Event numbers, seeds, and estimated start times come from the psych sheet (Nov 10) and the meet timeline. Individual times are unofficial, from Meet Mobile, until official results are posted. 100 Fly was NS (no swim).",
+      "entriesRelaysNote": "Relays are listed separately below the individual table. The public psych sheet did not name her relay legs or heats. Unofficial team times are from a Meet Mobile screenshot.",
+      "entries": [
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "237",
+          "name": "100 Back",
+          "stroke": "Back",
+          "heat": null,
+          "lane": null,
+          "seed": "1:13.90",
+          "estStart": "12:37 PM",
+          "time": "1:16.03",
+          "place": 3,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "243",
+          "name": "100 Fly",
+          "stroke": "Fly",
+          "heat": null,
+          "lane": null,
+          "seed": "1:24.06",
+          "estStart": "1:37 PM",
+          "status": "NS"
+        },
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "253",
+          "name": "50 Breast",
+          "stroke": "Breast",
+          "heat": null,
+          "lane": null,
+          "seed": "39.96",
+          "estStart": "2:47 PM",
+          "time": "39.27",
+          "place": 1,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-14",
+          "dayLabel": "Saturday, Nov 14",
+          "session": "Session 6",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:15–12:10 PM",
+          "start": "12:15 PM",
+          "eventNumber": "257",
+          "name": "100 IM",
+          "stroke": "IM",
+          "heat": null,
+          "lane": null,
+          "seed": "1:22.32",
+          "estStart": "3:16 PM",
+          "time": "1:17.63",
+          "place": 4,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "eventNumber": "343",
+          "name": "50 Fly",
+          "stroke": "Fly",
+          "heat": null,
+          "lane": null,
+          "seed": "36.43",
+          "estStart": "12:57 PM",
+          "time": "33.80",
+          "place": 4,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "eventNumber": "349",
+          "name": "100 Breast",
+          "stroke": "Breast",
+          "heat": null,
+          "lane": null,
+          "seed": "1:26.84",
+          "estStart": "1:40 PM",
+          "time": "1:25.59",
+          "place": 2,
+          "provisional": true
+        },
+        {
+          "date": "2026-11-15",
+          "dayLabel": "Sunday, Nov 15",
+          "session": "Session 11",
+          "sessionDetail": "10 & Under · North pool",
+          "warmup": "11:30–12:25 PM",
+          "start": "12:30 PM",
+          "eventNumber": "359",
+          "name": "50 Back",
+          "stroke": "Back",
+          "heat": 14,
+          "lane": 3,
+          "seed": "35.77",
+          "estStart": "3:21 PM",
+          "heatLaneSource": "Meet Mobile screenshot"
+        }
+      ],
       "links": [
         {
           "label": "Meet info",
@@ -1358,7 +1708,23 @@ const DATA = {
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9z1nch03wgt4n37fe1r57i"
         }
       ],
-      "notes": "Results were not posted as of this snapshot."
+      "notes": "Official results were not posted as of this snapshot. Individual times and the 50 Back heat and lane are unofficial, from a Meet Mobile screenshot Kevin sent.",
+      "relays": [
+        {
+          "eventNumber": "231",
+          "name": "200 Free Relay",
+          "time": "1:57.72",
+          "place": 1,
+          "date": "2026-11-14"
+        },
+        {
+          "eventNumber": "337",
+          "name": "200 Medley Relay",
+          "time": "2:10.21",
+          "place": 1,
+          "date": "2026-11-15"
+        }
+      ]
     },
     {
       "id": "cmw57c22t01b015obb85d0rko",
@@ -1761,10 +2127,15 @@ const DATA = {
       },
       "links": [
         {
+          "label": "MySwimApp profile",
+          "url": "https://myswimapp.com/swimmer/140062"
+        },
+        {
           "label": "Captyn meet page",
           "url": "https://daytonraiders.captyn.com/account/meets/cmu4ijvnj0scv1cn1xyugk956"
         }
-      ]
+      ],
+      "notes": "No Ohio LSC results PDF is on file for this Indiana meet. Times are from the official MySwimApp snapshot."
     },
     {
       "id": "cmu9y616c035n0xmvugltb04k",
@@ -1785,6 +2156,14 @@ const DATA = {
         "statusLabel": "Swam"
       },
       "links": [
+        {
+          "label": "Results PDF",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/2026-paysons-journey-memorial-swim-meet-results_029507.pdf"
+        },
+        {
+          "label": "Results zip",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/meet-results-2026-oh-dr-payson-s-journey-memorial-meet-16oct2026-no-dobs_099083.zip"
+        },
         {
           "label": "Captyn meet page",
           "url": "https://daytonraiders.captyn.com/account/meets/cmu9y616c035n0xmvugltb04k"
@@ -1811,10 +2190,19 @@ const DATA = {
       },
       "links": [
         {
+          "label": "Results PDF",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/2026-dr-intrasquad-results_021531.pdf"
+        },
+        {
+          "label": "Results zip",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/meet-results-2026-oh-dr-intrasquad-26sep2026-no-dobs_061932.zip"
+        },
+        {
           "label": "Captyn meet page",
           "url": "https://daytonraiders.captyn.com/account/meets/cmtkb9jwb00sz1olpkmym0dls"
         }
-      ]
+      ],
+      "notes": "“Window” on 50 Back means this is her Mid-States-eligible time (lifetime best 35.77 is from March). 25 Free is a team record and is not a USA 10&U motivational event."
     }
   ]
 };
@@ -2563,6 +2951,348 @@ function renderDeadlineStrip(meets, today){
   }
   return box;
 }
+
+function ehlsValue(v){
+  if(v==null || v==="" ) return null;
+  const s=String(v).trim();
+  if(!s || s.toUpperCase()==="TBA") return null;
+  return s;
+}
+function groupEntries(rows){
+  const groups=[];
+  let cur=null;
+  for(const r of rows||[]){
+    const key=(r.date||"")+"|"+(r.session||"");
+    if(!cur || cur.key!==key){
+      cur={
+        key,
+        date:r.date,
+        dayLabel:r.dayLabel,
+        session:r.session,
+        sessionDetail:r.sessionDetail,
+        warmup:r.warmup,
+        start:r.start,
+        rows:[]
+      };
+      groups.push(cur);
+    }
+    cur.rows.push(r);
+  }
+  return groups;
+}
+function entriesHaveTBA(rows){
+  return (rows||[]).some(r=>!ehlsValue(r.heat)||!ehlsValue(r.lane));
+}
+function sessionBand(g){
+  const bits=[];
+  if(g.dayLabel) bits.push(g.dayLabel);
+  if(g.session) bits.push(g.session);
+  if(g.warmup) bits.push("Warm-up "+g.warmup);
+  if(g.start) bits.push("Start "+g.start);
+  if(g.sessionDetail) bits.push(g.sessionDetail);
+  return bits.join(" · ");
+}
+function notecardFoot(m){
+  const rows=m.entries||[];
+  const tba=entriesHaveTBA(rows);
+  const anyHeat=rows.some(r=>ehlsValue(r.heat)&&ehlsValue(r.lane));
+  const src=(m.entriesSource||"").toLowerCase();
+  let heatLine;
+  if(tba && anyHeat && src.includes("meet mobile")){
+    heatLine="Heats and lanes from a Meet Mobile screenshot where listed; otherwise TBA.";
+  } else if(tba){
+    heatLine="Heat & Lane TBA — no public heat sheet as of "+(DATA.meta.meetsAsOfLabel||"this snapshot")+".";
+  } else if(src.includes("meet mobile")){
+    heatLine="Heats and lanes from a Meet Mobile screenshot.";
+  } else if(src.includes("heat sheet")){
+    heatLine="Heats and lanes from the posted heat sheet.";
+  } else {
+    heatLine=m.entriesSource ? "Heats and lanes: "+m.entriesSource+"." : "";
+  }
+  return (heatLine+" Start times are from the meet timeline. Times are unofficial until official results are posted.").trim();
+}
+function ordinal(n){
+  const x=Number(n);
+  if(!Number.isFinite(x)) return String(n);
+  const v=Math.abs(x)%100, v1=v%10;
+  const suf=(v>=11&&v<=13)?"th":v1===1?"st":v1===2?"nd":v1===3?"rd":"th";
+  return x+suf;
+}
+function entryResult(r){
+  const status=String(r.status||r.result||"").toUpperCase();
+  if(r.ns || status==="NS" || status==="NO SWIM") return {kind:"ns", text:"NS"};
+  if(r.time) return {kind:"time", text:r.time, place:r.place, unofficial:r.provisional!==false};
+  return {kind:"blank"};
+}
+function entryTimeNode(r, compact){
+  const res=entryResult(r);
+  if(res.kind==="ns") return el("span",{class:"ehls-time ns",text:"NS"});
+  if(res.kind==="time"){
+    const kids=[document.createTextNode(res.text)];
+    if(res.place && !compact) kids.push(el("span",{class:"place",text:" · "+ordinal(res.place)}));
+    if(res.unofficial && !compact) kids.push(el("span",{class:"uo",text:"Unofficial"}));
+    return el("span",{class:"ehls-time"+(res.unofficial?" unofficial":"")},kids);
+  }
+  return el("span",{class:"blank","aria-hidden":"true"});
+}
+function eventCell(r){
+  const num=r.eventNumber?"#"+r.eventNumber+" ":"";
+  return num+(r.name||"");
+}
+function renderEhlsTable(m){
+  const rows=m.entries||[];
+  if(!rows.length) return null;
+  const groups=groupEntries(rows);
+  const tba=entriesHaveTBA(rows);
+  const hint=m.entriesSourceNote || (tba
+    ? "Heat and Lane are TBA — no public heat sheet was found. Event numbers and seeds come from the psych sheet."
+    : null);
+  const thead=el("thead",{},[el("tr",{},[
+    el("th",{text:"Day"}),
+    el("th",{text:"Event"}),
+    el("th",{text:"Stroke"}),
+    el("th",{text:"Heat"}),
+    el("th",{text:"Lane"}),
+    el("th",{text:"Seed"}),
+    el("th",{text:"Est. start"}),
+    el("th",{text:"Time"})
+  ])]);
+  const tb=el("tbody");
+  for(const g of groups){
+    tb.appendChild(el("tr",{class:"ehls-day"},[el("td",{colspan:"8",text:sessionBand(g)})]));
+    const dayShort=(g.dayLabel||"").slice(0,3) || "";
+    for(const r of g.rows){
+      const heat=ehlsValue(r.heat);
+      const lane=ehlsValue(r.lane);
+      tb.appendChild(el("tr",{},[
+        el("td",{text:dayShort}),
+        el("td",{class:"ev",text:eventCell(r)}),
+        el("td",{text:r.stroke||""}),
+        el("td",{class:heat?"":"tba",text:heat||"TBA"}),
+        el("td",{class:lane?"":"tba",text:lane||"TBA"}),
+        el("td",{text:r.seed||""}),
+        el("td",{text:r.estStart||""}),
+        el("td",{class:"write"},[entryTimeNode(r,false)])
+      ]));
+    }
+  }
+  const cards=el("div",{class:"ehls-cards","aria-label":"Event heat lane stroke, phone layout"});
+  for(const g of groups){
+    cards.appendChild(el("div",{class:"ehls-day",text:sessionBand(g)}));
+    for(const r of g.rows){
+      const heat=ehlsValue(r.heat);
+      const lane=ehlsValue(r.lane);
+      cards.appendChild(el("div",{class:"ehls-card"},[
+        el("div",{class:"row1"},[
+          el("div",{class:"ev",text:eventCell(r)}),
+          el("div",{class:"stk",text:r.stroke||""})
+        ]),
+        el("div",{class:"meta"},[
+          el("div",{},[el("span",{class:"lab",text:"Heat"}), el("span",{class:heat?"":"tba",text:heat||"TBA"})]),
+          el("div",{},[el("span",{class:"lab",text:"Lane"}), el("span",{class:lane?"":"tba",text:lane||"TBA"})]),
+          el("div",{},[el("span",{class:"lab",text:"Seed"}), document.createTextNode(r.seed||"")]),
+          el("div",{},[el("span",{class:"lab",text:"Est. start"}), document.createTextNode(r.estStart||"")]),
+          el("div",{},[el("span",{class:"lab",text:"Time"}), entryTimeNode(r,false)])
+        ])
+      ]));
+    }
+  }
+  const notes=[];
+  if(m.entriesRelaysNote) notes.push(m.entriesRelaysNote);
+  let relays=null;
+  if(m.relays && m.relays.length){
+    const parts=m.relays.map(r=>{
+      const num=r.eventNumber?"#"+r.eventNumber+" ":"";
+      const place=r.place!=null?" ("+ordinal(r.place)+")":"";
+      return num+(r.name||"Relay")+" "+(r.time||"")+place;
+    });
+    relays=el("p",{class:"ehls-relays"},[
+      el("strong",{text:"Relays (unofficial): "}),
+      document.createTextNode(parts.join(" · ")+". Team results from a Meet Mobile screenshot, not individual times.")
+    ]);
+  }
+  const box=el("div",{class:"ehls",id:"ehls-"+m.id},[
+    el("div",{class:"ehls-head"},[
+      el("div",{},[
+        el("h3",{text:"Event · Heat · Lane · Stroke"}),
+        hint?el("p",{class:"hint",text:hint}):null
+      ]),
+      el("button",{class:"ehls-print-btn",type:"button",onclick:()=>printMeetNotecards(m),text:"Print notecard"})
+    ]),
+    el("table",{class:"ehls-table"},[thead, tb]),
+    cards,
+    relays,
+    notes.length?el("p",{class:"meet-note",text:notes.join(" ")}):null
+  ]);
+  return box;
+}
+function buildNotecard(m, g){
+  const foot=notecardFoot(m);
+  const tb=el("tbody");
+  for(const r of g.rows){
+    const heat=ehlsValue(r.heat);
+    const lane=ehlsValue(r.lane);
+    tb.appendChild(el("tr",{},[
+      el("td",{class:"ev",text:eventCell(r)}),
+      el("td",{class:"stk",text:r.stroke||""}),
+      el("td",{class:"ctr"+(heat?"":" tba"),text:heat||"TBA"}),
+      el("td",{class:"ctr"+(lane?"":" tba"),text:lane||"TBA"}),
+      el("td",{class:"r",text:r.seed||""}),
+      el("td",{class:"r",text:r.estStart||""}),
+      el("td",{class:"r"},[entryTimeNode(r,true)])
+    ]));
+  }
+  return el("div",{class:"notecard"},[
+    el("div",{class:"nc-top"},[
+      el("div",{},[
+        el("p",{class:"nc-name",text:DATA.meta.swimmer||"Poppy Gawelek-Gross"}),
+        el("p",{class:"nc-meet",text:m.name})
+      ]),
+      el("div",{class:"nc-session"},[
+        el("div",{class:"day",text:g.dayLabel||""}),
+        document.createTextNode((g.session||"")+(g.sessionDetail?" · "+g.sessionDetail:""))
+      ])
+    ]),
+    el("div",{class:"nc-times",text:"Warm-up "+(g.warmup||"TBA")+" · Start "+(g.start||"TBA")}),
+    el("table",{class:"nc-table"},[
+      el("thead",{},[el("tr",{},[
+        el("th",{text:"Event"}),
+        el("th",{text:"Stroke"}),
+        el("th",{class:"ctr",text:"Heat"}),
+        el("th",{class:"ctr",text:"Lane"}),
+        el("th",{class:"r",text:"Seed"}),
+        el("th",{class:"r",text:"Start"}),
+        el("th",{class:"r",text:"Time"})
+      ])]),
+      tb
+    ]),
+    foot?el("div",{class:"nc-foot",text:foot}):null
+  ]);
+}
+function printMeetNotecards(m){
+  const box=document.getElementById("ehls-print");
+  if(!box || !(m.entries||[]).length) return;
+  box.replaceChildren();
+  for(const g of groupEntries(m.entries)){
+    box.appendChild(el("div",{class:"print-page"},[buildNotecard(m,g)]));
+  }
+  document.body.classList.add("print-ehls");
+  const cleanup=()=>{
+    document.body.classList.remove("print-ehls");
+    box.replaceChildren();
+    window.removeEventListener("afterprint", cleanup);
+  };
+  window.addEventListener("afterprint", cleanup);
+  window.print();
+}
+function seasonStart(){
+  return (DATA.meta && DATA.meta.midStatesWindowStart) || "2026-09-01";
+}
+function swimsForMeet(m, state){
+  const names=new Set([m.name, m.officialName].filter(Boolean));
+  const all=[...(state.history||[]), ...(state.provisional||[])];
+  const seen=new Set();
+  const hist=[];
+  for(const s of all){
+    if(!s || !s.meet || !names.has(s.meet) || !s.date || !s.time) continue;
+    const k=(s.event||"")+"|"+(s.course||"")+"|"+s.date+"|"+s.time;
+    if(seen.has(k)) continue;
+    seen.add(k);
+    hist.push(s);
+  }
+  hist.sort((a,b)=>{
+    if(a.date!==b.date) return a.date<b.date?-1:1;
+    const order=eventOrder(a.course||"SCY");
+    return (order.get(a.event)||99)-(order.get(b.event)||99);
+  });
+  return hist;
+}
+function eventOrder(course){
+  const map=new Map();
+  const list=(DATA.eventCatalog && DATA.eventCatalog[courseKey(course)])||[];
+  list.forEach((e,i)=>map.set(e.name,i));
+  if(!map.has("25 Free")) map.set("25 Free", (map.get("50 Free")||0)+0.5);
+  return map;
+}
+function officialBestRow(event, course){
+  return (DATA.officialTimes||[]).find(t=>t.event===event && t.course===course) || null;
+}
+function windowBestFor(event, course, state){
+  const start=seasonStart();
+  const rows=[...(state.history||[]), ...(state.provisional||[])].filter(s=>s.event===event && s.course===course && s.date>=start && s.time);
+  if(!rows.length) return null;
+  return rows.reduce((b,s)=> toSec(s.time)<toSec(b.time)?s:b);
+}
+function madeStandard(event, course, time){
+  const table=DATA.standards && DATA.standards[courseKey(course)];
+  const row=table && table[event];
+  if(!row || !time) return null;
+  const order=["AAAA","AAA","AA","A","BB","B"];
+  for(const name of order){
+    if(row[name] && toSec(time)<=toSec(row[name])) return name;
+  }
+  return null;
+}
+function formatSwimDate(iso){
+  if(!iso) return "";
+  const [y,mo,da]=iso.split("-").map(Number);
+  const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return (months[mo-1]||"")+" "+da;
+}
+function renderPastCard(m, state){
+  const swims=swimsForMeet(m, state);
+  const venueBits=[];
+  if(m.datesLabel) venueBits.push(m.datesLabel);
+  if(m.venue && m.venue.name) venueBits.push(m.venue.name);
+  else if(m.host) venueBits.push("Host: "+m.host);
+  const table=el("table",{class:"past-swims"});
+  for(const s of swims){
+    const official=officialBestRow(s.event, s.course);
+    const isOfficialBest=official && official.time===s.time && official.date===s.date;
+    const isProvBest=!!s.provisional && (!official || toSec(s.time)<toSec(official.time));
+    const isBest=isOfficialBest || isProvBest;
+    const windowRow=windowBestFor(s.event, s.course, state);
+    const isWindow=windowRow && windowRow.time===s.time && windowRow.date===s.date && official && !(official.time===s.time && official.date===s.date);
+    const honor=(DATA.honors||[]).find(h=>h.event===s.event && h.course===s.course && h.time===s.time && h.date===s.date);
+    const std=isOfficialBest?madeStandard(s.event, s.course, s.time):null;
+    const flags=[];
+    if(isBest) flags.push(el("span",{class:"past-flag best",text:"Best"}));
+    if(s.provisional) flags.push(el("span",{class:"past-flag unofficial",text:"Unofficial"}));
+    if(std==="AAA"||std==="AAAA") flags.push(el("span",{class:"past-flag record",text:std}));
+    if(isWindow) flags.push(el("span",{class:"past-flag window",text:"Window"}));
+    if(honor && honor.note && /team record/i.test(honor.note)) flags.push(el("span",{class:"past-flag record",text:"Team record"}));
+    const info=el("td",{},[document.createTextNode(formatSwimDate(s.date))].concat(flags));
+    table.appendChild(el("tr",{},[
+      el("td",{class:"ev",text:s.event}),
+      el("td",{class:"tm",text:s.time}),
+      info
+    ]));
+  }
+  const links=el("div",{class:"meet-links"}, (m.links||[]).filter(l=>l&&l.url).map(l=>
+    el("a",{href:l.url,target:"_blank",rel:"noopener",text:l.label})
+  ));
+  return el("article",{class:"past-card",id:"past-"+m.id},[
+    el("h3",{text:m.name}),
+    el("div",{class:"past-meta",text:venueBits.join(" · ")}),
+    swims.length?table:el("p",{class:"meet-note",text:"Official times for this meet are not on file yet."}),
+    links.childNodes.length?links:null,
+    m.notes?el("p",{class:"meet-note",text:m.notes}):null
+  ]);
+}
+function renderSeasonPast(past, state){
+  const start=seasonStart();
+  const season=past.filter(m=>(m.endDate||m.startDate||"")>=start);
+  if(!season.length) return null;
+  const box=el("div",{class:"season-past",id:"this-season"},[
+    el("div",{class:"section-head"},[
+      el("h2",{text:"This season"}),
+      el("div",{class:"hint",text:"Meets she has already swam since Sept 1, 2026. Times are from official results on file. A current meet moves here once it is over and official times are posted."})
+    ])
+  ]);
+  season.forEach(m=>box.appendChild(renderPastCard(m,state)));
+  return box;
+}
+
 function renderMeetCard(m, today, state){
   const phase=meetPhase(m,today);
   const classes=["meet-card"];
@@ -2660,6 +3390,7 @@ function renderMeetCard(m, today, state){
   const links=el("div",{class:"meet-links"}, (m.links||[]).filter(l=>l&&l.url).map(l=>
     el("a",{href:l.url,target:"_blank",rel:"noopener",text:l.label})
   ));
+  const ehls=renderEhlsTable(m);
 
   const card=el("div",{class:classes.join(" "), id:"meet-"+m.id},[
     head,
@@ -2667,6 +3398,7 @@ function renderMeetCard(m, today, state){
     grid,
     offered,
     suggested,
+    ehls,
     links.childNodes.length?links:null,
     m.notes?el("p",{class:"meet-note",text:m.notes}):null
   ]);
@@ -2688,12 +3420,8 @@ function renderMeets(root){
   const strip=renderDeadlineStrip(meets,today);
   if(strip) wrap.appendChild(strip);
   upcoming.forEach(m=>wrap.appendChild(renderMeetCard(m,today,state)));
-  if(past.length){
-    const details=el("details",{class:"past-meets"});
-    details.appendChild(el("summary",{text:"Past meets ("+past.length+")"}));
-    past.forEach(m=>details.appendChild(renderMeetCard(m,today,state)));
-    wrap.appendChild(details);
-  }
+  const season=renderSeasonPast(past,state);
+  if(season) wrap.appendChild(season);
   const foot=el("p",{class:"meets-foot"});
   foot.appendChild(document.createTextNode("Documents link to public Captyn files when they are available without a login. The "));
   const team=el("a",{href:"https://daytonraiders.captyn.com",target:"_blank",rel:"noopener",text:"Dayton Raiders Captyn site"});
