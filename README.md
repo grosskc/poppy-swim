@@ -43,4 +43,4 @@ Her times are already on public meet results and MySwimApp. Still, prefer sharin
 
 A Scriptable widget shows the current meet’s event, heat, and lane, plus Poppy’s best and goal times. It reads the same snapshot as this site (`widget.json` on GitHub Pages), so every family phone stays current after a refresh.
 
-On an iPhone, open [the install page](https://grosskc.github.io/poppy-swim/widget/) and follow the three short steps. Scriptable is free; there is no App Store listing to publish. The widget never submits meet entries.
+On an iPhone, open [the install page](https://grosskc.github.io/poppy-swim/widget/), copy the short installer into a new Scriptable script, run it once, then add a Scriptable widget and choose Poppy Swim. Scriptable is free; there is no App Store listing to publish. The widget never submits meet entries.

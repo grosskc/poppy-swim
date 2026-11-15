@@ -196,7 +196,7 @@ Meet selection (America/New_York “today”):
 
 Goals use the same rule as the notecard: the next USA Swimming 10&U cut above her best from *before* the meet starts. Relays have no goal. Unknown heats and lanes are `TBA`.
 
-The Scriptable script is `widget/PoppySwim.js`. The family install page is `widget/index.html`. After changing the script, people who used the installer can open that page and run the installer again.
+The Scriptable script is `widget/PoppySwim.js`. The family install page is `widget/index.html`. After changing the script, people who used the installer can open that page, copy the installer again, and run it in a new Scriptable script.
 
 `widget.refreshAfterDate` asks iOS to refresh about every 30 minutes. iOS decides the real schedule and may wait longer, especially overnight or in Low Power Mode. The script caches the last good `widget.json` so the widget still works offline.
 
