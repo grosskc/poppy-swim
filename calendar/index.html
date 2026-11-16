@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poppy Swim — Practice calendar</title>
+<meta name="description" content="Add Poppy Gawelek-Gross’s Dayton Raiders Blue Group practice schedule to an iPhone or iPad calendar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0C1B2E; --ink-soft:#24364A; --paper:#E8EEF2; --card:#FFFFFF; --line:#D7E0E7;
+  --muted:#5A6B7C; --quiet:#7A8A99; --text:#152032; --aqua:#0C7C7C; --aqua-deep:#0A5E5E;
+  --sans:Manrope,"Segoe UI",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(16,42,67,.05),0 6px 18px rgba(16,42,67,.05);
+  --radius:14px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { background:var(--paper); color:var(--text); font-family:var(--sans); min-height:100%; }
+a { color:var(--aqua-deep); }
+a:hover { color:var(--ink); }
+.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:#F4F7FA; padding:20px 24px 18px; }
+.hero-inner { max-width:760px; margin:0 auto; }
+.hero .eyebrow { font-size:11px; font-weight:700; letter-spacing:.08em; color:#5EC8C8; text-transform:uppercase; }
+.hero h1 { font-weight:800; font-size:22px; letter-spacing:-.02em; margin-top:4px; }
+.hero p { margin-top:6px; color:#C5D2DE; font-size:14px; font-weight:500; line-height:1.45; }
+.wrap { max-width:760px; margin:0 auto; padding:24px 24px 56px; }
+.card {
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:16px 18px 16px;
+}
+.card h2 { font-size:16px; font-weight:800; letter-spacing:-.02em; }
+.card .sub { margin-top:2px; font-size:12.5px; font-weight:600; color:var(--muted); }
+table.practice-table { width:100%; border-collapse:collapse; margin-top:12px; font-variant-numeric:tabular-nums; }
+table.practice-table th {
+  text-align:left; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); padding:6px 8px 6px 0; border-bottom:2px solid var(--ink);
+}
+table.practice-table td { padding:8px 8px 8px 0; border-bottom:1px solid var(--line); font-size:14.5px; font-weight:600; color:var(--ink-soft); }
+table.practice-table tr:last-child td { border-bottom:0; }
+table.practice-table .day { font-weight:800; color:var(--ink); width:3.4em; }
+table.practice-table .tm { font-weight:800; color:var(--ink); }
+.addr { display:block; font-size:11.5px; font-weight:600; color:var(--muted); margin-top:1px; }
+ol.steps { list-style:none; display:flex; flex-direction:column; gap:16px; margin-top:22px; }
+.step {
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:16px 18px 16px 16px; display:flex; gap:14px;
+}
+.num {
+  flex:0 0 28px; height:28px; border-radius:50%; background:#0C1B2E; color:#F4F7FA;
+  display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; margin-top:1px;
+}
+.step h2 { font-size:16px; font-weight:800; letter-spacing:-.02em; }
+.step p, .step li { font-size:14.5px; line-height:1.5; color:var(--ink-soft); font-weight:500; margin-top:6px; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  background:var(--aqua); color:#fff; font-weight:750; font-size:15px;
+  border-radius:999px; padding:11px 18px; text-decoration:none; margin-top:10px;
+  border:0;
+}
+.btn:hover { background:var(--aqua-deep); color:#fff; }
+.btn.secondary { background:transparent; color:var(--aqua-deep); border:1.5px solid #B7D4D4; padding:9px 16px; }
+.btn.secondary:hover { background:#E7F3F3; color:var(--ink); }
+.note { font-size:13px; color:var(--muted); font-weight:500; margin-top:8px; line-height:1.45; }
+code {
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px;
+  background:#F3F6F8; padding:1px 6px; border-radius:6px; color:var(--ink-soft); word-break:break-all;
+}
+.footer { margin-top:28px; font-size:13px; color:var(--muted); font-weight:500; line-height:1.5; }
+.footer a { font-weight:700; }
+@media (max-width: 520px) {
+  .hero, .wrap { padding-left:16px; padding-right:16px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Poppy Swim</div>
+    <h1>Add practice to an iPhone calendar</h1>
+    <p>This is a subscribed calendar of Poppy’s Dayton Raiders Blue Group practices. It stays on every family iPhone or iPad that adds it, and it updates when the schedule changes. There is no App Store app to install.</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="card">
+    <h2>Blue Group</h2>
+    <p class="sub">Ongoing weekly practices</p>
+    <table class="practice-table">
+      <thead>
+        <tr><th>Day</th><th>Time</th><th>Pool</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day">Mon</td>
+          <td class="tm">5:20–6:50 pm</td>
+          <td>DRAC<span class="addr">560 Grange Hall Rd, Beavercreek, OH 45430</span></td>
+        </tr>
+        <tr>
+          <td class="day">Tue</td>
+          <td class="tm">4:50–6:20 pm</td>
+          <td>DRAC<span class="addr">560 Grange Hall Rd, Beavercreek, OH 45430</span></td>
+        </tr>
+        <tr>
+          <td class="day">Wed</td>
+          <td class="tm">6:00–7:30 pm</td>
+          <td>Wright State<span class="addr">3640 Colonel Glenn Hwy, Dayton, OH 45435</span></td>
+        </tr>
+        <tr>
+          <td class="day">Thu</td>
+          <td class="tm">5:30–7:00 pm</td>
+          <td>DRAC<span class="addr">560 Grange Hall Rd, Beavercreek, OH 45430</span></td>
+        </tr>
+        <tr>
+          <td class="day">Fri</td>
+          <td class="tm">6:00–7:30 pm</td>
+          <td>Wright State<span class="addr">3640 Colonel Glenn Hwy, Dayton, OH 45435</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <ol class="steps">
+    <li class="step">
+      <div class="num">1</div>
+      <div>
+        <h2>Tap to subscribe</h2>
+        <p>On an iPhone or iPad, tap the button below. The Calendar app should open and ask you to subscribe. Then tap <strong>Subscribe</strong>. The calendar is named <strong>Poppy Swim Practice</strong>.</p>
+        <a class="btn" href="webcal://grosskc.github.io/poppy-swim/practices.ics">Add to iPhone Calendar</a>
+        <p class="note">If the button does not open Calendar, use the steps in option 2.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num">2</div>
+      <div>
+        <h2>Or add it in Settings</h2>
+        <p>Open <strong>Settings &gt; Calendar &gt; Accounts &gt; Add Subscribed Calendar</strong>. Paste this address:</p>
+        <p class="note"><code>https://grosskc.github.io/poppy-swim/practices.ics</code></p>
+        <p>Then tap <strong>Subscribe</strong>. Use this same https link on a Mac, or as a URL calendar in Google Calendar.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num">3</div>
+      <div>
+        <h2>Set your own alert, if you want one</h2>
+        <p>The feed does not include a default reminder, so each person can choose what works. After the calendar is added, open any practice in the Calendar app and add an alert, such as 30 minutes before.</p>
+      </div>
+    </li>
+  </ol>
+
+  <p class="footer">The calendar asks phones to refresh about every 12 hours. Posted cancellations drop off after the next refresh. The weekly schedule also appears on the <a href="https://grosskc.github.io/poppy-swim/#practice">family dashboard</a>.</p>
+</main>
+</body>
+</html>

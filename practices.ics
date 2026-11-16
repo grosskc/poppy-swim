@@ -1,0 +1,122 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Poppy Swim//Practice Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Poppy Gawelek-Gross, Dayton Raiders Blue Group practice sched
+ ule.
+NAME:Poppy Swim Practice
+X-WR-CALNAME:Poppy Swim Practice
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+X-PUBLISHED-TTL:PT12H
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3
+TZNAME:EDT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11
+TZNAME:EST
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · DRAC
+DTSTART;TZID=America/New_York:20261116T172000
+DTEND;TZID=America/New_York:20261116T185000
+DTSTAMP:20261116T123014Z
+UID:practice-blue-monday@poppy-swim.grosskc.github.io
+SEQUENCE:0
+RRULE:FREQ=WEEKLY
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Dayton Raid
+ ers Aquatic Center\, 560 Grange Hall Rd\, Beavercreek\, OH 45430.
+LOCATION:Dayton Raiders Aquatic Center\, 560 Grange Hall Rd\, Beavercreek
+ \, OH 45430
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · DRAC
+DTSTART;TZID=America/New_York:20261117T165000
+DTEND;TZID=America/New_York:20261117T182000
+DTSTAMP:20261116T123014Z
+UID:practice-blue-tuesday@poppy-swim.grosskc.github.io
+SEQUENCE:0
+RRULE:FREQ=WEEKLY
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Dayton Raid
+ ers Aquatic Center\, 560 Grange Hall Rd\, Beavercreek\, OH 45430.
+LOCATION:Dayton Raiders Aquatic Center\, 560 Grange Hall Rd\, Beavercreek
+ \, OH 45430
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · Wright State
+DTSTART;TZID=America/New_York:20261118T180000
+DTEND;TZID=America/New_York:20261118T193000
+DTSTAMP:20261116T123014Z
+UID:practice-blue-wednesday@poppy-swim.grosskc.github.io
+SEQUENCE:0
+RRULE:FREQ=WEEKLY
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Wright Stat
+ e University Natatorium\, 3640 Colonel Glenn Hwy\, Dayton\, OH 45435.
+LOCATION:Wright State University Natatorium\, 3640 Colonel Glenn Hwy\, Day
+ ton\, OH 45435
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · DRAC
+DTSTART;TZID=America/New_York:20261119T173000
+DTEND;TZID=America/New_York:20261119T190000
+DTSTAMP:20261116T123014Z
+UID:practice-blue-thursday@poppy-swim.grosskc.github.io
+SEQUENCE:0
+RRULE:FREQ=WEEKLY
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Dayton Raid
+ ers Aquatic Center\, 560 Grange Hall Rd\, Beavercreek\, OH 45430.
+LOCATION:Dayton Raiders Aquatic Center\, 560 Grange Hall Rd\, Beavercreek
+ \, OH 45430
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · Wright State
+DTSTART;TZID=America/New_York:20261120T180000
+DTEND;TZID=America/New_York:20261120T193000
+DTSTAMP:20261116T123014Z
+UID:practice-blue-friday@poppy-swim.grosskc.github.io
+SEQUENCE:0
+RRULE:FREQ=WEEKLY
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Wright Stat
+ e University Natatorium\, 3640 Colonel Glenn Hwy\, Dayton\, OH 45435.
+LOCATION:Wright State University Natatorium\, 3640 Colonel Glenn Hwy\, Day
+ ton\, OH 45435
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+END:VCALENDAR

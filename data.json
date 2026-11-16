@@ -1920,5 +1920,69 @@
       ],
       "notes": "“Window” on 50 Back means this is her Mid-States-eligible time (lifetime best 35.77 is from March). 25 Free is a team record and is not a USA 10&U motivational event."
     }
-  ]
+  ],
+  "practices": {
+    "group": "Blue",
+    "ages": "8–11",
+    "enrolledSince": "2026-08-19",
+    "timezone": "America/New_York",
+    "seriesStart": "2026-11-16",
+    "asOf": "2026-11-16",
+    "calendarName": "Poppy Swim Practice",
+    "locations": {
+      "DRAC": {
+        "name": "Dayton Raiders Aquatic Center",
+        "shortName": "DRAC",
+        "address": "560 Grange Hall Rd, Beavercreek, OH 45430",
+        "addressSource": "https://www.daytonraiders.com/"
+      },
+      "Wright State": {
+        "name": "Wright State University Natatorium",
+        "shortName": "Wright State",
+        "address": "3640 Colonel Glenn Hwy, Dayton, OH 45435",
+        "addressSource": "https://www.wright.edu/student-affairs/campus-recreation/swimming-pool"
+      }
+    },
+    "weekly": [
+      {
+        "weekday": "Monday",
+        "start": "17:20",
+        "end": "18:50",
+        "location": "DRAC"
+      },
+      {
+        "weekday": "Tuesday",
+        "start": "16:50",
+        "end": "18:20",
+        "location": "DRAC"
+      },
+      {
+        "weekday": "Wednesday",
+        "start": "18:00",
+        "end": "19:30",
+        "location": "Wright State"
+      },
+      {
+        "weekday": "Thursday",
+        "start": "17:30",
+        "end": "19:00",
+        "location": "DRAC"
+      },
+      {
+        "weekday": "Friday",
+        "start": "18:00",
+        "end": "19:30",
+        "location": "Wright State"
+      }
+    ],
+    "changes": [
+      {
+        "date": "2026-11-13",
+        "type": "cancellation",
+        "weekday": "Friday",
+        "start": "18:00",
+        "note": "Swimmers at the City of Mason November Invitational"
+      }
+    ]
+  }
 }

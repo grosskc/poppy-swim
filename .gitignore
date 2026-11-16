@@ -1,3 +1,6 @@
 tests/
 
 mockups/
+
+__pycache__/
+*.pyc

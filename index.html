@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Poppy Gawelek-Gross — Times Dashboard</title>
-<meta name="description" content="Times, cuts, meet schedule, and official results for Poppy Gawelek-Gross, Dayton Raiders.">
+<meta name="description" content="Times, cuts, meet schedule, practice calendar, and official results for Poppy Gawelek-Gross, Dayton Raiders.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -185,6 +185,34 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
 .meets-foot { margin:16px 2px 0; color:var(--muted); font-size:12px; line-height:1.55; }
 .meets-foot a { color:var(--aqua-deep); font-weight:700; }
 
+.practice-card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 18px 14px; border:1px solid rgba(16,42,67,.04); margin-bottom:12px; }
+.practice-card h2 { font-size:18px; font-weight:800; letter-spacing:-.02em; text-transform:none; color:var(--ink); margin:0; line-height:1.25; }
+.practice-sub { display:block; font-size:12px; font-weight:600; color:var(--muted); margin-top:2px; }
+table.practice-table { width:100%; border-collapse:collapse; margin-top:10px; font-variant-numeric:tabular-nums; }
+table.practice-table th {
+  text-align:left; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); padding:6px 8px 6px 0; border-bottom:2px solid var(--ink);
+}
+table.practice-table td { padding:7px 8px 7px 0; border-bottom:1px solid var(--line); font-size:13.5px; font-weight:600; color:var(--ink-soft); }
+table.practice-table tr:last-child td { border-bottom:0; }
+table.practice-table .day { font-weight:800; color:var(--ink); width:3.2em; }
+table.practice-table .tm { font-weight:800; color:var(--ink); }
+table.practice-table .loc { font-weight:600; }
+.practice-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; align-items:center; }
+.practice-actions a.practice-add {
+  display:inline-flex; align-items:center; background:var(--aqua); color:#fff;
+  font-size:13px; font-weight:800; padding:8px 14px; border-radius:999px; text-decoration:none;
+}
+.practice-actions a.practice-add:hover { background:var(--aqua-deep); }
+.practice-actions a.practice-how {
+  display:inline-flex; align-items:center; background:#F3F6F8; color:var(--aqua-deep);
+  font-size:12px; font-weight:700; padding:6px 10px; border-radius:999px; text-decoration:none;
+}
+.practice-actions a.practice-how:hover { background:#E7EEF2; }
+.practice-note { margin-top:8px; font-size:12px; color:var(--muted); font-weight:500; line-height:1.45; }
+.practice-changes { margin:8px 0 0; padding:0; list-style:none; font-size:12.5px; color:var(--ink-soft); font-weight:600; line-height:1.45; }
+.practice-changes li { margin-top:3px; }
+
 @media (max-width:700px) {
   header.hero, .status .inner, .wrap { padding-left:14px; padding-right:14px; }
   header.hero { padding-top:14px; padding-bottom:12px; }
@@ -207,6 +235,8 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
   .deadline { flex-direction:column; gap:2px; }
   .meet-card { padding:14px; }
   .meet-card h2 { font-size:17px; }
+  .practice-card { padding:14px; }
+  .practice-card h2 { font-size:17px; }
   .suggested li { grid-template-columns:1fr; gap:0; }
   table.ehls-table { display:none !important; }
   .ehls-cards { display:block !important; }
@@ -2282,7 +2312,71 @@ const DATA = {
       ],
       "notes": "“Window” on 50 Back means this is her Mid-States-eligible time (lifetime best 35.77 is from March). 25 Free is a team record and is not a USA 10&U motivational event."
     }
-  ]
+  ],
+  "practices": {
+    "group": "Blue",
+    "ages": "8–11",
+    "enrolledSince": "2026-08-19",
+    "timezone": "America/New_York",
+    "seriesStart": "2026-11-16",
+    "asOf": "2026-11-16",
+    "calendarName": "Poppy Swim Practice",
+    "locations": {
+      "DRAC": {
+        "name": "Dayton Raiders Aquatic Center",
+        "shortName": "DRAC",
+        "address": "560 Grange Hall Rd, Beavercreek, OH 45430",
+        "addressSource": "https://www.daytonraiders.com/"
+      },
+      "Wright State": {
+        "name": "Wright State University Natatorium",
+        "shortName": "Wright State",
+        "address": "3640 Colonel Glenn Hwy, Dayton, OH 45435",
+        "addressSource": "https://www.wright.edu/student-affairs/campus-recreation/swimming-pool"
+      }
+    },
+    "weekly": [
+      {
+        "weekday": "Monday",
+        "start": "17:20",
+        "end": "18:50",
+        "location": "DRAC"
+      },
+      {
+        "weekday": "Tuesday",
+        "start": "16:50",
+        "end": "18:20",
+        "location": "DRAC"
+      },
+      {
+        "weekday": "Wednesday",
+        "start": "18:00",
+        "end": "19:30",
+        "location": "Wright State"
+      },
+      {
+        "weekday": "Thursday",
+        "start": "17:30",
+        "end": "19:00",
+        "location": "DRAC"
+      },
+      {
+        "weekday": "Friday",
+        "start": "18:00",
+        "end": "19:30",
+        "location": "Wright State"
+      }
+    ],
+    "changes": [
+      {
+        "date": "2026-11-13",
+        "type": "cancellation",
+        "weekday": "Friday",
+        "start": "18:00",
+        "note": "Swimmers at the City of Mason November Invitational"
+      }
+    ]
+  }
 };
 
 const STROKE_HY3 = {A:"Free",B:"Back",C:"Breast",D:"Fly",E:"IM"};
@@ -3502,6 +3596,71 @@ function renderMeetCard(m, today, state){
   ]);
   return card;
 }
+
+function formatPracticeClock(hhmm){
+  if(!hhmm) return "";
+  const parts=String(hhmm).split(":");
+  let h=Number(parts[0]), m=Number(parts[1]||0);
+  const ap=h>=12?"pm":"am";
+  h=h%12||12;
+  return h+":"+String(m).padStart(2,"0")+" "+ap;
+}
+function formatPracticeRange(start,end){
+  const a=formatPracticeClock(start), b=formatPracticeClock(end);
+  if(!a||!b) return a||b||"";
+  if(a.slice(-2)===b.slice(-2)) return a.slice(0,-3)+"–"+b;
+  return a+"–"+b;
+}
+function weekdayShort(w){
+  const names={monday:"Mon",tuesday:"Tue",wednesday:"Wed",thursday:"Thu",friday:"Fri",saturday:"Sat",sunday:"Sun"};
+  return names[String(w||"").toLowerCase()]||w||"";
+}
+function renderPracticeCard(){
+  const p=DATA.practices;
+  if(!p||!Array.isArray(p.weekly)||!p.weekly.length) return null;
+  const locs=p.locations||{};
+  const group=p.group||"Blue";
+  const sub=group+" Group"+(p.ages?" · ages "+p.ages:"");
+  const head=el("div",{class:"meet-card-head"},[
+    el("div",{},[
+      el("h2",{text:"Practice schedule"}),
+      el("span",{class:"practice-sub",text:sub})
+    ])
+  ]);
+  const table=el("table",{class:"practice-table"});
+  table.appendChild(el("thead",{},[el("tr",{},[
+    el("th",{text:"Day"}),el("th",{text:"Time"}),el("th",{text:"Pool"})
+  ])]));
+  const body=el("tbody");
+  for(const slot of p.weekly){
+    const loc=locs[slot.location]||{};
+    const name=loc.shortName||loc.name||slot.location||"";
+    body.appendChild(el("tr",{},[
+      el("td",{class:"day",text:weekdayShort(slot.weekday)}),
+      el("td",{class:"tm",text:formatPracticeRange(slot.start,slot.end)}),
+      el("td",{class:"loc",text:name})
+    ]));
+  }
+  table.appendChild(body);
+  const today=todayET();
+  const upcoming=(p.changes||[]).filter(c=>c&&c.date&&c.date>=today);
+  let changeBlock=null;
+  if(upcoming.length){
+    const ul=el("ul",{class:"practice-changes"});
+    for(const c of upcoming){
+      const kind=/cancel/i.test(c.type||"cancellation")?"Canceled":"Changed";
+      ul.appendChild(el("li",{text:formatSwimDate(c.date)+": "+kind+(c.note?" — "+c.note:"")}));
+    }
+    changeBlock=ul;
+  }
+  const actions=el("div",{class:"practice-actions"},[
+    el("a",{class:"practice-add",href:"webcal://grosskc.github.io/poppy-swim/practices.ics",text:"Add to iPhone Calendar"}),
+    el("a",{class:"practice-how",href:"https://grosskc.github.io/poppy-swim/calendar/",text:"How to subscribe"})
+  ]);
+  const note=el("p",{class:"practice-note",text:"This adds an updating calendar of her weekly practices. After it is added, alerts can be set in the Calendar app. Cancellations come off the calendar when they are posted."});
+  return el("article",{class:"practice-card",id:"practice"},[head,table,changeBlock,actions,note].filter(Boolean));
+}
+
 function renderMeets(root){
   const state=mergeState();
   const today=todayET();
@@ -3517,6 +3676,8 @@ function renderMeets(root){
   const wrap=el("div",{class:"wrap"});
   const strip=renderDeadlineStrip(meets,today);
   if(strip) wrap.appendChild(strip);
+  const practice=renderPracticeCard();
+  if(practice) wrap.appendChild(practice);
   upcoming.forEach(m=>wrap.appendChild(renderMeetCard(m,today,state)));
   const season=renderSeasonPast(past,state);
   if(season) wrap.appendChild(season);
@@ -3528,11 +3689,15 @@ function renderMeets(root){
   wrap.appendChild(foot);
 
   root.append(status, wrap);
+  if(location.hash.replace(/^#/,"")==="practice"){
+    const target=document.getElementById("practice");
+    if(target) requestAnimationFrame(()=>target.scrollIntoView({block:"start"}));
+  }
 }
 
-
 function currentView(){
-  return location.hash.replace(/^#/, "") === "meets" ? "meets" : "times";
+  const hash=location.hash.replace(/^#/, "");
+  return hash==="meets"||hash==="practice" ? "meets" : "times";
 }
 let view = currentView();
 function setView(v){

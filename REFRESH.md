@@ -10,6 +10,7 @@ Source of truth: `data.json` (schema `version: 1`). After editing it, regenerate
 
 - `seasonTargets` holds the championship date chips used on the Times view (`littleElves`, `midStates`, `ohioJcs`, `zones`). Do not replace this object with the meet list.
 - `meets` is an array of meet cards for the Meets view. See “Maintaining the meets array” below.
+- `practices` is the Blue Group weekly schedule and a `changes` list of cancellations or one-off time/location changes. See “Practice calendar” below. Do not invent cancellations or addresses.
 
 Do not invent times, ranks, meets, venues, warm-up or start times, fees, or splits. If a field is unknown, set it to `null` or omit it so the UI can show TBA or hide the row.
 
@@ -65,7 +66,7 @@ Do not invent times, ranks, meets, venues, warm-up or start times, fees, or spli
 
 7. **Publish**  
    Write `data.json`, update the `DATA` object in `index.html`, and edit the live Grok Page in place (do not create a new Page). The Page still has no file picker; family use is the HTML app.  
-   Kevin has approved publishing to GitHub Pages at https://grosskc.github.io/poppy-swim/ (`grosskc/poppy-swim`, branch `main`). After updating `data.json` and `index.html`, run `python3 scripts/build_widget.py` and include the new `widget.json` in the same commit so family iOS widgets stay in sync. Commit and push so Pages rebuilds. Confirm the live site shows the change. The widget feed is https://grosskc.github.io/poppy-swim/widget.json; the install page is https://grosskc.github.io/poppy-swim/widget/.
+   Kevin has approved publishing to GitHub Pages at https://grosskc.github.io/poppy-swim/ (`grosskc/poppy-swim`, branch `main`). After updating `data.json` and `index.html`, run `python3 scripts/build_widget.py` and `python3 scripts/build_calendar.py` and include the new `widget.json` and `practices.ics` in the same commit so family iOS widgets and the practice calendar stay in sync. `build_calendar.py` needs the `icalendar` package (`pip install icalendar`). Commit and push so Pages rebuilds. Confirm the live site shows the change. The widget feed is https://grosskc.github.io/poppy-swim/widget.json; the install page is https://grosskc.github.io/poppy-swim/widget/. The practice calendar is https://grosskc.github.io/poppy-swim/practices.ics (subscribe instructions at https://grosskc.github.io/poppy-swim/calendar/).
 
 ## Derived display rules (do not store separately)
 
@@ -76,7 +77,7 @@ Do not invent times, ranks, meets, venues, warm-up or start times, fees, or spli
 
 ## Maintaining the meets array
 
-A separate routine should check Captyn (and Ohio results / host pages in meet weeks) a couple of times a week, and more often during meet week. Alert Kevin only on new meets, deadlines 7 and 2 days out, posted heat sheets or results, and declaration-status changes. Never submit entries or tick event boxes.
+A separate routine should check Captyn (and Ohio results / host pages in meet weeks) a couple of times a week, and more often during meet week. Alert Kevin only on new meets, deadlines 7 and 2 days out, posted heat sheets or results, declaration-status changes, and Blue Group practice-schedule changes (cancellations, holiday or winter-break practices, or a new weekly pattern). Never submit entries or tick event boxes.
 
 For each Dayton Raiders meet, keep one object in `meets[]` with a common shape. Upcoming and in-progress meets (`endDate` on or after today in America/New_York) render first. Meets she already swam since `meta.midStatesWindowStart` (Sept 1, 2026) appear under a visible **This season** section, with official (and unofficial, flagged) times from `swimHistory` / `provisionalTimes` and results links.
 
@@ -181,7 +182,7 @@ The meets-watch routine should look for a posted heat sheet **1–3 days before 
 - Typical link labels: Meet announcement / Meet info, Psych sheet, Timeline, Warm-ups, Heat sheet, Results, Entries report, Captyn meet page. Omit a link when the document is not posted yet (for example Mason results).
 - Fill venue, times, fees, and host from a public announcement, warm-up, or timeline PDF when those fields are actually stated. If the announcement says TBA and a later warm-up or timeline PDF posts real times, update the session. Do not invent a street address, start time, or fee.
 
-After editing `meets`, set `meta.meetsAsOf` / `meta.meetsAsOfLabel` (America/New_York), keep `const DATA` in `index.html` in sync, run `python3 scripts/build_widget.py`, update the Grok Page meet list the same way, then commit and push (include `widget.json`).
+After editing `meets`, set `meta.meetsAsOf` / `meta.meetsAsOfLabel` (America/New_York), keep `const DATA` in `index.html` in sync, run `python3 scripts/build_widget.py` and `python3 scripts/build_calendar.py`, update the Grok Page meet list the same way, then commit and push (include `widget.json` and `practices.ics`).
 
 
 ## iOS widget
@@ -201,6 +202,23 @@ The Scriptable script is `widget/PoppySwim.js`. The family install page is `widg
 `widget.refreshAfterDate` asks iOS to refresh about every 30 minutes. iOS decides the real schedule and may wait longer, especially overnight or in Low Power Mode. The script caches the last good `widget.json` so the widget still works offline.
 
 Optional check after editing the script: `node scripts/check_widget.js`.
+
+
+## Practice calendar
+
+`practices` in `data.json` is the source of truth for Poppy’s Blue Group schedule. `scripts/build_calendar.py` writes `practices.ics` at the repo root. Do not hand-edit the `.ics` file. The family subscribe page is `calendar/index.html` (https://grosskc.github.io/poppy-swim/calendar/).
+
+The meets-watch routine should also:
+
+- Check Captyn Sent Messages (club emails) and the Registrations / enrollments page for Blue Group schedule changes, including holiday and winter-break practices.
+- When a cancellation or a one-off time or location change is posted, add a row to `practices.changes` with `date` (`YYYY-MM-DD`), `type` (`cancellation` or `change`), and a short `note`. Include `weekday` / `start` when needed to pick the right slot. Do not invent cancellations.
+- If the weekly pattern itself changes, update `practices.weekly` and `practices.asOf`. Leave `seriesStart` alone unless the recurring series needs a new first date; stable `DTSTART` values keep subscribed copies from duplicating events.
+- After any `practices` edit, keep `const DATA` in `index.html` in sync and run `python3 scripts/build_calendar.py` so `practices.ics` is regenerated. Include `practices.ics` in the commit.
+- Alert Kevin when a cancellation or schedule change is posted.
+
+The feed is practices only. Do not add meets to `practices.ics` unless a later decision says otherwise: most upcoming meets still lack session times or a firm entry.
+
+`build_calendar.py` applies cancellations on or after `practices.seriesStart` as `EXDATE` values. Earlier cancellations stay in `changes` for history but are not written into the file. Subscribers set their own alerts; do not add a `VALARM`.
 
 ## Known gaps to watch
 
