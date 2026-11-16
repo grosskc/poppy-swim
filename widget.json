@@ -1,251 +1,49 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-15T20:16:44-05:00",
-  "asOfDate": "2026-11-15",
+  "generatedAt": "2026-11-16T10:01:12-05:00",
+  "asOfDate": "2026-11-16",
   "dashboardUrl": "https://grosskc.github.io/poppy-swim/#meets",
   "swimmer": "Poppy",
   "swimmerFull": "Poppy Gawelek-Gross",
   "club": "Dayton Raiders",
-  "mode": "entries",
+  "mode": "deadline",
   "meet": {
-    "id": "cmu9z1nch03wgt4n37fe1r57i",
-    "name": "City of Mason November Invitational",
-    "shortName": "Mason Invite",
-    "datesLabel": "Fri–Sun, Nov 13–15, 2026",
-    "startDate": "2026-11-13",
-    "endDate": "2026-11-15",
-    "status": "in_progress",
-    "venue": "Mason Municipal Aquatic Center",
-    "venueShort": "Mason Aquatic Center",
-    "address": "6249 Mason Montgomery Rd, Mason, OH 45040",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=6249%20Mason%20Montgomery%20Rd%2C%20Mason%2C%20OH%2045040",
+    "id": "cmw57c22t01b015obb85d0rko",
+    "name": "Little Elves",
+    "shortName": "Little Elves",
+    "datesLabel": "Sun, Dec 6, 2026",
+    "startDate": "2026-12-06",
+    "endDate": "2026-12-06",
+    "status": "upcoming",
+    "venue": "Corwin M. Nixon Aquatic Center, Miami University",
+    "venueShort": "Corwin M. Nixon Aquatic Center",
+    "address": "750 S. Oak St., Oxford, OH 45056",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=750%20S.%20Oak%20St.%2C%20Oxford%2C%20OH%2045056",
     "sessions": [
       {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "label": "Saturday Session 6 — 10 & Under, North pool",
-        "warmup": "11:15–12:10 PM",
-        "start": "12:15 PM",
-        "deckOpens": null
-      },
-      {
-        "date": "2026-11-15",
-        "dayLabel": "Sunday, Nov 15",
+        "date": "2026-12-06",
+        "dayLabel": "Sunday, Dec 6",
         "dayShort": "Sun",
-        "label": "Sunday Session 11 — 10 & Under, North pool",
-        "warmup": "11:30–12:25 PM",
-        "start": "12:30 PM",
-        "deckOpens": null
+        "label": "9–10 session",
+        "warmup": "8:30 AM",
+        "start": null,
+        "deckOpens": "8:15 AM"
       }
     ],
     "deadline": {
-      "date": "2026-10-23",
-      "label": "Fri, Oct 23, 2026, 12:00 PM (host deadline; now closed)",
-      "kind": null,
-      "open": null,
-      "hostDeadlineLabel": null
+      "date": "2026-11-27",
+      "label": "Fri, Nov 27, 2026, 11:59 PM ET",
+      "kind": "team",
+      "open": true,
+      "hostDeadlineLabel": "Mon, Nov 30, 2026 (host receipt deadline; no time listed)"
     },
-    "days": [
-      {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "dayCompact": "Sat Nov 14",
-        "weekday": "sat"
-      },
-      {
-        "date": "2026-11-15",
-        "dayLabel": "Sunday, Nov 15",
-        "dayShort": "Sun",
-        "dayCompact": "Sun Nov 15",
-        "weekday": "sun"
-      }
-    ],
-    "events": [
-      {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "session": "Session 6",
-        "eventNumber": "231",
-        "heat": null,
-        "lane": null,
-        "stroke": "FR-R",
-        "name": "200 Free Relay",
-        "relay": true,
-        "seed": null,
-        "best": null,
-        "goal": null,
-        "start": null,
-        "startAt": null,
-        "status": null
-      },
-      {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "session": "Session 6",
-        "eventNumber": "237",
-        "heat": 11,
-        "lane": 6,
-        "stroke": "BK",
-        "name": "100 Back",
-        "relay": false,
-        "seed": "1:13.90",
-        "best": "1:13.90",
-        "goal": {
-          "label": "AAAA",
-          "time": "1:10.59"
-        },
-        "start": "1:07 PM",
-        "startAt": "2026-11-14T13:07:00-05:00",
-        "status": null
-      },
-      {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "session": "Session 6",
-        "eventNumber": "243",
-        "heat": 6,
-        "lane": 3,
-        "stroke": "FL",
-        "name": "100 Fly",
-        "relay": false,
-        "seed": "1:24.06",
-        "best": "1:24.06",
-        "goal": {
-          "label": "AA",
-          "time": "1:20.99"
-        },
-        "start": "2:07 PM",
-        "startAt": "2026-11-14T14:07:00-05:00",
-        "status": "NS"
-      },
-      {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "session": "Session 6",
-        "eventNumber": "253",
-        "heat": 12,
-        "lane": 5,
-        "stroke": "BR",
-        "name": "50 Breast",
-        "relay": false,
-        "seed": "39.96",
-        "best": "39.96",
-        "goal": {
-          "label": "AAA",
-          "time": "38.89"
-        },
-        "start": "3:19 PM",
-        "startAt": "2026-11-14T15:19:00-05:00",
-        "status": null
-      },
-      {
-        "date": "2026-11-14",
-        "dayLabel": "Saturday, Nov 14",
-        "dayShort": "Sat",
-        "session": "Session 6",
-        "eventNumber": "257",
-        "heat": 12,
-        "lane": 8,
-        "stroke": "IM",
-        "name": "100 IM",
-        "relay": false,
-        "seed": "1:22.32",
-        "best": "1:22.32",
-        "goal": {
-          "label": "A",
-          "time": "1:22.09"
-        },
-        "start": "3:49 PM",
-        "startAt": "2026-11-14T15:49:00-05:00",
-        "status": null
-      },
-      {
-        "date": "2026-11-15",
-        "dayLabel": "Sunday, Nov 15",
-        "dayShort": "Sun",
-        "session": "Session 11",
-        "eventNumber": "337",
-        "heat": 2,
-        "lane": 5,
-        "stroke": "MR",
-        "name": "200 Medley Relay A",
-        "relay": true,
-        "seed": "2:17.18",
-        "best": "2:17.18",
-        "goal": null,
-        "start": "12:30 PM",
-        "startAt": "2026-11-15T12:30:00-05:00",
-        "status": null
-      },
-      {
-        "date": "2026-11-15",
-        "dayLabel": "Sunday, Nov 15",
-        "dayShort": "Sun",
-        "session": "Session 11",
-        "eventNumber": "343",
-        "heat": 12,
-        "lane": 1,
-        "stroke": "FL",
-        "name": "50 Fly",
-        "relay": false,
-        "seed": "36.43",
-        "best": "36.43",
-        "goal": {
-          "label": "AA",
-          "time": "35.09"
-        },
-        "start": "12:57 PM",
-        "startAt": "2026-11-15T12:57:00-05:00",
-        "status": null
-      },
-      {
-        "date": "2026-11-15",
-        "dayLabel": "Sunday, Nov 15",
-        "dayShort": "Sun",
-        "session": "Session 11",
-        "eventNumber": "349",
-        "heat": 10,
-        "lane": 5,
-        "stroke": "BR",
-        "name": "100 Breast",
-        "relay": false,
-        "seed": "1:26.84",
-        "best": "1:26.84",
-        "goal": {
-          "label": "AAA",
-          "time": "1:24.69"
-        },
-        "start": "1:37 PM",
-        "startAt": "2026-11-15T13:37:00-05:00",
-        "status": null
-      },
-      {
-        "date": "2026-11-15",
-        "dayLabel": "Sunday, Nov 15",
-        "dayShort": "Sun",
-        "session": "Session 11",
-        "eventNumber": "359",
-        "heat": 14,
-        "lane": 3,
-        "stroke": "BK",
-        "name": "50 Back",
-        "relay": false,
-        "seed": "35.77",
-        "best": "35.77",
-        "goal": {
-          "label": "AAA",
-          "time": "34.39"
-        },
-        "start": "3:16 PM",
-        "startAt": "2026-11-15T15:16:00-05:00",
-        "status": null
-      }
+    "days": [],
+    "events": [],
+    "suggestedEvents": [
+      "50 Free",
+      "50 Breast",
+      "50 Fly",
+      "100 Breast"
     ]
   }
 }
