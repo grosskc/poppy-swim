@@ -182,6 +182,31 @@ def day_labels(iso):
     return d.strftime("%A, %b %-d"), d.strftime("%a")
 
 
+def day_compact(iso):
+    d = datetime.strptime(iso, "%Y-%m-%d")
+    return d.strftime("%a %b %-d")
+
+
+def days_payload(events):
+    """Ordered unique meet days. Backwards compatible extra field; events stay flat."""
+    days = []
+    seen = set()
+    for ev in events or []:
+        date = ev.get("date")
+        if not date or date in seen:
+            continue
+        seen.add(date)
+        label, short = day_labels(date)
+        days.append({
+            "date": date,
+            "dayLabel": ev.get("dayLabel") or label,
+            "dayShort": ev.get("dayShort") or short,
+            "dayCompact": day_compact(date),
+            "weekday": datetime.strptime(date, "%Y-%m-%d").strftime("%a").lower(),
+        })
+    return days
+
+
 def parse_clock(label):
     """Parse a time like '3:16 PM' or '12:30 PM' into a time object. None if TBA."""
     if not label:
@@ -363,6 +388,7 @@ def build_meet(data, meet, today, status):
         "mapsUrl": maps_url,
         "sessions": sessions,
         "deadline": deadline_payload(meet),
+        "days": days_payload(events),
         "events": events,
     }
     if mode == "deadline" and suggested:

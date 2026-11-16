@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-15T18:24:08-05:00",
+  "generatedAt": "2026-11-15T20:11:45-05:00",
   "asOfDate": "2026-11-15",
   "dashboardUrl": "https://grosskc.github.io/poppy-swim/#meets",
   "swimmer": "Poppy",
@@ -46,6 +46,22 @@
       "open": null,
       "hostDeadlineLabel": null
     },
+    "days": [
+      {
+        "date": "2026-11-14",
+        "dayLabel": "Saturday, Nov 14",
+        "dayShort": "Sat",
+        "dayCompact": "Sat Nov 14",
+        "weekday": "sat"
+      },
+      {
+        "date": "2026-11-15",
+        "dayLabel": "Sunday, Nov 15",
+        "dayShort": "Sun",
+        "dayCompact": "Sun Nov 15",
+        "weekday": "sun"
+      }
+    ],
     "events": [
       {
         "date": "2026-11-14",

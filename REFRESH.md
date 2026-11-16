@@ -194,9 +194,9 @@ Meet selection (America/New_York “today”):
 2. Otherwise the nearest future meet that has `entries`.
 3. Otherwise the next upcoming meet (eligible meets first), shown with its entry deadline.
 
-Goals use the same rule as the notecard: the next USA Swimming 10&U cut above her best from *before* the meet starts. Relays have no goal. Unknown heats and lanes are `TBA`.
+The widget itself shows best times only (no goals or start times). Goals in `widget.json` still use the same rule as the notecard: the next USA Swimming 10&U cut above her best from *before* the meet starts. Relays have no goal. Unknown heats and lanes are `TBA`. Each widget shows one day; the Parameter may be `auto`, a weekday (`sat`, `sun`), or `day1` / `day2` / `day3`.
 
-The Scriptable script is `widget/PoppySwim.js`. The family install page is `widget/index.html`. After changing the script, people who used the installer can open that page, copy the installer again, and run it in a new Scriptable script.
+The Scriptable script is `widget/PoppySwim.js`. The family install page is `widget/index.html`. After changing the script, bump `SCRIPT_VERSION` in `PoppySwim.js` (and regenerate `widget/PoppySwim.scriptable` from that file). Installed copies that already include the self-update check fetch the new script about once a day and overwrite themselves. Phones still running a copy from before self-update need to run the installer once more.
 
 `widget.refreshAfterDate` asks iOS to refresh about every 30 minutes. iOS decides the real schedule and may wait longer, especially overnight or in Low Power Mode. The script caches the last good `widget.json` so the widget still works offline.
 

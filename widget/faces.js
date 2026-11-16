@@ -1,61 +1,103 @@
 (function (root) {
+  const WEEKDAYS = {
+    sun: "sun", sunday: "sun",
+    mon: "mon", monday: "mon",
+    tue: "tue", tues: "tue", tuesday: "tue",
+    wed: "wed", wednesday: "wed",
+    thu: "thu", thur: "thu", thurs: "thu", thursday: "thu",
+    fri: "fri", friday: "fri",
+    sat: "sat", saturday: "sat",
+  };
+  const WEEKDAY_FROM_UTC_DAY = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  const MONTH_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
   function isoDate(d) {
     const y = d.getFullYear();
     const m = String(d.getMonth() + 1).padStart(2, "0");
     const day = String(d.getDate()).padStart(2, "0");
     return y + "-" + m + "-" + day;
   }
+  function parseISODate(iso) {
+    const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return null;
+    return { y: +m[1], mo: +m[2], d: +m[3] };
+  }
+  function weekdayName(iso) {
+    const p = parseISODate(iso);
+    if (!p) return "";
+    const dt = new Date(Date.UTC(p.y, p.mo - 1, p.d, 12, 0, 0));
+    return WEEKDAY_FROM_UTC_DAY[dt.getUTCDay()];
+  }
+  function compactDay(iso, dayShort) {
+    const p = parseISODate(iso);
+    if (!p) return dayShort || "";
+    const wd = dayShort || WEEKDAY_FROM_UTC_DAY[new Date(Date.UTC(p.y, p.mo - 1, p.d, 12, 0, 0)).getUTCDay()];
+    const short = wd ? wd.charAt(0).toUpperCase() + wd.slice(1) : "";
+    return (short + " " + MONTH_SHORT[p.mo - 1] + " " + p.d).trim();
+  }
   function isNS(ev) {
     const s = String((ev && ev.status) || "").toUpperCase();
     return s === "NS" || s === "NO SWIM";
   }
-  function isUpcoming(ev, now) {
-    if (!ev) return false;
+  function isPastOnDay(ev, dayRows, now) {
+    if (!ev) return true;
+    if (isNS(ev)) return true;
     const today = isoDate(now);
-    if (ev.date) {
-      if (ev.date > today) return true;
-      if (ev.date < today) return false;
-    }
+    if (ev.date && ev.date < today) return true;
+    if (ev.date && ev.date > today) return false;
     if (ev.startAt) {
       const t = new Date(ev.startAt);
-      if (!isNaN(t.getTime())) return t.getTime() > now.getTime();
+      if (!isNaN(t.getTime()) && t.getTime() <= now.getTime()) return true;
+    }
+    const rows = dayRows || [];
+    const idx = rows.indexOf(ev);
+    const start = idx < 0 ? 0 : idx + 1;
+    for (let i = start; i < rows.length; i++) {
+      const next = rows[i];
+      if (!next || !next.startAt) continue;
+      const t = new Date(next.startAt);
+      if (!isNaN(t.getTime()) && t.getTime() <= now.getTime()) return true;
     }
     return false;
   }
-  function pickFocusEvent(meet, now) {
-    const events = (meet && meet.events) || [];
-    const upcoming = events.filter((e) => isUpcoming(e, now) && !isNS(e));
-    if (upcoming.length) return upcoming[0];
-    const today = isoDate(now);
-    const todayRows = events.filter((e) => e.date === today);
-    if (todayRows.length) return todayRows[todayRows.length - 1];
-    if (events.length) return events[events.length - 1];
-    return null;
+  function heatLaneText(value) {
+    if (value == null || value === "") return "TBA";
+    return String(value);
+  }
+  function ehlText(ev) {
+    const num = ev && ev.eventNumber ? String(ev.eventNumber) : "—";
+    return num + " · " + heatLaneText(ev && ev.heat) + " · " + heatLaneText(ev && ev.lane);
   }
   function sessionFor(meet, date) {
     return ((meet && meet.sessions) || []).find((s) => s.date === date) || null;
   }
-  function eventsForMedium(meet, now) {
+  function meetDays(meet) {
     const events = (meet && meet.events) || [];
-    const today = isoDate(now);
-    const ofDay = (day) => events.filter((e) => e.date === day);
-    const todayRows = ofDay(today);
-    if (todayRows.length) return { date: today, rows: todayRows, session: sessionFor(meet, today) };
-    const future = events.filter((e) => e.date && e.date >= today);
-    const pool = future.length ? future : events;
-    if (!pool.length) return { date: null, rows: [], session: null };
-    const day = pool[0].date;
-    return { date: day, rows: ofDay(day), session: sessionFor(meet, day) };
-  }
-  function groupEventsByDay(meet) {
     const groups = [];
     const index = new Map();
-    for (const ev of (meet && meet.events) || []) {
+    for (const d of (meet && meet.days) || []) {
+      if (!d || !d.date) continue;
+      const g = {
+        date: d.date,
+        dayLabel: d.dayLabel,
+        dayShort: d.dayShort,
+        dayCompact: d.dayCompact || compactDay(d.date, d.dayShort),
+        weekday: d.weekday || weekdayName(d.date),
+        session: sessionFor(meet, d.date),
+        rows: [],
+      };
+      index.set(d.date, g);
+      groups.push(g);
+    }
+    for (const ev of events) {
       const key = ev.date || ev.dayLabel || "";
       if (!index.has(key)) {
         const g = {
           date: ev.date,
-          dayLabel: ev.dayLabel || ev.dayShort || "",
+          dayLabel: ev.dayLabel,
+          dayShort: ev.dayShort,
+          dayCompact: compactDay(ev.date, ev.dayShort),
+          weekday: ev.date ? weekdayName(ev.date) : "",
           session: sessionFor(meet, ev.date),
           rows: [],
         };
@@ -64,18 +106,65 @@
       }
       index.get(key).rows.push(ev);
     }
-    return groups;
+    return groups.filter((g) => g.rows.length);
   }
-  function ehlText(ev) {
-    const num = ev && ev.eventNumber ? String(ev.eventNumber) : "—";
-    const heat = ev && ev.heat != null && ev.heat !== "" ? String(ev.heat) : "TBA";
-    const lane = ev && ev.lane != null && ev.lane !== "" ? String(ev.lane) : "TBA";
-    return num + " · " + heat + " · " + lane;
+  function parseWidgetParam(raw) {
+    const s = String(raw == null ? "auto" : raw).trim().toLowerCase().replace(/\s+/g, "");
+    if (!s || s === "auto" || s === "today") return { kind: "auto" };
+    const dayN = s.match(/^day([1-9]\d*)$/);
+    if (dayN) return { kind: "index", index: Math.max(0, parseInt(dayN[1], 10) - 1) };
+    if (WEEKDAYS[s]) return { kind: "weekday", weekday: WEEKDAYS[s] };
+    return { kind: "auto" };
   }
-  function startLabel(ev, compact) {
-    if (!ev || !ev.start) return "";
-    if (compact) return String(ev.start).replace(/\s*(AM|PM)$/i, "").trim();
-    return ev.start;
+  function selectDay(meet, now, param) {
+    const days = meetDays(meet);
+    if (!days.length) return null;
+    const parsed = parseWidgetParam(param);
+    if (parsed.kind === "index") return days[Math.min(parsed.index, days.length - 1)] || days[0];
+    if (parsed.kind === "weekday") {
+      const found = days.find((d) => d.weekday === parsed.weekday);
+      return found || days[0];
+    }
+    const today = isoDate(now || new Date());
+    const start = meet && meet.startDate;
+    const end = meet && meet.endDate;
+    if (start && end && start <= today && today <= end) {
+      const todayDay = days.find((d) => d.date === today);
+      if (todayDay) return todayDay;
+      const next = days.find((d) => d.date && d.date >= today);
+      return next || days[0];
+    }
+    return days[0];
+  }
+  function remainingRows(day, now) {
+    const rows = (day && day.rows) || [];
+    return rows.filter((ev) => !isPastOnDay(ev, rows, now));
+  }
+  function rowsForMedium(day, now) {
+    const rows = (day && day.rows) || [];
+    if (!rows.length) return [];
+    const today = isoDate(now);
+    if (!day.date || day.date !== today) return rows.slice(0, 3);
+    const next = remainingRows(day, now);
+    if (next.length) return next.slice(0, 3);
+    return rows.slice(0, 3);
+  }
+  function pickDayEvent(day, now) {
+    if (!day || !day.rows || !day.rows.length) return null;
+    const today = isoDate(now);
+    if (day.date && day.date !== today) return day.rows[0];
+    const next = remainingRows(day, now);
+    if (next.length) return next[0];
+    return day.rows[day.rows.length - 1];
+  }
+  function dayHeader(meet, day) {
+    const name = (meet && (meet.shortName || meet.name)) || "Meet";
+    const compact = day && (day.dayCompact || compactDay(day.date, day.dayShort));
+    if (compact) return name + "  ·  " + compact;
+    return name;
+  }
+  function headerLine(meet) {
+    return (meet && (meet.shortName || meet.name)) || "Meet";
   }
   function escapeHtml(s) {
     return String(s == null ? "" : s)
@@ -84,45 +173,31 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
-  function timesHtml(ev) {
-    if (!ev) return '<span class="empty">—</span>';
-    if (ev.best && ev.goal && ev.goal.time) {
-      return (
-        '<span class="best">' + escapeHtml(ev.best) + "</span>" +
-        '<span class="arrow">→</span>' +
-        '<span class="cut">' + escapeHtml(ev.goal.label) + "</span>" +
-        '<span class="goal">' + escapeHtml(ev.goal.time) + "</span>"
-      );
-    }
-    if (ev.best) return '<span class="best">' + escapeHtml(ev.best) + "</span>";
-    return '<span class="empty">—</span>';
-  }
-  function headerLine(meet) {
-    return (meet && (meet.shortName || meet.name)) || "Meet";
-  }
-  function sessionBlurb(session) {
-    if (!session) return "";
-    const bits = [];
-    if (session.warmup) bits.push("Warm-up " + session.warmup);
-    if (session.start) bits.push("Start " + session.start);
-    return bits.join("  ·  ");
-  }
-  function dayKicker(meet, ev, now) {
-    if (ev && ev.dayShort) return ev.dayShort.toUpperCase();
-    const today = isoDate(now);
-    if (meet && meet.startDate && meet.endDate && meet.startDate <= today && today <= meet.endDate) {
-      return "TODAY";
-    }
-    return (meet && meet.datesLabel) || "";
+  function headerRow() {
+    return (
+      '<div class="cols labels">' +
+        '<div class="col-e">Event</div>' +
+        '<div class="col-h">Heat</div>' +
+        '<div class="col-l">Lane</div>' +
+        '<div class="col-s">Stroke</div>' +
+        '<div class="col-b">Best</div>' +
+      "</div>"
+    );
   }
   function rowHtml(ev) {
+    const heat = heatLaneText(ev && ev.heat);
+    const lane = heatLaneText(ev && ev.lane);
+    const best = ev && ev.best ? escapeHtml(ev.best) : "—";
     return (
-      '<div class="row">' +
-        '<div class="ehl">' + escapeHtml(ehlText(ev)) + "</div>" +
-        '<div class="stroke">' + escapeHtml(ev.stroke || "") + "</div>" +
-        '<div class="evname">' + escapeHtml(ev.name || "") + "</div>" +
-        '<div class="times">' + timesHtml(ev) + "</div>" +
-        '<div class="when">' + escapeHtml(startLabel(ev, true)) + "</div>" +
+      '<div class="trow">' +
+        '<div class="cols">' +
+          '<div class="col-e num">' + escapeHtml(ev && ev.eventNumber ? ev.eventNumber : "—") + "</div>" +
+          '<div class="col-h num' + (heat === "TBA" ? " tba" : "") + '">' + escapeHtml(heat) + "</div>" +
+          '<div class="col-l num' + (lane === "TBA" ? " tba" : "") + '">' + escapeHtml(lane) + "</div>" +
+          '<div class="col-s stroke">' + escapeHtml((ev && ev.stroke) || "") + "</div>" +
+          '<div class="col-b best' + (ev && ev.best ? "" : " empty") + '">' + best + "</div>" +
+        "</div>" +
+        '<div class="ename">' + escapeHtml((ev && ev.name) || "") + "</div>" +
       "</div>"
     );
   }
@@ -135,32 +210,28 @@
       family === "large" && (meet.suggestedEvents || []).length
         ? '<div class="suggested muted">Suggested  ·  ' + escapeHtml(meet.suggestedEvents.join("  ·  ")) + "</div>"
         : "";
-    if (family === "small") {
-      return (
-        '<div class="kicker">' + escapeHtml((data.swimmer || "POPPY").toUpperCase()) + "</div>" +
-        '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
-        '<div class="muted when" style="margin-top:8px">' + escapeHtml(meet.datesLabel || "") + "</div>" +
-        (venue ? '<div class="muted when" style="margin-top:2px">' + escapeHtml(venue) + "</div>" : "") +
-        (due
-          ? '<div class="kicker due-label">ENTRIES DUE</div><div class="ttl due-time">' +
-            escapeHtml(due.replace(/, 20\d\d/, "")) +
-            "</div>"
-          : '<div class="muted" style="margin-top:10px">Events not posted yet.</div>')
-      );
-    }
     return (
-      '<div class="whead"><div class="left">' +
-        '<div class="kicker">' + escapeHtml((data.swimmer || "Poppy").toUpperCase()) + "</div>" +
-        '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
-      '</div><div class="right muted">' + escapeHtml(meet.datesLabel || "") + "</div></div>" +
-      (venue ? '<div class="muted session-line">' + escapeHtml(venue) + "</div>" : "") +
+      '<div class="kicker">' + escapeHtml((data.swimmer || "Poppy").toUpperCase()) + "</div>" +
+      '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
+      (meet.datesLabel ? '<div class="muted when" style="margin-top:6px">' + escapeHtml(meet.datesLabel) + "</div>" : "") +
+      (venue ? '<div class="muted when" style="margin-top:2px">' + escapeHtml(venue) + "</div>" : "") +
       (due
-        ? '<div class="kicker due-label">ENTRIES DUE</div><div class="ttl due-time">' + escapeHtml(due) + "</div>"
+        ? '<div class="kicker due-label">ENTRIES DUE</div><div class="ttl due-time">' +
+          escapeHtml(family === "small" ? due.replace(/, 20\d\d/, "") : due) +
+          "</div>"
         : '<div class="muted" style="margin-top:10px">Events not posted yet.</div>') +
       extra
     );
   }
-  function innerHtml(data, family, now) {
+  function kvRow(label, value, extraClass) {
+    return (
+      '<div class="kv">' +
+        '<div class="k">' + escapeHtml(label) + "</div>" +
+        '<div class="v' + (extraClass ? " " + extraClass : "") + '">' + escapeHtml(value) + "</div>" +
+      "</div>"
+    );
+  }
+  function innerHtml(data, family, now, param) {
     now = now || new Date();
     const meet = data && data.meet;
     if (!meet) {
@@ -172,77 +243,57 @@
     }
     if (data.mode !== "entries") return deadlineInner(data, family);
 
+    const day = selectDay(meet, now, param);
+    const head = '<div class="head">' + escapeHtml(dayHeader(meet, day)) + "</div>";
+
     if (family === "small") {
-      const ev = pickFocusEvent(meet, now);
+      const ev = pickDayEvent(day, now);
       if (!ev) {
-        return (
-          '<div class="kicker">' + escapeHtml((data.swimmer || "Poppy").toUpperCase()) + "</div>" +
-          '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
-          '<div class="muted" style="margin-top:8px">Events not posted yet.</div>'
-        );
+        return head + '<div class="muted" style="margin-top:8px">Events not posted yet.</div>';
       }
+      const heat = heatLaneText(ev.heat);
+      const lane = heatLaneText(ev.lane);
       return (
-        '<div class="kicker">' + escapeHtml((data.swimmer || "Poppy").toUpperCase() + "  ·  " + dayKicker(meet, ev, now)) + "</div>" +
-        '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
-        '<div class="ehl">' + escapeHtml(ehlText(ev)) + "</div>" +
-        '<div class="stroke">' + escapeHtml(ev.stroke || "") + "</div>" +
-        '<div class="evname">' + escapeHtml(ev.name || "") + "</div>" +
-        '<div class="times">' + timesHtml(ev) + "</div>" +
-        (startLabel(ev, false) ? '<div class="muted when">' + escapeHtml(startLabel(ev, false)) + "</div>" : "")
+        head +
+        kvRow("Event", ev.eventNumber ? ev.eventNumber : "—", "num") +
+        kvRow("Heat", heat, "num" + (heat === "TBA" ? " tba" : "")) +
+        kvRow("Lane", lane, "num" + (lane === "TBA" ? " tba" : "")) +
+        kvRow("Stroke", ev.stroke || "—", "stroke") +
+        '<div class="ename">' + escapeHtml(ev.name || "") + "</div>" +
+        kvRow("Best", ev.best || "—", ev.best ? "best" : "best empty")
       );
     }
     if (family === "medium") {
-      const day = eventsForMedium(meet, now);
-      const dayLabel = (day.rows[0] && (day.rows[0].dayLabel || day.rows[0].dayShort)) || meet.datesLabel || "";
-      const blurb = sessionBlurb(day.session);
-      return (
-        '<div class="whead"><div class="left">' +
-          '<div class="kicker">' + escapeHtml((data.swimmer || "Poppy").toUpperCase()) + "</div>" +
-          '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
-        '</div><div class="right">' + escapeHtml(dayLabel) + "</div></div>" +
-        (blurb ? '<div class="muted session-line">' + escapeHtml(blurb) + "</div>" : "") +
-        '<div class="rows">' + day.rows.map(rowHtml).join("") + "</div>"
-      );
+      const rows = rowsForMedium(day, now);
+      return head + headerRow() + '<div class="trows">' + rows.map(rowHtml).join("") + "</div>";
     }
-    if (family === "large") {
-      const sub = [meet.datesLabel, meet.venueShort || meet.venue].filter(Boolean).join("  ·  ");
-      const groups = groupEventsByDay(meet)
-        .map((g) => {
-          const blurb = sessionBlurb(g.session);
-          return (
-            '<div class="group"><div class="dayband">' +
-              '<div class="day">' + escapeHtml((g.dayLabel || "").toUpperCase()) + "</div>" +
-              (blurb ? '<div class="blurb">' + escapeHtml(blurb) + "</div>" : "") +
-            '</div><div class="rows">' + g.rows.map(rowHtml).join("") + "</div></div>"
-          );
-        })
-        .join("");
-      return (
-        '<div class="kicker">' + escapeHtml((data.swimmer || "Poppy").toUpperCase()) + "</div>" +
-        '<div class="ttl">' + escapeHtml(headerLine(meet)) + "</div>" +
-        (sub ? '<div class="muted sub">' + escapeHtml(sub) + "</div>" : "") +
-        '<div class="groups">' + groups + "</div>"
-      );
+    if (family === "large" || family === "extraLarge") {
+      const rows = (day && day.rows) || [];
+      return head + headerRow() + '<div class="trows">' + rows.map(rowHtml).join("") + "</div>";
     }
     if (family === "accessoryRectangular" || family === "lock-rect") {
-      const ev = pickFocusEvent(meet, now);
+      const ev = pickDayEvent(day, now);
       if (!ev) return '<div class="muted">Events not posted yet.</div>';
       return (
-        '<div class="top"><div class="ehl">' + escapeHtml(ehlText(ev)) + '</div>' +
-        '<div class="stroke">' + escapeHtml(ev.stroke || "") + "</div>" +
-        (startLabel(ev, false) ? '<div class="muted when">' + escapeHtml(startLabel(ev, false)) + "</div>" : "") +
-        '</div><div class="mid evname">' + escapeHtml(ev.name || "") + "</div>" +
-        '<div class="times">' + timesHtml(ev) + "</div>"
+        '<div class="lock-bits">' +
+          '<span class="k">Event</span> <span class="v">' + escapeHtml(ev.eventNumber || "—") + "</span>" +
+          '<span class="k">Heat</span> <span class="v">' + escapeHtml(heatLaneText(ev.heat)) + "</span>" +
+          '<span class="k">Lane</span> <span class="v">' + escapeHtml(heatLaneText(ev.lane)) + "</span>" +
+        "</div>" +
+        '<div class="lock-mid">' +
+          '<div class="ename">' + escapeHtml((ev.name || "") + (ev.stroke ? "  ·  " + ev.stroke : "")) + "</div>" +
+          '<div class="best' + (ev.best ? "" : " empty") + '">' + escapeHtml(ev.best || "—") + "</div>" +
+        "</div>"
       );
     }
     if (family === "accessoryInline" || family === "lock-inline") {
-      const ev = pickFocusEvent(meet, now);
+      const ev = pickDayEvent(day, now);
       let text = data.swimmer || "Poppy";
       if (ev) text += "  ·  " + ehlText(ev) + "  " + (ev.stroke || "") + "  " + (ev.name || "");
       else text += "  ·  " + headerLine(meet);
       return '<div class="txt">' + escapeHtml(text) + "</div>";
     }
-    return innerHtml(data, "medium", now);
+    return innerHtml(data, "medium", now, param);
   }
   function faceClass(family, mode) {
     const lock = family === "accessoryRectangular" || family === "lock-rect"
@@ -251,24 +302,27 @@
         ? "lock-inline"
         : family === "accessoryCircular"
           ? "lock-rect"
-          : family;
+          : family === "extraLarge"
+            ? "large"
+            : family;
     const hs = lock.startsWith("lock") ? "" : " hs";
     return "w " + lock + hs + (mode === "dark" ? " dark" : " light");
   }
-  function renderFace(el, data, family, now, mode) {
+  function renderFace(el, data, family, now, mode, param) {
     el.className = faceClass(family, mode);
     el.setAttribute("data-family", family);
     el.setAttribute("data-mode", mode || "light");
-    el.innerHTML = innerHtml(data, family, now);
+    el.innerHTML = innerHtml(data, family, now, param);
     return el;
   }
   root.PoppySwimFaces = {
     isoDate,
-    pickFocusEvent,
-    eventsForMedium,
-    groupEventsByDay,
+    selectDay,
+    pickDayEvent,
+    rowsForMedium,
+    meetDays,
     ehlText,
-    startLabel,
+    dayHeader,
     innerHtml,
     renderFace,
     faceClass,

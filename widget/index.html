@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Poppy Swim — iOS widget</title>
-<meta name="description" content="Add Poppy’s current meet, event-heat-lane, best, and goal times to an iPhone or iPad Home Screen.">
+<meta name="description" content="Add Poppy’s current meet — event, heat, lane, stroke, and best time — to an iPhone or iPad Home Screen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -90,7 +90,7 @@ pre {
   <div class="hero-inner">
     <div class="eyebrow">Poppy Swim</div>
     <h1>Add the meet widget to an iPhone</h1>
-    <p>This shows her current meet — event, heat, and lane, plus her best and goal times. It updates from the same family dashboard, and you do not need an App Store listing or a developer account.</p>
+    <p>This shows one day of her current meet — event, heat, lane, stroke, and her best time. It updates from the same family dashboard, and you do not need an App Store listing or a developer account.</p>
   </div>
 </header>
 <main class="wrap">
@@ -125,7 +125,7 @@ a.message = "Now add a Scriptable widget to your Home Screen and pick Poppy Swim
 a.addAction("OK")
 await a.presentAlert()
 Script.complete()</pre>
-        <p class="note">To update later, copy and run the installer again.</p>
+        <p class="note">After this version is installed, the widget checks for a new script about once a day and updates itself. If your phone still has an older copy, run the installer once more so that self-update is in place.</p>
         <p class="alt"><a class="btn secondary" href="PoppySwim.scriptable" download="PoppySwim.scriptable">Download a Scriptable file</a></p>
         <p class="note">If you prefer, download that file, then share it and open it in Scriptable.</p>
       </div>
@@ -137,15 +137,29 @@ Script.complete()</pre>
         <ul>
           <li>Long-press an empty area of the Home Screen until the apps jiggle.</li>
           <li>Tap the <strong>+</strong> button in the corner.</li>
-          <li>Search for <strong>Scriptable</strong> and choose a size: small, medium, or large.</li>
+          <li>Search for <strong>Scriptable</strong> and choose a size: small, medium, or large. Large shows a full day; medium shows the next three races.</li>
           <li>Tap <strong>Add Widget</strong>, then tap the new widget and choose the <strong>Poppy Swim</strong> script.</li>
           <li>Tap the background when you are done.</li>
         </ul>
-        <p class="note">Tapping the widget opens the family dashboard. The medium size is a good starting point — it lists the day’s events.</p>
+        <p class="note">Tapping the widget opens the family dashboard. Leave the Parameter set to <strong>auto</strong> to follow the current day of the meet.</p>
       </div>
     </li>
     <li class="step">
       <div class="num">4</div>
+      <div>
+        <h2>Optional: swipe between days</h2>
+        <p>Scriptable can’t swipe inside one widget, but iOS can stack two of them. Add two large Poppy Swim widgets, then:</p>
+        <ul>
+          <li>Long-press one widget and choose <strong>Edit Widget</strong>.</li>
+          <li>Set <strong>Parameter</strong> to <strong>sat</strong> or <strong>sun</strong> (or <strong>day1</strong> / <strong>day2</strong> for other meets).</li>
+          <li>Do the same for the second widget, using the other day.</li>
+          <li>Drag one widget onto the other to make a Smart Stack, then swipe up or down to change days.</li>
+        </ul>
+        <p class="note">A single widget left on <strong>auto</strong> switches to the current day of the meet on its own.</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num">5</div>
       <div>
         <h2>Optional: add it to the Lock Screen</h2>
         <ul>
@@ -159,9 +173,9 @@ Script.complete()</pre>
 
   <h3>What it looks like</h3>
   <div class="previews" id="previews">
-    <figure class="preview-block"><div id="face-small"></div><figcaption>Small</figcaption></figure>
-    <figure class="preview-block"><div id="face-medium"></div><figcaption>Medium · today’s events</figcaption></figure>
-    <figure class="preview-block" style="flex-basis:100%"><div id="face-large"></div><figcaption>Large · full meet</figcaption></figure>
+    <figure class="preview-block"><div id="face-small"></div><figcaption>Small · next race</figcaption></figure>
+    <figure class="preview-block"><div id="face-medium"></div><figcaption>Medium · next three</figcaption></figure>
+    <figure class="preview-block" style="flex-basis:100%"><div id="face-large"></div><figcaption>Large · one day</figcaption></figure>
     <figure class="preview-block">
       <div class="lock-stage">
         <div class="lock-date">Lock Screen</div>
