@@ -33,7 +33,7 @@ BEGIN:VEVENT
 SUMMARY:Swim practice (Blue) · DRAC
 DTSTART;TZID=America/New_York:20261116T172000
 DTEND;TZID=America/New_York:20261116T185000
-DTSTAMP:20261116T123014Z
+DTSTAMP:20261120T125747Z
 UID:practice-blue-monday@poppy-swim.grosskc.github.io
 SEQUENCE:0
 RRULE:FREQ=WEEKLY
@@ -51,7 +51,7 @@ BEGIN:VEVENT
 SUMMARY:Swim practice (Blue) · DRAC
 DTSTART;TZID=America/New_York:20261117T165000
 DTEND;TZID=America/New_York:20261117T182000
-DTSTAMP:20261116T123014Z
+DTSTAMP:20261120T125747Z
 UID:practice-blue-tuesday@poppy-swim.grosskc.github.io
 SEQUENCE:0
 RRULE:FREQ=WEEKLY
@@ -69,10 +69,11 @@ BEGIN:VEVENT
 SUMMARY:Swim practice (Blue) · Wright State
 DTSTART;TZID=America/New_York:20261118T180000
 DTEND;TZID=America/New_York:20261118T193000
-DTSTAMP:20261116T123014Z
+DTSTAMP:20261120T125747Z
 UID:practice-blue-wednesday@poppy-swim.grosskc.github.io
 SEQUENCE:0
 RRULE:FREQ=WEEKLY
+EXDATE;TZID=America/New_York:20261125T180000
 CATEGORIES:Practice
 CLASS:PUBLIC
 DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Wright Stat
@@ -87,7 +88,7 @@ BEGIN:VEVENT
 SUMMARY:Swim practice (Blue) · DRAC
 DTSTART;TZID=America/New_York:20261119T173000
 DTEND;TZID=America/New_York:20261119T190000
-DTSTAMP:20261116T123014Z
+DTSTAMP:20261120T125747Z
 UID:practice-blue-thursday@poppy-swim.grosskc.github.io
 SEQUENCE:0
 RRULE:FREQ=WEEKLY
@@ -105,16 +106,47 @@ BEGIN:VEVENT
 SUMMARY:Swim practice (Blue) · Wright State
 DTSTART;TZID=America/New_York:20261120T180000
 DTEND;TZID=America/New_York:20261120T193000
-DTSTAMP:20261116T123014Z
+DTSTAMP:20261120T125747Z
 UID:practice-blue-friday@poppy-swim.grosskc.github.io
 SEQUENCE:0
 RRULE:FREQ=WEEKLY
+EXDATE;TZID=America/New_York:20261127T180000
 CATEGORIES:Practice
 CLASS:PUBLIC
 DESCRIPTION:Blue Group practice\, ages 8–11. Dayton Raiders. Wright Stat
  e University Natatorium\, 3640 Colonel Glenn Hwy\, Dayton\, OH 45435.
 LOCATION:Wright State University Natatorium\, 3640 Colonel Glenn Hwy\, Day
  ton\, OH 45435
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · Location TBC
+DTSTART;TZID=America/New_York:20261125T101500
+DTEND;TZID=America/New_York:20261125T114500
+DTSTAMP:20261120T125747Z
+UID:practice-blue-wednesday-20261125@poppy-swim.grosskc.github.io
+SEQUENCE:0
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice (schedule change). Thanksgiving schedule.
+LOCATION:Location TBC (see coach email)
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+URL:https://grosskc.github.io/poppy-swim/practices.ics
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Swim practice (Blue) · Location TBC
+DTSTART;TZID=America/New_York:20261127T101500
+DTEND;TZID=America/New_York:20261127T114500
+DTSTAMP:20261120T125747Z
+UID:practice-blue-friday-20261127@poppy-swim.grosskc.github.io
+SEQUENCE:0
+CATEGORIES:Practice
+CLASS:PUBLIC
+DESCRIPTION:Blue Group practice (schedule change). Thanksgiving schedule.
+LOCATION:Location TBC (see coach email)
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://grosskc.github.io/poppy-swim/practices.ics

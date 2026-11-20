@@ -1929,7 +1929,7 @@
     "enrolledSince": "2026-08-19",
     "timezone": "America/New_York",
     "seriesStart": "2026-11-16",
-    "asOf": "2026-11-16",
+    "asOf": "2026-11-19",
     "calendarName": "Poppy Swim Practice",
     "locations": {
       "DRAC": {
@@ -1943,6 +1943,11 @@
         "shortName": "Wright State",
         "address": "3640 Colonel Glenn Hwy, Dayton, OH 45435",
         "addressSource": "https://www.wright.edu/student-affairs/campus-recreation/swimming-pool"
+      },
+      "TBC": {
+        "name": "Location TBC (see coach email)",
+        "shortName": "Location TBC",
+        "address": null
       }
     },
     "weekly": [
@@ -1984,6 +1989,26 @@
         "weekday": "Friday",
         "start": "18:00",
         "note": "Swimmers at the City of Mason November Invitational"
+      },
+      {
+        "date": "2026-11-25",
+        "type": "change",
+        "weekday": "Wednesday",
+        "start": "18:00",
+        "newStart": "10:15",
+        "newEnd": "11:45",
+        "location": "TBC",
+        "note": "Thanksgiving schedule"
+      },
+      {
+        "date": "2026-11-27",
+        "type": "change",
+        "weekday": "Friday",
+        "start": "18:00",
+        "newStart": "10:15",
+        "newEnd": "11:45",
+        "location": "TBC",
+        "note": "Thanksgiving schedule"
       }
     ]
   }

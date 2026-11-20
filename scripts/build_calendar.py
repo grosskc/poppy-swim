@@ -189,6 +189,19 @@ def changes_for_slot(changes: list, weekday: int, start: str) -> list[dict]:
     return matched
 
 
+
+def replacement_times(change: dict, slot: dict) -> tuple[str, str]:
+    """New wall-clock times for a one-off change.
+
+    `start` / `end` on a change identify the weekly slot being replaced
+    (and are used for EXDATE). The one-off uses `newStart` / `newEnd` when
+    present, otherwise it keeps the slot's usual times.
+    """
+    start = change.get("newStart") or change.get("new_start") or slot["start"]
+    end = change.get("newEnd") or change.get("new_end") or slot["end"]
+    return start, end
+
+
 def uid_for(group: str, weekday: int, suffix: str | None = None) -> str:
     slug = (group or "blue").strip().lower().replace(" ", "-")
     base = f"practice-{slug}-{WEEKDAY_NAMES[weekday]}"
@@ -252,10 +265,9 @@ def make_one_off_event(
     group = practices.get("group") or "Blue"
     weekday = weekday_index(slot["weekday"])
     day = parse_iso_date(change["date"])
-    loc_key = change.get("location") or slot.get("location")
+    loc_key = change.get("newLocation") or change.get("location") or slot.get("location")
     loc = location_for(practices, loc_key)
-    start = change.get("start") or slot["start"]
-    end = change.get("end") or slot["end"]
+    start, end = replacement_times(change, slot)
     event = Event()
     event.add("uid", uid_for(group, weekday, day.strftime("%Y%m%d")))
     event.add("dtstamp", generated_at)
@@ -437,9 +449,11 @@ def expected_from_data(data: dict, start: date, end: date) -> list[dict]:
             if skip:
                 continue
             if replacement:
-                loc = location_for(practices, replacement.get("location") or slot.get("location"))
-                st = replacement.get("start") or slot["start"]
-                en = replacement.get("end") or slot["end"]
+                loc = location_for(
+                    practices,
+                    replacement.get("newLocation") or replacement.get("location") or slot.get("location"),
+                )
+                st, en = replacement_times(replacement, slot)
             else:
                 loc = location_for(practices, slot.get("location"))
                 st, en = slot["start"], slot["end"]

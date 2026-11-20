@@ -2321,7 +2321,7 @@ const DATA = {
     "enrolledSince": "2026-08-19",
     "timezone": "America/New_York",
     "seriesStart": "2026-11-16",
-    "asOf": "2026-11-16",
+    "asOf": "2026-11-19",
     "calendarName": "Poppy Swim Practice",
     "locations": {
       "DRAC": {
@@ -2335,6 +2335,11 @@ const DATA = {
         "shortName": "Wright State",
         "address": "3640 Colonel Glenn Hwy, Dayton, OH 45435",
         "addressSource": "https://www.wright.edu/student-affairs/campus-recreation/swimming-pool"
+      },
+      "TBC": {
+        "name": "Location TBC (see coach email)",
+        "shortName": "Location TBC",
+        "address": null
       }
     },
     "weekly": [
@@ -2376,6 +2381,26 @@ const DATA = {
         "weekday": "Friday",
         "start": "18:00",
         "note": "Swimmers at the City of Mason November Invitational"
+      },
+      {
+        "date": "2026-11-25",
+        "type": "change",
+        "weekday": "Wednesday",
+        "start": "18:00",
+        "newStart": "10:15",
+        "newEnd": "11:45",
+        "location": "TBC",
+        "note": "Thanksgiving schedule"
+      },
+      {
+        "date": "2026-11-27",
+        "type": "change",
+        "weekday": "Friday",
+        "start": "18:00",
+        "newStart": "10:15",
+        "newEnd": "11:45",
+        "location": "TBC",
+        "note": "Thanksgiving schedule"
       }
     ]
   }
@@ -3617,6 +3642,20 @@ function weekdayShort(w){
   const names={monday:"Mon",tuesday:"Tue",wednesday:"Wed",thursday:"Thu",friday:"Fri",saturday:"Sat",sunday:"Sun"};
   return names[String(w||"").toLowerCase()]||w||"";
 }
+function practiceChangeLabel(c,locs){
+  const date=formatSwimDate(c.date);
+  if(/cancel/i.test(c.type||"")) return date+": Canceled"+(c.note?" — "+c.note:"");
+  const start=c.newStart||c.new_start;
+  const end=c.newEnd||c.new_end;
+  const time=(start&&end)?formatPracticeRange(start,end):(start?formatPracticeClock(start):"");
+  const locKey=c.newLocation||c.location;
+  const loc=(locs&&locs[locKey])||{};
+  const place=loc.shortName||loc.name||((locKey&&locKey!=="TBC")?locKey:"");
+  let text=date+": "+(time?time:"Changed");
+  if(place) text+=" · "+place;
+  if(c.note) text+=" — "+c.note;
+  return text;
+}
 function renderPracticeCard(){
   const p=DATA.practices;
   if(!p||!Array.isArray(p.weekly)||!p.weekly.length) return null;
@@ -3650,8 +3689,7 @@ function renderPracticeCard(){
   if(upcoming.length){
     const ul=el("ul",{class:"practice-changes"});
     for(const c of upcoming){
-      const kind=/cancel/i.test(c.type||"cancellation")?"Canceled":"Changed";
-      ul.appendChild(el("li",{text:formatSwimDate(c.date)+": "+kind+(c.note?" — "+c.note:"")}));
+      ul.appendChild(el("li",{text:practiceChangeLabel(c,locs)}));
     }
     changeBlock=ul;
   }

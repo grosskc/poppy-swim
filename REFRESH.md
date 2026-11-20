@@ -211,7 +211,7 @@ Optional check after editing the script: `node scripts/check_widget.js`.
 The meets-watch routine should also:
 
 - Check Captyn Sent Messages (club emails) and the Registrations / enrollments page for Blue Group schedule changes, including holiday and winter-break practices.
-- When a cancellation or a one-off time or location change is posted, add a row to `practices.changes` with `date` (`YYYY-MM-DD`), `type` (`cancellation` or `change`), and a short `note`. Include `weekday` / `start` when needed to pick the right slot. Do not invent cancellations.
+- When a cancellation or a one-off time or location change is posted, add a row to `practices.changes` with `date` (`YYYY-MM-DD`), `type` (`cancellation` or `change`), and a short `note`. Include `weekday` / `start` when needed to pick the right weekly slot. For a time or location change, put the new times in `newStart` / `newEnd` and the new place in `location` (or `newLocation`). Do not invent cancellations or a pool when the notice does not name one.
 - If the weekly pattern itself changes, update `practices.weekly` and `practices.asOf`. Leave `seriesStart` alone unless the recurring series needs a new first date; stable `DTSTART` values keep subscribed copies from duplicating events.
 - After any `practices` edit, keep `const DATA` in `index.html` in sync and run `python3 scripts/build_calendar.py` so `practices.ics` is regenerated. Include `practices.ics` in the commit.
 - Alert Kevin when a cancellation or schedule change is posted.
