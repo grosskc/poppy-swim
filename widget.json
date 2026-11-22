@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-22T08:09:40-05:00",
+  "generatedAt": "2026-11-22T08:37:42-05:00",
   "asOfDate": "2026-11-22",
   "dashboardUrl": "https://grosskc.github.io/poppy-swim/#meets",
   "swimmer": "Poppy",
@@ -40,10 +40,10 @@
     "days": [],
     "events": [],
     "suggestedEvents": [
-      "50 Free",
+      "100 Back",
       "50 Breast",
-      "50 Fly",
-      "100 Breast"
+      "50 Back",
+      "100 IM"
     ]
   }
 }

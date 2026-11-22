@@ -46,6 +46,23 @@ header.hero { background:linear-gradient(180deg,#0C1B2E 0%,#102A43 100%); color:
 .slist li { display:grid; grid-template-columns:92px 1fr; gap:8px; font-size:13px; align-items:baseline; }
 .slist .ev { font-weight:800; color:var(--ink); }
 .slist .why { color:var(--ink-soft); font-weight:600; }
+.plan-table { width:100%; border-collapse:collapse; font-size:13px; margin:2px 0 4px; }
+.plan-table th { text-align:left; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding:0 6px 4px 0; border-bottom:1px solid var(--line); white-space:nowrap; }
+.plan-table td { padding:5px 6px 5px 0; border-bottom:1px solid #EEF2F5; vertical-align:baseline; color:var(--ink-soft); font-weight:600; white-space:nowrap; }
+.plan-table td.ev { font-weight:800; color:var(--ink); }
+.plan-table td.ev .num { color:var(--quiet); font-weight:700; font-size:11.5px; margin-left:4px; }
+.plan-table td.t { font-variant-numeric:tabular-nums; }
+.plan-table .ahead { color:var(--ok); font-weight:800; }
+.plan-table .behind { color:var(--warn); font-weight:800; }
+.plan-table th:last-child, .plan-table td:last-child { padding-right:0; text-align:right; }
+.plan-why { list-style:none; display:flex; flex-direction:column; gap:4px; margin:8px 0 0; }
+.plan-why li { display:grid; grid-template-columns:92px 1fr; gap:8px; font-size:12.5px; line-height:1.35; }
+.plan-why .ev { font-weight:800; color:var(--ink); }
+.plan-why .why { color:var(--ink-soft); font-weight:600; }
+.plan-sub { font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:12px 0 2px; }
+.plan-deadline { margin-top:10px; font-size:12.5px; font-weight:800; color:var(--warn); }
+.plan-notes { margin:6px 0 0 16px; font-size:12px; color:var(--ink-soft); font-weight:500; line-height:1.4; }
+.plan-notes li { margin-top:3px; }
 .whisper { margin-top:8px; font-size:11.5px; color:var(--quiet); font-weight:500; line-height:1.4; }
 .card p { font-size:12.5px; color:var(--ink-soft); font-weight:500; line-height:1.4; }
 .qual { display:flex; flex-direction:column; gap:8px; }
@@ -238,6 +255,8 @@ table.practice-table .loc { font-weight:600; }
   .practice-card { padding:14px; }
   .practice-card h2 { font-size:17px; }
   .suggested li { grid-template-columns:1fr; gap:0; }
+  .plan-why li { grid-template-columns:1fr; gap:0; }
+  .plan-table { font-size:12.5px; }
   table.ehls-table { display:none !important; }
   .ehls-cards { display:block !important; }
   .ehls-head { flex-direction:column; align-items:stretch; }
@@ -1148,6 +1167,79 @@ const DATA = {
     "50 Back",
     "100 IM"
   ],
+  "littleElvesPlan": {
+    "meetId": "cmw57c22t01b015obb85d0rko",
+    "goal": "Mid-States",
+    "lead": "Picks aimed at a Mid-States spot",
+    "picks": [
+      {
+        "event": "100 Back",
+        "number": "109",
+        "best": "1:13.90",
+        "ohioRank": 3,
+        "gapToFourth": -0.35,
+        "gapLabel": "0.35 ahead",
+        "why": "Hold her top-4 spot. Three girls are within half a second."
+      },
+      {
+        "event": "50 Breast",
+        "number": "117",
+        "best": "39.27",
+        "ohioRank": 3,
+        "gapToFourth": -0.75,
+        "gapLabel": "0.75 ahead",
+        "why": "Cushion is under a second, and 2nd place is 0.44 away."
+      },
+      {
+        "event": "50 Back",
+        "number": "115",
+        "best": "35.34",
+        "ohioRank": 7,
+        "gapToFourth": 0.98,
+        "gapLabel": "0.98 behind",
+        "why": "Her best chance to move up into the top 4."
+      },
+      {
+        "event": "100 IM",
+        "number": "103",
+        "best": "1:17.63",
+        "ohioRank": 8,
+        "gapToFourth": 2.31,
+        "gapLabel": "2.31 behind",
+        "why": "A stretch, but she dropped 4.7 s at Mason, and the 6-event cap may open spots."
+      }
+    ],
+    "skip": [
+      {
+        "event": "100 Breast",
+        "why": "Already safe: #3 with a 2.2 s cushion."
+      },
+      {
+        "event": "100 Fly",
+        "why": "#8 and more than 6 s from the top 4."
+      },
+      {
+        "event": "50 Fly, 100 Free, 200 Free",
+        "why": "Not close to a top-4 spot."
+      },
+      {
+        "event": "200 IM",
+        "why": "Not offered at Little Elves."
+      }
+    ],
+    "swap": {
+      "event": "50 Free",
+      "number": "105",
+      "replaces": "100 IM",
+      "why": "She has no 50 Free since Sept 1, and Mid-States applicants are asked to submit one for relays. If the coach wants that, swap it in for the 100 IM."
+    },
+    "notes": [
+      "6-event cap: each swimmer can apply in at most six events, and the fastest girls are top 4 in more than six, so some spots will open up.",
+      "50 Back (115) and 50 Breast (117) are close together, with one boys’ event between them."
+    ],
+    "rankNote": "Ohio ranks are unofficial counts of Ohio 10&U girls’ short-course times since Sept 1, from posted results. Gap is to the 4th-fastest other girl. Later meets and results not yet posted can change them.",
+    "deadlineLabel": "Fri, Nov 27, 2026, 11:59 PM ET"
+  },
   "swimHistory": [
     {
       "event": "50 Free",
@@ -1925,7 +2017,7 @@ const DATA = {
         {
           "number": "103",
           "name": "100 IM",
-          "seed": "1:22.32"
+          "seed": "1:17.63"
         },
         {
           "number": "105",
@@ -1935,7 +2027,7 @@ const DATA = {
         {
           "number": "107",
           "name": "50 Fly",
-          "seed": "36.43"
+          "seed": "33.80"
         },
         {
           "number": "109",
@@ -1945,7 +2037,7 @@ const DATA = {
         {
           "number": "111",
           "name": "100 Breast",
-          "seed": "1:26.84"
+          "seed": "1:25.59"
         },
         {
           "number": "113",
@@ -1955,12 +2047,12 @@ const DATA = {
         {
           "number": "115",
           "name": "50 Back",
-          "seed": "35.77"
+          "seed": "35.34"
         },
         {
           "number": "117",
           "name": "50 Breast",
-          "seed": "39.96"
+          "seed": "39.27"
         },
         {
           "number": "119",
@@ -1979,12 +2071,12 @@ const DATA = {
         "events": [],
         "relaysChecked": false,
         "suggestedEvents": [
-          "50 Free",
+          "100 Back",
           "50 Breast",
-          "50 Fly",
-          "100 Breast"
+          "50 Back",
+          "100 IM"
         ],
-        "suggestedNote": "50 Free still needs a time from Sept 1 onward to count for Mid-States. Entries are submitted on Captyn, not from this page."
+        "suggestedNote": "Option: swap in 50 Free for the 100 IM to get a 50 Free time for Mid-States relays. Entries are submitted on Captyn by Fri, Nov 27, 11:59 PM ET, not from this page."
       },
       "links": [
         {
@@ -2804,6 +2896,32 @@ function toast(msg){
   clearTimeout(lastToast);
   lastToast=setTimeout(()=>t.classList.remove("show"), 4200);
 }
+function lePlanTable(plan){
+  return el("table",{class:"plan-table"},[
+    el("thead",{},[el("tr",{},[el("th",{text:"Event"}),el("th",{text:"Best"}),el("th",{text:"Ohio*"}),el("th",{text:"vs 4th"})])]),
+    el("tbody",{}, plan.picks.map(p=>el("tr",{},[
+      el("td",{class:"ev"},[document.createTextNode(p.event), el("span",{class:"num",text:"#"+p.number})]),
+      el("td",{class:"t",text:p.best}),
+      el("td",{text:"#"+p.ohioRank}),
+      el("td",{class:p.gapToFourth<0?"ahead":"behind",text:p.gapLabel})
+    ])))
+  ]);
+}
+function lePlanFull(plan){
+  return el("div",{class:"suggested"},[
+    el("div",{class:"lead",text:plan.lead}),
+    lePlanTable(plan),
+    el("ul",{class:"plan-why"}, plan.picks.map(p=>el("li",{},[el("span",{class:"ev",text:p.event}),el("span",{class:"why",text:p.why})]))),
+    plan.swap?el("div",{class:"plan-sub",text:"Option"}):null,
+    plan.swap?el("ul",{class:"plan-why"},[el("li",{},[el("span",{class:"ev",text:plan.swap.event+" #"+plan.swap.number}),el("span",{class:"why",text:plan.swap.why})])]):null,
+    el("div",{class:"plan-sub",text:"Skip"}),
+    el("ul",{class:"plan-why"}, plan.skip.map(p=>el("li",{},[el("span",{class:"ev",text:p.event}),el("span",{class:"why",text:p.why})]))),
+    (plan.notes||[]).length?el("div",{class:"plan-sub",text:"Good to know"}):null,
+    el("ul",{class:"plan-why"}, (plan.notes||[]).map(n=>el("li",{style:{display:"block"}},[el("span",{class:"why",text:n})]))),
+    el("div",{class:"plan-deadline",text:"Pick on Captyn by "+plan.deadlineLabel}),
+    el("p",{class:"whisper",text:"* "+plan.rankNote+" Entry call is the coach’s; entries are made on Captyn, not here."})
+  ]);
+}
 function littleElvesWhy(state,event){
   const ev=buildBests(state,"SCY").find(e=>e.event===event);
   if(!ev||!ev.time) return "No SCY time on file";
@@ -2878,9 +2996,15 @@ function renderTimes(root){
   const cards=el("div",{class:"cards"},[
     el("div",{class:"card soon"},[
       el("h2",{},[document.createTextNode("Next meet "), el("span",{class:"when",text:DATA.seasonTargets.littleElves.name+" · Dec 6"})]),
-      el("div",{class:"lead",text:"Four events worth discussing with her coach"}),
-      el("ul",{class:"slist"}, DATA.littleElvesEvents.map(name=>el("li",{},[el("span",{class:"ev",text:name}),el("span",{class:"why",text:littleElvesWhy(state,name)})]))),
-      el("p",{class:"whisper",text:"Entry call is the coach’s. These are the gaps that matter most right now — not just the smallest ones."})
+      ...(DATA.littleElvesPlan ? [
+        el("div",{class:"lead",text:DATA.littleElvesPlan.lead}),
+        lePlanTable(DATA.littleElvesPlan),
+        el("div",{class:"plan-deadline",text:"Pick on Captyn by "+DATA.littleElvesPlan.deadlineLabel}),
+        el("p",{class:"whisper",text:"* Unofficial count of Ohio 10&U girls’ times since Sept 1. Reasons, the 50 Free option and events to skip are on the Meets tab."})
+      ] : [
+        el("div",{class:"lead",text:"Four events worth discussing with her coach"}),
+        el("ul",{class:"slist"}, DATA.littleElvesEvents.map(name=>el("li",{},[el("span",{class:"ev",text:name}),el("span",{class:"why",text:littleElvesWhy(state,name)})])))
+      ])
     ]),
     el("div",{class:"card"},[
       el("h2",{},[document.createTextNode("Mid-States window "), el("span",{class:"when",text:DATA.seasonTargets.midStates.date.replace(", 2027","")})]),
@@ -3643,7 +3767,9 @@ function renderMeetCard(m, today, state){
   }
 
   let suggested=null;
-  if(m.poppy&&m.poppy.suggestedEvents&&m.poppy.suggestedEvents.length){
+  if(DATA.littleElvesPlan&&DATA.littleElvesPlan.meetId===m.id&&meetPhase(m,today)!=="past"){
+    suggested=lePlanFull(DATA.littleElvesPlan);
+  } else if(m.poppy&&m.poppy.suggestedEvents&&m.poppy.suggestedEvents.length){
     suggested=el("div",{class:"suggested"},[
       el("div",{class:"lead",text:"Suggested events"}),
       el("ul",{}, m.poppy.suggestedEvents.map(name=>el("li",{},[

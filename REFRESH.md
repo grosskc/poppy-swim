@@ -8,6 +8,7 @@ A **separate meets-watch routine** (not this times refresh) updates the `meets` 
 
 Source of truth: `data.json` (schema `version: 1`). After editing it, regenerate or patch `index.html` so `const DATA = …` matches `data.json` exactly, then run `python3 scripts/build_widget.py` so `widget.json` matches too. Do not hand-edit `widget.json`. Then apply the same official times, history, provisional times, honors, meta, and meet list to the Grok Page data blocks.
 
+- `littleElvesPlan` holds the Little Elves event guidance (picks with event number, best, unofficial Ohio rank since Sept 1 and gap to 4th; skips; the 50 Free option; notes; Captyn deadline). It drives the Times “Next meet” card and the Little Elves meet card. Keep `littleElvesEvents` and the meet’s `poppy.suggestedEvents` equal to its picks. Update it only when the recommendation is re-run; a times refresh does not change it.
 - `seasonTargets` holds the championship date chips used on the Times view (`littleElves`, `midStates`, `ohioJcs`, `zones`). Do not replace this object with the meet list.
 - `meets` is an array of meet cards for the Meets view. See “Maintaining the meets array” below.
 - `practices` is the Blue Group weekly schedule and a `changes` list of cancellations or one-off time/location changes. See “Practice calendar” below. Do not invent cancellations or addresses.
@@ -57,7 +58,7 @@ Do not invent times, ranks, meets, venues, warm-up or start times, fees, or spli
    - `bestTimesAsOf` / `bestTimesAsOfLabel`: date of the newest official swim in the snapshot.  
    - `snapshotUpdated` / `snapshotUpdatedLabel`: when this snapshot was written.  
    - `meetsAsOf` / `meetsAsOfLabel`: when the `meets` array was last checked (America/New_York).  
-   - `masonMeet.resultsPosted`: true only after official results for City of Mason November Invitational (OH-27SC-47) are actually posted. Then add those swims to history.  
+   - `masonMeet.resultsPosted`: true only after official results for City of Mason November Invitational (OH-27SC-47) are actually posted. Then add those swims to history. (Mason results are posted; this is true as of Nov 22, 2026.)  
    - `zonesReadiness`: only when MySwimApp republishes the Power Score; do not invent it.  
    - `midStatesWindowStart` stays `2026-09-01`.
 
@@ -179,7 +180,7 @@ The meets-watch routine should look for a posted heat sheet **1–3 days before 
 
 - Captyn meet page: `https://daytonraiders.captyn.com/account/meets/<id>` (family login required to change entries).
 - Captyn PDFs are at `https://api.captyn.com/s3/<docid>`. As of Nov 15, 2026 these short URLs are public: they 302 to a time-limited S3 URL and do not need a Captyn login. Always link the `api.captyn.com/s3/<docid>` URL, never the signed S3 URL (those expire). If a future check returns 401/403, stop linking the file and point at the Captyn meet page instead.
-- Typical link labels: Meet announcement / Meet info, Psych sheet, Timeline, Warm-ups, Heat sheet, Results, Entries report, Captyn meet page. Omit a link when the document is not posted yet (for example Mason results).
+- Typical link labels: Meet announcement / Meet info, Psych sheet, Timeline, Warm-ups, Heat sheet, Results, Entries report, Captyn meet page. Omit a link when the document is not posted yet.
 - Fill venue, times, fees, and host from a public announcement, warm-up, or timeline PDF when those fields are actually stated. If the announcement says TBA and a later warm-up or timeline PDF posts real times, update the session. Do not invent a street address, start time, or fee.
 
 After editing `meets`, set `meta.meetsAsOf` / `meta.meetsAsOfLabel` (America/New_York), keep `const DATA` in `index.html` in sync, run `python3 scripts/build_widget.py` and `python3 scripts/build_calendar.py`, update the Grok Page meet list the same way, then commit and push (include `widget.json` and `practices.ics`).
@@ -223,5 +224,5 @@ The feed is practices only. Do not add meets to `practices.ics` unless a later d
 ## Known gaps to watch
 
 - CSC Fall Frenzy (Nov 8, 2026) was not on the Ohio results page under that name as of Nov 15, 2026. Those bests came from MySwimApp (no splits). If a zip appears later, parse it and add splits / other swims.  
-- Mason Nov 13–15, 2026 results were not posted as of this snapshot.  
+- Mason Nov 13–15, 2026 official results are posted (Ohio results zip parsed Nov 22, 2026). Those swims are official in `swimHistory` with splits, `masonMeet.resultsPosted` is true, and no provisional rows remain for that meet.  
 - MySwimApp history pages exist (`/swimmer/140062/meet/{id}`, `/event/{code}`) but `robots.txt` disallows them and the site rate-limits RSC requests. Do not scrape those as the primary source. Prefer Ohio zips for meet-by-meet official history.

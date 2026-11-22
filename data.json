@@ -756,6 +756,79 @@
     "50 Back",
     "100 IM"
   ],
+  "littleElvesPlan": {
+    "meetId": "cmw57c22t01b015obb85d0rko",
+    "goal": "Mid-States",
+    "lead": "Picks aimed at a Mid-States spot",
+    "picks": [
+      {
+        "event": "100 Back",
+        "number": "109",
+        "best": "1:13.90",
+        "ohioRank": 3,
+        "gapToFourth": -0.35,
+        "gapLabel": "0.35 ahead",
+        "why": "Hold her top-4 spot. Three girls are within half a second."
+      },
+      {
+        "event": "50 Breast",
+        "number": "117",
+        "best": "39.27",
+        "ohioRank": 3,
+        "gapToFourth": -0.75,
+        "gapLabel": "0.75 ahead",
+        "why": "Cushion is under a second, and 2nd place is 0.44 away."
+      },
+      {
+        "event": "50 Back",
+        "number": "115",
+        "best": "35.34",
+        "ohioRank": 7,
+        "gapToFourth": 0.98,
+        "gapLabel": "0.98 behind",
+        "why": "Her best chance to move up into the top 4."
+      },
+      {
+        "event": "100 IM",
+        "number": "103",
+        "best": "1:17.63",
+        "ohioRank": 8,
+        "gapToFourth": 2.31,
+        "gapLabel": "2.31 behind",
+        "why": "A stretch, but she dropped 4.7 s at Mason, and the 6-event cap may open spots."
+      }
+    ],
+    "skip": [
+      {
+        "event": "100 Breast",
+        "why": "Already safe: #3 with a 2.2 s cushion."
+      },
+      {
+        "event": "100 Fly",
+        "why": "#8 and more than 6 s from the top 4."
+      },
+      {
+        "event": "50 Fly, 100 Free, 200 Free",
+        "why": "Not close to a top-4 spot."
+      },
+      {
+        "event": "200 IM",
+        "why": "Not offered at Little Elves."
+      }
+    ],
+    "swap": {
+      "event": "50 Free",
+      "number": "105",
+      "replaces": "100 IM",
+      "why": "She has no 50 Free since Sept 1, and Mid-States applicants are asked to submit one for relays. If the coach wants that, swap it in for the 100 IM."
+    },
+    "notes": [
+      "6-event cap: each swimmer can apply in at most six events, and the fastest girls are top 4 in more than six, so some spots will open up.",
+      "50 Back (115) and 50 Breast (117) are close together, with one boys’ event between them."
+    ],
+    "rankNote": "Ohio ranks are unofficial counts of Ohio 10&U girls’ short-course times since Sept 1, from posted results. Gap is to the 4th-fastest other girl. Later meets and results not yet posted can change them.",
+    "deadlineLabel": "Fri, Nov 27, 2026, 11:59 PM ET"
+  },
   "swimHistory": [
     {
       "event": "50 Free",
@@ -1533,7 +1606,7 @@
         {
           "number": "103",
           "name": "100 IM",
-          "seed": "1:22.32"
+          "seed": "1:17.63"
         },
         {
           "number": "105",
@@ -1543,7 +1616,7 @@
         {
           "number": "107",
           "name": "50 Fly",
-          "seed": "36.43"
+          "seed": "33.80"
         },
         {
           "number": "109",
@@ -1553,7 +1626,7 @@
         {
           "number": "111",
           "name": "100 Breast",
-          "seed": "1:26.84"
+          "seed": "1:25.59"
         },
         {
           "number": "113",
@@ -1563,12 +1636,12 @@
         {
           "number": "115",
           "name": "50 Back",
-          "seed": "35.77"
+          "seed": "35.34"
         },
         {
           "number": "117",
           "name": "50 Breast",
-          "seed": "39.96"
+          "seed": "39.27"
         },
         {
           "number": "119",
@@ -1587,12 +1660,12 @@
         "events": [],
         "relaysChecked": false,
         "suggestedEvents": [
-          "50 Free",
+          "100 Back",
           "50 Breast",
-          "50 Fly",
-          "100 Breast"
+          "50 Back",
+          "100 IM"
         ],
-        "suggestedNote": "50 Free still needs a time from Sept 1 onward to count for Mid-States. Entries are submitted on Captyn, not from this page."
+        "suggestedNote": "Option: swap in 50 Free for the 100 IM to get a 50 Free time for Mid-States relays. Entries are submitted on Captyn by Fri, Nov 27, 11:59 PM ET, not from this page."
       },
       "links": [
         {
