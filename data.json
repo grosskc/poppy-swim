@@ -8,17 +8,17 @@
     "born": "2016-09-05",
     "profileUrl": "https://myswimapp.com/swimmer/140062",
     "ohioResultsUrl": "https://www.gomotionapp.com/team/czohlsc/page/meets/25-26-sc-scheduleresults",
-    "lastChecked": "2026-11-18T10:03:35-05:00",
-    "lastCheckedLabel": "Nov 18, 2026, 10:03 AM ET",
-    "bestTimesAsOf": "2026-11-08",
-    "bestTimesAsOfLabel": "Nov 8, 2026",
+    "lastChecked": "2026-11-22T08:05:36-05:00",
+    "lastCheckedLabel": "Nov 22, 2026, 8:05 AM ET",
+    "bestTimesAsOf": "2026-11-15",
+    "bestTimesAsOfLabel": "Nov 15, 2026",
     "midStatesWindowStart": "2026-09-01",
-    "snapshotUpdated": "2026-11-18T10:03:35-05:00",
-    "snapshotUpdatedLabel": "Nov 18, 2026, 10:03 AM ET",
+    "snapshotUpdated": "2026-11-22T08:05:36-05:00",
+    "snapshotUpdatedLabel": "Nov 22, 2026, 8:05 AM ET",
     "masonMeet": {
       "name": "City of Mason November Invitational",
       "dates": "Nov 13–15, 2026",
-      "resultsPosted": false
+      "resultsPosted": true
     },
     "zonesReadiness": {
       "rank": 3,
@@ -327,14 +327,17 @@
       "meet": null,
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
+        "ohio": {
+          "rank": 21,
+          "of": 1796
+        },
         "centralZone": {
-          "rank": 147,
-          "of": 10554
+          "rank": 152,
+          "of": 10471
         },
         "usa": {
-          "rank": 749,
-          "of": 42204
+          "rank": 737,
+          "of": 42072
         }
       }
     },
@@ -347,12 +350,16 @@
       "source": "MySwimApp",
       "ranks": {
         "ohio": {
-          "rank": 22,
-          "of": 1152
+          "rank": 25,
+          "of": 1153
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 212,
+          "of": 6409
+        },
         "usa": {
-          "rank": 1105
+          "rank": 1090,
+          "of": 26862
         }
       }
     },
@@ -365,12 +372,16 @@
       "source": "MySwimApp",
       "ranks": {
         "ohio": {
-          "rank": 15,
-          "of": 331
+          "rank": 19,
+          "of": 349
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 163,
+          "of": 2207
+        },
         "usa": {
-          "rank": 873
+          "rank": 884,
+          "of": 9169
         }
       }
     },
@@ -386,25 +397,35 @@
           "rank": 6,
           "of": 87
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 96,
+          "of": 601
+        },
         "usa": {
-          "rank": 581
+          "rank": 589,
+          "of": 2613
         }
       }
     },
     {
       "event": "50 Back",
       "course": "SCY",
-      "time": "35.77",
-      "date": "2026-03-13",
-      "meet": null,
+      "time": "35.34",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
-        "centralZone": null,
+        "ohio": {
+          "rank": 9,
+          "of": 1551
+        },
+        "centralZone": {
+          "rank": 54,
+          "of": 8990
+        },
         "usa": {
-          "rank": 409,
-          "of": 35722
+          "rank": 311,
+          "of": 35591
         }
       }
     },
@@ -416,65 +437,83 @@
       "meet": "CSC Fall Frenzy",
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
-        "centralZone": null,
+        "ohio": {
+          "rank": 6,
+          "of": 607
+        },
+        "centralZone": {
+          "rank": 38,
+          "of": 4046
+        },
         "usa": {
-          "rank": 186,
-          "of": 16421
+          "rank": 184,
+          "of": 16369
         }
       }
     },
     {
       "event": "50 Breast",
       "course": "SCY",
-      "time": "39.96",
-      "date": "2026-11-08",
-      "meet": "CSC Fall Frenzy",
+      "time": "39.27",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
+        "ohio": {
+          "rank": 3,
+          "of": 1072
+        },
         "centralZone": {
-          "rank": 45,
-          "of": 6065
+          "rank": 27,
+          "of": 6004
         },
         "usa": {
-          "rank": 299
+          "rank": 205,
+          "of": 26501
         }
       }
     },
     {
       "event": "100 Breast",
       "course": "SCY",
-      "time": "1:26.84",
-      "date": "2026-11-08",
-      "meet": "CSC Fall Frenzy",
+      "time": "1:25.59",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
       "source": "MySwimApp",
       "ranks": {
         "ohio": {
-          "rank": 3,
-          "of": 433
+          "rank": 4,
+          "of": 442
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 35,
+          "of": 2921
+        },
         "usa": {
-          "rank": 260
+          "rank": 217,
+          "of": 13340
         }
       }
     },
     {
       "event": "50 Fly",
       "course": "SCY",
-      "time": "36.43",
-      "date": "2026-10-17",
-      "meet": "Payson's Journey Memorial",
+      "time": "33.80",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
       "source": "MySwimApp",
       "ranks": {
         "ohio": {
-          "rank": 32,
-          "of": 785
+          "rank": 13,
+          "of": 783
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 68,
+          "of": 4477
+        },
         "usa": {
-          "rank": 1039
+          "rank": 359,
+          "of": 19659
         }
       }
     },
@@ -487,30 +526,38 @@
       "source": "MySwimApp",
       "ranks": {
         "ohio": {
-          "rank": 15,
-          "of": 136
+          "rank": 16,
+          "of": 149
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 116,
+          "of": 1023
+        },
         "usa": {
-          "rank": 635
+          "rank": 632,
+          "of": 4677
         }
       }
     },
     {
       "event": "100 IM",
       "course": "SCY",
-      "time": "1:22.32",
-      "date": "2026-09-26",
-      "meet": "DR Intrasquad",
+      "time": "1:17.63",
+      "date": "2026-11-14",
+      "meet": "City of Mason November Invitational",
       "source": "MySwimApp",
       "ranks": {
         "ohio": {
-          "rank": 25,
+          "rank": 9,
           "of": 825
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 62,
+          "of": 4232
+        },
         "usa": {
-          "rank": 989
+          "rank": 358,
+          "of": 19998
         }
       }
     },
@@ -522,13 +569,17 @@
       "meet": "CSC Fall Frenzy",
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
+        "ohio": {
+          "rank": 6,
+          "of": 184
+        },
         "centralZone": {
           "rank": 28,
-          "of": 1308
+          "of": 1300
         },
         "usa": {
-          "rank": 192
+          "rank": 197,
+          "of": 5625
         }
       }
     },
@@ -540,13 +591,17 @@
       "meet": null,
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
+        "ohio": {
+          "rank": 15,
+          "of": 543
+        },
         "centralZone": {
-          "rank": 131,
-          "of": 4356
+          "rank": 125,
+          "of": 4310
         },
         "usa": {
-          "rank": 597
+          "rank": 575,
+          "of": 16702
         }
       }
     },
@@ -560,11 +615,15 @@
       "ranks": {
         "ohio": {
           "rank": 15,
-          "of": 405
+          "of": 398
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 143,
+          "of": 3439
+        },
         "usa": {
-          "rank": 723
+          "rank": 699,
+          "of": 13061
         }
       }
     },
@@ -576,14 +635,17 @@
       "meet": null,
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
+        "ohio": {
+          "rank": 8,
+          "of": 517
+        },
         "centralZone": {
-          "rank": 64,
-          "of": 4243
+          "rank": 60,
+          "of": 4169
         },
         "usa": {
-          "rank": 292,
-          "of": 15842
+          "rank": 280,
+          "of": 15690
         }
       }
     },
@@ -595,11 +657,17 @@
       "meet": null,
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
-        "centralZone": null,
+        "ohio": {
+          "rank": 3,
+          "of": 312
+        },
+        "centralZone": {
+          "rank": 23,
+          "of": 2650
+        },
         "usa": {
-          "rank": 121,
-          "of": 10097
+          "rank": 114,
+          "of": 9982
         }
       }
     },
@@ -611,11 +679,17 @@
       "meet": null,
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
-        "centralZone": null,
+        "ohio": {
+          "rank": 2,
+          "of": 410
+        },
+        "centralZone": {
+          "rank": 29,
+          "of": 3159
+        },
         "usa": {
-          "rank": 147,
-          "of": 13118
+          "rank": 141,
+          "of": 12989
         }
       }
     },
@@ -627,13 +701,17 @@
       "meet": null,
       "source": "MySwimApp",
       "ranks": {
-        "ohio": null,
+        "ohio": {
+          "rank": 10,
+          "of": 332
+        },
         "centralZone": {
-          "rank": 71,
-          "of": 2409
+          "rank": 67,
+          "of": 2371
         },
         "usa": {
-          "rank": 354
+          "rank": 342,
+          "of": 9862
         }
       }
     },
@@ -647,83 +725,20 @@
       "ranks": {
         "ohio": {
           "rank": 10,
-          "of": 124
+          "of": 122
         },
-        "centralZone": null,
+        "centralZone": {
+          "rank": 83,
+          "of": 943
+        },
         "usa": {
-          "rank": 526
+          "rank": 507,
+          "of": 3791
         }
       }
     }
   ],
-  "provisionalTimes": [
-    {
-      "event": "100 Back",
-      "course": "SCY",
-      "time": "1:16.03",
-      "date": "2026-11-14",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 3
-    },
-    {
-      "event": "50 Breast",
-      "course": "SCY",
-      "time": "39.27",
-      "date": "2026-11-14",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 1
-    },
-    {
-      "event": "100 IM",
-      "course": "SCY",
-      "time": "1:17.63",
-      "date": "2026-11-14",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 4
-    },
-    {
-      "event": "50 Fly",
-      "course": "SCY",
-      "time": "33.80",
-      "date": "2026-11-15",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 4
-    },
-    {
-      "event": "100 Breast",
-      "course": "SCY",
-      "time": "1:25.59",
-      "date": "2026-11-15",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 2
-    },
-    {
-      "event": "50 Back",
-      "course": "SCY",
-      "time": "35.34",
-      "date": "2026-11-15",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 3
-    }
-  ],
+  "provisionalTimes": [],
   "honors": [
     {
       "event": "25 Free",
@@ -736,10 +751,10 @@
     }
   ],
   "littleElvesEvents": [
+    "100 Back",
     "50 Breast",
-    "50 Free",
-    "50 Fly",
-    "100 Breast"
+    "50 Back",
+    "100 IM"
   ],
   "swimHistory": [
     {
@@ -1077,21 +1092,19 @@
       "time": "1:16.03",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "37.16"
+        },
+        {
+          "at": 100,
+          "time": "1:16.03"
+        }
+      ],
+      "provisional": false,
       "place": 3
-    },
-    {
-      "event": "50 Breast",
-      "course": "SCY",
-      "time": "39.27",
-      "date": "2026-11-14",
-      "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
-      "place": 1
     },
     {
       "event": "100 IM",
@@ -1099,21 +1112,30 @@
       "time": "1:17.63",
       "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "36.62"
+        },
+        {
+          "at": 100,
+          "time": "1:17.63"
+        }
+      ],
+      "provisional": false,
       "place": 4
     },
     {
-      "event": "50 Fly",
+      "event": "50 Breast",
       "course": "SCY",
-      "time": "33.80",
-      "date": "2026-11-15",
+      "time": "39.27",
+      "date": "2026-11-14",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
+      "source": "Ohio results file",
       "splits": [],
-      "place": 4
+      "provisional": false,
+      "place": 1
     },
     {
       "event": "100 Breast",
@@ -1121,9 +1143,18 @@
       "time": "1:25.59",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
-      "splits": [],
+      "source": "Ohio results file",
+      "splits": [
+        {
+          "at": 50,
+          "time": "40.93"
+        },
+        {
+          "at": 100,
+          "time": "1:25.59"
+        }
+      ],
+      "provisional": false,
       "place": 2
     },
     {
@@ -1132,10 +1163,21 @@
       "time": "35.34",
       "date": "2026-11-15",
       "meet": "City of Mason November Invitational",
-      "source": "Meet Mobile",
-      "provisional": true,
+      "source": "Ohio results file",
       "splits": [],
+      "provisional": false,
       "place": 3
+    },
+    {
+      "event": "50 Fly",
+      "course": "SCY",
+      "time": "33.80",
+      "date": "2026-11-15",
+      "meet": "City of Mason November Invitational",
+      "source": "Ohio results file",
+      "splits": [],
+      "provisional": false,
+      "place": 4
     }
   ],
   "seasonTargets": {
@@ -1222,7 +1264,7 @@
           }
         ]
       },
-      "entriesSource": "Meet Mobile",
+      "entriesSource": "Ohio results file",
       "entries": [
         {
           "date": "2026-11-14",
@@ -1240,7 +1282,7 @@
           "estStart": null,
           "time": "1:57.72",
           "place": 1,
-          "provisional": true,
+          "provisional": false,
           "relay": true
         },
         {
@@ -1261,7 +1303,7 @@
           "time": "1:16.03",
           "place": 3,
           "heatPlace": 3,
-          "provisional": true
+          "provisional": false
         },
         {
           "date": "2026-11-14",
@@ -1297,7 +1339,7 @@
           "estStart": "3:19 PM",
           "time": "39.27",
           "place": 1,
-          "provisional": true
+          "provisional": false
         },
         {
           "date": "2026-11-14",
@@ -1316,7 +1358,7 @@
           "estStart": "3:49 PM",
           "time": "1:17.63",
           "place": 4,
-          "provisional": true
+          "provisional": false
         },
         {
           "date": "2026-11-15",
@@ -1335,7 +1377,7 @@
           "estStart": "12:30 PM",
           "time": "2:10.21",
           "place": 1,
-          "provisional": true,
+          "provisional": false,
           "relay": true,
           "team": "A — Dayton Raider Swim Club"
         },
@@ -1356,7 +1398,7 @@
           "estStart": "12:57 PM",
           "time": "33.80",
           "place": 4,
-          "provisional": true
+          "provisional": false
         },
         {
           "date": "2026-11-15",
@@ -1375,7 +1417,7 @@
           "estStart": "1:37 PM",
           "time": "1:25.59",
           "place": 2,
-          "provisional": true
+          "provisional": false
         },
         {
           "date": "2026-11-15",
@@ -1394,10 +1436,14 @@
           "estStart": "3:16 PM",
           "time": "35.34",
           "place": 3,
-          "provisional": true
+          "provisional": false
         }
       ],
       "links": [
+        {
+          "label": "Results zip",
+          "url": "https://www.gomotionapp.com/czohlsc/UserFiles/File/Meets/2026-2027%20SC%20Season/Results/meet-results-2026-oh-rays-city-of-mason-nov-invitational-13nov2026-no-dobs_007749.zip"
+        },
         {
           "label": "Meet info",
           "url": "https://api.captyn.com/s3/c11df68e-18b6-442e-8254-ac04f828bf7c"
@@ -1429,7 +1475,8 @@
           "name": "200 Free Relay",
           "time": "1:57.72",
           "place": 1,
-          "date": "2026-11-14"
+          "date": "2026-11-14",
+          "provisional": false
         },
         {
           "eventNumber": "337",
@@ -1440,7 +1487,8 @@
           "heat": 2,
           "lane": 5,
           "seed": "2:17.18",
-          "team": "A — Dayton Raider Swim Club"
+          "team": "A — Dayton Raider Swim Club",
+          "provisional": false
         }
       ]
     },
