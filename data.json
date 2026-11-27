@@ -8,8 +8,8 @@
     "born": "2016-09-05",
     "profileUrl": "https://myswimapp.com/swimmer/140062",
     "ohioResultsUrl": "https://www.gomotionapp.com/team/czohlsc/page/meets/25-26-sc-scheduleresults",
-    "lastChecked": "2026-11-25T10:01:00-05:00",
-    "lastCheckedLabel": "Nov 25, 2026, 10:01 AM ET",
+    "lastChecked": "2026-11-27T07:55:00-05:00",
+    "lastCheckedLabel": "Nov 27, 2026, 7:55 AM ET",
     "bestTimesAsOf": "2026-11-15",
     "bestTimesAsOfLabel": "Nov 15, 2026",
     "midStatesWindowStart": "2026-09-01",
@@ -27,8 +27,8 @@
       "metric": "MySwimApp Power Score",
       "source": "MySwimApp"
     },
-    "meetsAsOf": "2026-11-24T07:55:00-05:00",
-    "meetsAsOfLabel": "Nov 24, 2026, 7:55 AM ET"
+    "meetsAsOf": "2026-11-27T07:55:00-05:00",
+    "meetsAsOfLabel": "Nov 27, 2026, 7:55 AM ET"
   },
   "eventCatalog": {
     "scy": [
@@ -1655,9 +1655,18 @@
         }
       ],
       "poppy": {
-        "status": "opted_in_no_events",
-        "statusLabel": "Opted in, no events picked",
-        "events": [],
+        "status": "entered",
+        "statusLabel": "Declared IN: 100 Breast, 50 Back, 50 Breast",
+        "events": [
+          {
+            "session": "Session 1, Sun Dec 6",
+            "items": [
+              "100 Breast",
+              "50 Back",
+              "50 Breast"
+            ]
+          }
+        ],
         "relaysChecked": false,
         "suggestedEvents": [
           "100 Back",
@@ -1665,7 +1674,7 @@
           "50 Back",
           "100 IM"
         ],
-        "suggestedNote": "Option: swap in 50 Free for the 100 IM to get a 50 Free time for Mid-States relays. Entries are submitted on Captyn by Fri, Nov 27, 11:59 PM ET, not from this page."
+        "suggestedNote": "Declared on Captyn as of Nov 27: 100 Breast (Ev 111), 50 Back (Ev 115), 50 Breast (Ev 117). The suggestions above are only a comparison; Kevin and the coach decide. Relays are subject to coach approval."
       },
       "links": [
         {
